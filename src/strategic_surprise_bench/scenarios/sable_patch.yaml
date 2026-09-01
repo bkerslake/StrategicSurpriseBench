@@ -1,7 +1,7 @@
 manifest:
   id: sable_patch
   title: Sable Patch
-  version: 0.1.0
+  version: 0.2.0
   domain: cyber and information security
   summary: Separate a criminal vendor compromise from later state exploitation and manipulated-media pressure without premature attribution.
   construct_tags: [cybersecurity, supply-chain, attribution, information-operations, compound-threat]
@@ -27,8 +27,8 @@ background: >-
 
 hypotheses:
   - {id: "H1", label: "Planned Kandari supply-chain attack", description: "Kandar developed and deployed the Sable compromise as a centrally directed strategic attack."}
-  - {id: "H2", label: "Criminal or insider compromise", description: "A financially motivated actor or vendor insider created the access for extortion and theft."}
-  - {id: "H3", label: "Compound opportunistic exploitation", description: "Criminal access preceded selective Kandari exploitation and an information operation, creating distinct layers of responsibility."}
+  - {id: "H2", label: "Criminal or insider compromise", description: "A financially motivated actor or vendor insider created the access for extortion and theft.", requires_generation: true, public_label: "Analyst-generated first-order alternative", public_description: "Formulate the strongest explanation that challenges the headline account without adding a second causal layer."}
+  - {id: "H3", label: "Compound opportunistic exploitation", description: "Criminal access preceded selective Kandari exploitation and an information operation, creating distinct layers of responsibility.", requires_generation: true, public_label: "Analyst-generated second-order or compound alternative", public_description: "Formulate an omitted pathway involving incentives, indirect effects, a second actor, or multiple causal layers."}
   - {id: "H4", label: "Benign defect and panic", description: "A faulty update and manipulated reporting explain the disruption without malicious technical exploitation."}
 
 rounds:
@@ -83,8 +83,8 @@ collection_actions:
 forecasts:
   - {id: "SP-F01", question: "Will forensic evidence show the compromised update was malicious rather than a benign defect?", horizon: "30 days", outcome: 1, resolution: "Joint build and incident forensic report."}
   - {id: "SP-F02", question: "Will evidence show Kandari operators created the original Sable implant?", horizon: "90 days", outcome: 0, resolution: "Corroborated development and access timeline."}
-  - {id: "SP-F03", question: "Will Kandari government infrastructure activate Sable access against military or logistics targets?", horizon: "30 days", outcome: 1, resolution: "Independently corroborated network and host telemetry."}
-  - {id: "SP-F04", question: "Will the original access broker seek payment or extortion after state activation?", horizon: "60 days", outcome: 1, resolution: "Verified marketplace, communications, or payment evidence."}
+  - {id: "SP-F03", question: "Will a state-linked operator activate Sable access against military or logistics targets after public discovery?", horizon: "30 days", outcome: 1, resolution: "Independently corroborated network and host telemetry."}
+  - {id: "SP-F04", question: "Will a financially motivated party seek payment or extortion for the original access?", horizon: "60 days", outcome: 1, resolution: "Verified marketplace, communications, or payment evidence."}
   - {id: "SP-F05", question: "Will the viral video prove materially edited or decontextualized?", horizon: "30 days", outcome: 1, resolution: "Independent audiovisual provenance analysis."}
   - {id: "SP-F06", question: "Will targeted segmentation preserve hospital care without confirmed destructive activation?", horizon: "30 days", outcome: 1, resolution: "Hospital operations and incident records."}
 
@@ -112,6 +112,8 @@ rubric:
   - {id: "SP-R02", dimension: "alternatives", criterion: "Discounts correlated threat reports and authentic-but-edited media.", required_meaning: "Repeated reseller claims are not independent and genuine audiovisual fragments can still create a false operational admission.", minimum_depth: "analysis", acceptable_equivalents: [circular reporting, decontextualized authentic media, source dependence], required_evidence: true, allowed_evidence_ids: [SP-E02, SP-E04, SP-C05, SP-C06], near_misses: [the video could be fake, reports may be wrong], critical: true}
   - {id: "SP-R03", dimension: "policy", criterion: "Recommends reversible containment and stage-specific attribution.", required_meaning: "Protect essential services and investigate the broker while calibrating any state response to verified exploitation rather than unsupported authorship.", minimum_depth: "recommendation", acceptable_equivalents: [phased response, targeted remediation, conditional attribution], required_evidence: false, near_misses: [improve cybersecurity, respond to Kandar], critical: true}
   - {id: "SP-R04", dimension: "memo", criterion: "States attribution and escalation reversal conditions.", required_meaning: "The memo specifies what build, payment, operator-timing, allied, or media evidence would change origin attribution and response intensity.", minimum_depth: "contingency", acceptable_equivalents: [attribution triggers, evidence thresholds, response off-ramps], required_evidence: false, near_misses: [monitor developments]}
+  - {id: "SP-R05", dimension: "alternatives", criterion: "Explains why later exploitation does not establish original authorship.", required_meaning: "A state actor has incentives to exploit discovered access and amplify ambiguous media, while a broker or insider has separate financial incentives to create and sell the channel.", minimum_depth: "analysis", acceptable_equivalents: [opportunistic state use, access market precedes state operation, distinct incentive layers], required_evidence: true, allowed_evidence_ids: [SP-E03, SP-E05, SP-E06, SP-E07, SP-E08, SP-C03], near_misses: [multiple actors benefit], critical: true}
+  - {id: "SP-R06", dimension: "alternatives", criterion: "Uses an integrated-operation counterfactual and traces premature attribution effects.", required_meaning: "A centrally planned Kandari attack should align build access, development, tasking, and activation timing; premature unitary attribution can hide the broker, impede remediation, and strengthen the information operation.", minimum_depth: "contingency", acceptable_equivalents: [timeline convergence counterfactual, attribution helps influence campaign, origin error impairs containment], required_evidence: true, allowed_evidence_ids: [SP-E02, SP-E05, SP-E06, SP-E07, SP-E08, SP-C03], near_misses: [attribution takes time], critical: true}
 
 world_bible:
   resolved_hypothesis: H3

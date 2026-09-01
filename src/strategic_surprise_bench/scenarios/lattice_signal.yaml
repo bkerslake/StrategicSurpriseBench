@@ -1,7 +1,7 @@
 manifest:
   id: lattice_signal
   title: Lattice Signal
-  version: 0.1.0
+  version: 0.2.0
   domain: emerging technology
   summary: Separate a loud cryptographic bluff from commercial sensing progress and a quiet third-party computing breakthrough.
   construct_tags: [deception, technical-feasibility, horizon-scanning, source-correlation, portfolio-policy]
@@ -32,9 +32,15 @@ hypotheses:
   - id: H2
     label: Veyran deception
     description: Veyra is coordinating a perception campaign without the claimed technical capability.
+    requires_generation: true
+    public_label: Analyst-generated first-order alternative
+    public_description: Formulate the strongest explanation that challenges the headline account without adding a second causal layer.
   - id: H3
     label: Overlooked third-party breakthrough
     description: A less salient partner or commercial network is closest to a discontinuous computing advance.
+    requires_generation: true
+    public_label: Analyst-generated second-order or compound alternative
+    public_description: Formulate an omitted pathway involving incentives, indirect effects, a second actor, or multiple causal layers.
   - id: H4
     label: Mundane and unrelated events
     description: The visible indicators have conventional explanations and no strategic breakthrough is imminent.
@@ -170,7 +176,7 @@ forecasts:
   - {id: "LS-F01", question: "Will an independent laboratory verify Veyra's ability to defeat current public-key cryptography?", horizon: "90 days", outcome: 0, resolution: "Independent reproduction or instrumented demonstration."}
   - {id: "LS-F02", question: "Will sampled Veyran critical infrastructure still use legacy public-key implementations?", horizon: "60 days", outcome: 1, resolution: "Two independent technical audits."}
   - {id: "LS-F03", question: "Will the commercial sensing mesh demonstrate a useful non-cryptanalytic product?", horizon: "60 days", outcome: 1, resolution: "Verified customer demonstration."}
-  - {id: "LS-F04", question: "Will a less salient third party demonstrate the major computing breakthrough?", horizon: "120 days", outcome: 1, resolution: "Replicated functional demonstration."}
+  - {id: "LS-F04", question: "Will an independently replicated computing advance emerge outside Veyra's announced program?", horizon: "120 days", outcome: 1, resolution: "Replicated functional demonstration."}
   - {id: "LS-F05", question: "Will the wallet breach be attributed to quantum computation?", horizon: "30 days", outcome: 0, resolution: "Published digital-forensics report."}
   - {id: "LS-F06", question: "Will Arken create a cross-sector technology-surprise investment program?", horizon: "120 days", outcome: 1, resolution: "Formal cabinet authorization."}
 
@@ -232,6 +238,8 @@ rubric:
     acceptable_equivalents: [confidence and signposts, update triggers, falsifiable warning indicators]
     required_evidence: false
     near_misses: [high confidence, continue monitoring]
+  - {id: "LS-R05", dimension: "alternatives", criterion: "Uses actor incentives to invert the naive capability inference.", required_meaning: "A state with a covert cryptanalytic advantage would have reason to conceal it, while Veyra benefits from loudly inducing foreign cost and prestige without implementation.", minimum_depth: "analysis", acceptable_equivalents: [capability would favor secrecy, publicity is evidence of bluff incentives, costly-signal inversion], required_evidence: true, allowed_evidence_ids: [LS-E01, LS-E02, LS-E05, LS-C03, LS-C08, LS-E08], near_misses: [Veyra has incentives to exaggerate], critical: true}
+  - {id: "LS-R06", dimension: "alternatives", criterion: "States a discriminating counterfactual and second-order diversion effect.", required_meaning: "If Veyra had the claimed capability, deployment or cryptanalytic effects should emerge; instead its campaign can redirect attention and investment away from Norland's quieter pathway.", minimum_depth: "contingency", acceptable_equivalents: [counterfactual implementation trace, attention diversion, collection displacement], required_evidence: true, allowed_evidence_ids: [LS-E01, LS-E04, LS-E05, LS-C03, LS-C04, LS-E08], near_misses: [look for more evidence], critical: true}
 
 world_bible:
   resolved_hypothesis: H3

@@ -19,6 +19,18 @@ from strategic_surprise_bench.models import (
 
 def response_passages(response: RoundResponse) -> list[str]:
     passages: list[str] = []
+    for hypothesis in response.generated_hypotheses:
+        passages.extend(
+            [
+                hypothesis.statement,
+                hypothesis.causal_mechanism,
+                *hypothesis.actor_incentives,
+                *hypothesis.expected_observables,
+                *hypothesis.disconfirming_observables,
+                *hypothesis.second_order_effects,
+                hypothesis.counterfactual,
+            ]
+        )
     for finding in response.findings:
         passages.extend(
             [
@@ -73,6 +85,21 @@ def rubric_evidence_is_valid(
         )
         if any(_normalise(span) in _normalise(finding_text) for span in supporting_spans):
             if allowed & set(finding.evidence_ids):
+                return True
+    for hypothesis in response.generated_hypotheses:
+        hypothesis_text = " ".join(
+            [
+                hypothesis.statement,
+                hypothesis.causal_mechanism,
+                *hypothesis.actor_incentives,
+                *hypothesis.expected_observables,
+                *hypothesis.disconfirming_observables,
+                *hypothesis.second_order_effects,
+                hypothesis.counterfactual,
+            ]
+        )
+        if any(_normalise(span) in _normalise(hypothesis_text) for span in supporting_spans):
+            if allowed & set(hypothesis.evidence_ids):
                 return True
     return False
 
@@ -163,9 +190,25 @@ class InspectJudgeBackend:
         self.name = name or model
 
     async def _generate_verdict(self, prompt: str) -> JudgeVerdict:
-        from inspect_ai.model import GenerateConfig, get_model
+        from inspect_ai.model import GenerateConfig, ResponseSchema, get_model
 
-        model = get_model(self.model_name, config=GenerateConfig(temperature=0.0))
+        provider = self.model_name.split("/", 1)[0].casefold()
+        if provider == "openai":
+            config = GenerateConfig(
+                max_tokens=1600,
+                reasoning_effort="medium",
+                response_schema=ResponseSchema(
+                    name="strategic_surprise_judge_verdict",
+                    description="A grounded verdict for one benchmark rubric item.",
+                    json_schema=JudgeVerdict.model_json_schema(),
+                    strict=True,
+                ),
+            )
+        elif provider == "anthropic":
+            config = GenerateConfig(max_tokens=1600, effort="medium")
+        else:
+            config = GenerateConfig(max_tokens=1600, temperature=0.0)
+        model = get_model(self.model_name, config=config)
         output = await model.generate(prompt)
         text = output.completion.strip()
         if text.startswith("```"):

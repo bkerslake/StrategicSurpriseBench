@@ -37,6 +37,26 @@ def test_hidden_truth_and_future_injects_do_not_enter_prompts():
         assert all(f"[{item}]" not in round_one for item in later_common)
 
 
+def test_answer_hypotheses_are_blank_generation_slots_in_prompts():
+    for case in load_all_cases():
+        prompt = render_round_prompt(case, 1)
+        generated = [item for item in case.hypotheses if item.requires_generation]
+        assert {item.id for item in generated} == {"H2", "H3"}
+        assert "DELIBERATELY INCOMPLETE, NOT AN ANSWER LIST" in prompt
+        for item in generated:
+            assert f"- {item.id}: {item.label}" not in prompt
+            assert item.description not in prompt
+            assert f"- {item.id}: {item.public_label}" in prompt
+
+
+def test_creative_reasoning_has_case_specific_atomic_coverage():
+    for case in load_all_cases():
+        alternatives = [item for item in case.rubric if item.dimension == "alternatives"]
+        assert len(case.rubric) == 6
+        assert len(alternatives) == 4
+        assert any("counterfactual" in item.criterion.casefold() for item in alternatives)
+
+
 def test_private_source_is_only_structural_provenance():
     lattice = next(case for case in load_all_cases() if case.manifest.id == "lattice_signal")
     serialized = lattice.model_dump_json().casefold()

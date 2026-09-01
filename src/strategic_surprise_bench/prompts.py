@@ -8,9 +8,10 @@ from strategic_surprise_bench.models import RoundResponse, ScenarioCase
 
 SYSTEM_PROMPT = """You are a strategic-warning analyst supporting a fictional interagency
 steering group. Use only information supplied inside this fictional exercise. Distinguish likelihood
-from confidence, identify source dependence and possible deception, preserve plausible alternatives,
-and avoid treating politically vivid claims as verified facts. Your response must be one JSON object
-matching the supplied schema. Do not include markdown fences or hidden reasoning."""
+from confidence, question actor incentives, identify source dependence, generate omitted causal
+explanations, and trace counterfactual and second-order effects. Do not assume that the supplied
+hypothesis slots constitute an answer list. Your response must be one JSON object matching the
+supplied schema. Do not include markdown fences or hidden reasoning."""
 
 AGENT_ADDENDUM = """You have bounded analytic tools for maintaining an evidence ledger, a hypothesis
 table, and collection orders. The tools do not reveal facts. Use them to preserve contemporaneous
@@ -37,7 +38,9 @@ def render_round_prompt(
     definition = case.rounds[round_number - 1]
     visible = case.visible_evidence(round_number, selected_action_ids)
     hypotheses = "\n".join(
-        f"- {item.id}: {item.label} — {item.description}" for item in case.hypotheses
+        f"- {item.id}: {item.public_label or item.label} — "
+        f"{item.public_description or item.description}"
+        for item in case.hypotheses
     )
     evidence = "\n".join(f"- [{item.id}] {item.source}: {item.text}" for item in visible)
     forecasts = "\n".join(
@@ -60,20 +63,24 @@ def render_round_prompt(
         )
 
     if round_number == 1:
-        instructions = """Allocate probability across all four hypotheses and answer all six
+        instructions = """Formulate original causal models for the deliberately blank H2 and H3
+slots, then allocate probability across all four slots and answer all six
 forecasts. Assess each visible source for reliability, independence, deception risk, and relevance.
-State evidence-grounded findings, preserve disconfirming evidence and alternatives, and spend no
-more than the collection budget. Each order must say what uncertainty it discriminates."""
+For each generated hypothesis, explain actor incentives, expected and disconfirming observables,
+second-order effects, and a counterfactual that would distinguish it. State evidence-grounded
+findings and spend no more than the collection budget. Each order must say what uncertainty it
+discriminates."""
     elif round_number == 2:
-        instructions = """Revise—not replace without explanation—your prior hypotheses and all six
-forecasts. Identify changed assumptions, warning indicators, and remaining disconfirming evidence.
-Reassess visible source dependence, spend no more than the new collection budget, and state policy
-triggers or contingency thresholds in the findings and memo."""
+        instructions = """Revise the H2 and H3 causal models—not merely their probabilities—and all
+six forecasts. Explain what changed, which actor incentives or assumptions now look different, and
+what the closest counterfactual world would produce. Preserve disconfirming evidence, reassess
+source dependence, spend no more than the new collection budget, and state policy triggers."""
     else:
         instructions = """Provide final stage-specific attribution and all six consequence
 forecasts. Allocate exactly 100 policy points across bounded levers. Explain objectives, mechanisms,
 risks, affected domains, second-order effects, escalation management, triggers, and reversal
-conditions. The decision memo must cite evidence IDs and preserve material uncertainty."""
+conditions. Finalize the H2 and H3 causal models, including what would have happened in the nearest
+counterfactual world. The decision memo must cite evidence IDs and preserve material uncertainty."""
 
     memo_limit = 700 if round_number == 3 else 400
     length_limits = f"""Keep the response concise and auditable:
@@ -98,8 +105,11 @@ ROUND INSTRUCTIONS
 RESPONSE LENGTH LIMITS
 {length_limits}
 
-COMPETING HYPOTHESES
+HYPOTHESIS SLOTS — DELIBERATELY INCOMPLETE, NOT AN ANSWER LIST
 {hypotheses}
+
+H2 and H3 are blank analytic slots. Put your original formulations in generated_hypotheses and use
+the same slot IDs in the probability table. A generic restatement of the dossier is not sufficient.
 
 AVAILABLE EVIDENCE
 {evidence}

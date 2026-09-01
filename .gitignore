@@ -12,3 +12,15 @@ outputs/private/
 build/
 dist/
 *.egg-info/
+
+# Next.js microsite
+node_modules/
+.next/
+out/
+.vercel/
+*.tsbuildinfo
+.env*.local
+
+# Local review artifacts
+.DS_Store
+tmp/

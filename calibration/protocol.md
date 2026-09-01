@@ -18,8 +18,10 @@ Assign stable, opaque response IDs. Randomly designate 16 responses per case as 
 as `holdout`, stratified by genuine/controlled status and expected performance. Write the designation
 before prompt or threshold development. The holdout file is read-only after `locked_at` is recorded.
 
-Every response receives one row for each released atomic rubric item. With four items per case, the
-complete corpus contains 576 criterion rows (6 × 24 × 4) and 144 aggregate response rows.
+Every response receives one row for each released atomic rubric item. With six items per case, the
+complete corpus contains 864 criterion rows (6 × 24 × 6) and 144 aggregate response rows. Four of
+the six items directly test hypothesis generation, actor incentives, causal layering,
+counterfactuals, or second-order effects.
 
 ## Expert labeling
 
@@ -84,4 +86,3 @@ to humans rather than averaging it away.
 Do not include API keys, classified information, private IQT wording, reviewer personal data, or
 unreleased answer files. Preserve raw labels and model outputs in access-controlled storage; release
 only data for which model terms, reviewer consent, and scenario licenses permit redistribution.
-

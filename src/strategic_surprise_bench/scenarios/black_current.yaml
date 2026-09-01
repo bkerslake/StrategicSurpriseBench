@@ -1,7 +1,7 @@
 manifest:
   id: black_current
   title: Black Current
-  version: 0.1.0
+  version: 0.2.0
   domain: military and maritime
   summary: Attribute a submarine grounding and undersea infrastructure failures without allowing the most visible actor to monopolize analysis.
   construct_tags: [attribution, escalation, maritime, third-party, denial-and-deception]
@@ -28,8 +28,8 @@ background: >-
 
 hypotheses:
   - {id: "H1", label: "Deliberate Karsian intrusion", description: "The grounded Karsian submarine and nearby activity are parts of an intentional reconnaissance or coercive operation."}
-  - {id: "H2", label: "Karsian accident", description: "The submarine entered restricted waters because of navigation or mechanical failure and support activity is a rescue effort."}
-  - {id: "H3", label: "Third-party seabed operation", description: "A less visible commercial or state proxy exploited the crisis to map or compromise undersea infrastructure."}
+  - {id: "H2", label: "Karsian accident", description: "The submarine entered restricted waters because of navigation or mechanical failure and support activity is a rescue effort.", requires_generation: true, public_label: "Analyst-generated first-order alternative", public_description: "Formulate the strongest explanation that challenges the headline account without adding a second causal layer."}
+  - {id: "H3", label: "Third-party seabed operation", description: "A less visible commercial or state proxy exploited the crisis to map or compromise undersea infrastructure.", requires_generation: true, public_label: "Analyst-generated second-order or compound alternative", public_description: "Formulate an omitted pathway involving incentives, indirect effects, a second actor, or multiple causal layers."}
   - {id: "H4", label: "Unrelated technical failures", description: "The grounding, cable alarms, and acoustic anomalies are independent accidents or sensor errors."}
 
 rounds:
@@ -85,7 +85,7 @@ forecasts:
   - {id: "BC-F01", question: "Will inspection show a genuine Karsian navigation or mechanical failure?", horizon: "14 days", outcome: 1, resolution: "Joint technical report."}
   - {id: "BC-F02", question: "Will evidence show the submarine intentionally approached the naval array?", horizon: "30 days", outcome: 0, resolution: "Voyage-data and trajectory reconstruction."}
   - {id: "BC-F03", question: "Will at least one cable fault prove deliberate?", horizon: "30 days", outcome: 1, resolution: "Repair-forensics report."}
-  - {id: "BC-F04", question: "Will a third actor be linked to the deliberate seabed activity?", horizon: "60 days", outcome: 1, resolution: "Attributable equipment, financing, or tasking."}
+  - {id: "BC-F04", question: "Will investigators conclude that the grounding and deliberate cable damage came from different causal chains?", horizon: "60 days", outcome: 1, resolution: "Joint voyage-data, seabed-forensics, and attribution report."}
   - {id: "BC-F05", question: "Will Karsian forces attempt a non-consensual rescue?", horizon: "7 days", outcome: 0, resolution: "Recorded entry into Selene waters without consent."}
   - {id: "BC-F06", question: "Will allied cable and array protection posture increase?", horizon: "90 days", outcome: 1, resolution: "Formal operational directive."}
 
@@ -113,6 +113,8 @@ rubric:
   - {id: "BC-R02", dimension: "alternatives", criterion: "Identifies the commercial survey vessel as a third-party warning path.", required_meaning: "Pelagic Dawn's transponder gap, ownership, stops, or pods indicate a Meloran-linked operation.", minimum_depth: "analysis", acceptable_equivalents: [survey cover, third-party seabed intelligence, Meloran proxy], required_evidence: true, allowed_evidence_ids: [BC-E04, BC-C04, BC-C05, BC-D01, BC-D02], near_misses: [investigate all vessels], critical: true}
   - {id: "BC-R03", dimension: "policy", criterion: "Uses controlled rescue and evidence-led attribution.", required_meaning: "Preserve crew safety and Selene control while conducting seabed forensics and delaying irreversible force.", minimum_depth: "recommendation", acceptable_equivalents: [monitored rescue, joint inspection, proportional evidence-led response], required_evidence: false, near_misses: [show resolve, demand an apology], critical: true}
   - {id: "BC-R04", dimension: "memo", criterion: "States attribution confidence and escalation triggers separately.", required_meaning: "The memo distinguishes confidence in accident and third-party sabotage and identifies evidence that would justify stronger action.", minimum_depth: "contingency", acceptable_equivalents: [separate confidence judgments, force threshold, update trigger], required_evidence: false, near_misses: [remain vigilant]}
+  - {id: "BC-R05", dimension: "alternatives", criterion: "Explains the incentive and timing logic of opportunistic exploitation.", required_meaning: "A genuine Karsian rescue crisis can draw patrol attention and create cover for a separate actor whose commercial survey pattern serves seabed-access goals.", minimum_depth: "analysis", acceptable_equivalents: [crisis as cover, diversion enables proxy operation, rescue and sabotage have different motives], required_evidence: true, allowed_evidence_ids: [BC-E03, BC-E04, BC-E05, BC-E06, BC-C04, BC-C05], near_misses: [another actor could be involved], critical: true}
+  - {id: "BC-R06", dimension: "alternatives", criterion: "Uses a single-actor counterfactual and traces escalation's second-order cost.", required_meaning: "A unified Karsian operation should align voyage, cable, and support-vessel evidence; premature escalation would instead obscure forensics and help the separate seabed operator escape scrutiny.", minimum_depth: "contingency", acceptable_equivalents: [causal-timing counterfactual, escalation as distraction, evidence should converge under one operation], required_evidence: true, allowed_evidence_ids: [BC-E01, BC-E04, BC-E05, BC-E06, BC-C03, BC-C04], near_misses: [wait for evidence], critical: true}
 
 world_bible:
   resolved_hypothesis: H3

@@ -33,6 +33,9 @@ Condition = Literal["plain", "agent"]
 JudgeMode = Literal["off", "calibration", "published"]
 MAX_OUTPUT_TOKENS = 8000
 MESSAGE_LIMIT = 80
+DEFAULT_JUDGE_A = "openai/gpt-5.6-terra"
+DEFAULT_JUDGE_B = "anthropic/claude-sonnet-5"
+DEFAULT_VALIDATOR = "openai/gpt-5.6-luna"
 
 
 def _parse_response(text: str) -> RoundResponse:
@@ -131,9 +134,9 @@ def _judge_families_are_independent(judge_a: str, judge_b: str) -> bool:
 def strategic_surprise_scorer(
     *,
     judge_mode: JudgeMode = "off",
-    judge_a: str | None = None,
-    judge_b: str | None = None,
-    validator: str | None = None,
+    judge_a: str | None = DEFAULT_JUDGE_A,
+    judge_b: str | None = DEFAULT_JUDGE_B,
+    validator: str | None = DEFAULT_VALIDATOR,
     calibration_report: str | None = None,
 ) -> object:
     async def score(state: TaskState, target: object) -> Score:
@@ -228,9 +231,9 @@ def strategic_surprise(
     condition: Condition = "plain",
     case_id: str | None = None,
     judge_mode: JudgeMode = "off",
-    judge_a: str | None = None,
-    judge_b: str | None = None,
-    validator: str | None = None,
+    judge_a: str | None = DEFAULT_JUDGE_A,
+    judge_b: str | None = DEFAULT_JUDGE_B,
+    validator: str | None = DEFAULT_VALIDATOR,
     calibration_report: str | None = None,
 ) -> Task:
     """Create the complete six-case task or a selected case."""
@@ -269,6 +272,11 @@ def strategic_surprise(
         metadata={
             "condition": condition,
             "judge_mode": judge_mode,
+            "judge_models": {
+                "judge_a": judge_a,
+                "judge_b": judge_b,
+                "validator": validator,
+            },
             "benchmark_version": BENCHMARK_VERSION,
         },
     )

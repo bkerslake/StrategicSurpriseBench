@@ -10,6 +10,11 @@ from strategic_surprise_bench.calibration import (
 )
 from strategic_surprise_bench.loader import load_all_cases
 from strategic_surprise_bench.reliability import evaluate_reliability
+from strategic_surprise_bench.versions import (
+    BENCHMARK_VERSION,
+    JUDGE_PROMPT_VERSION,
+    RUBRIC_VERSION,
+)
 
 
 def complete_synthetic_corpus() -> CalibrationCorpus:
@@ -58,9 +63,9 @@ def complete_synthetic_corpus() -> CalibrationCorpus:
             }
         )
     return CalibrationCorpus(
-        benchmark_version="0.1.0",
-        rubric_version="0.1.0",
-        judge_prompt_version="0.1.0",
+        benchmark_version=BENCHMARK_VERSION,
+        rubric_version=RUBRIC_VERSION,
+        judge_prompt_version=JUDGE_PROMPT_VERSION,
         calibration_version="synthetic-test-only",
         locked_at=datetime.now(UTC),
         criterion_labels=criterion_labels,

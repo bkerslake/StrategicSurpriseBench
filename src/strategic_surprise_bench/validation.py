@@ -35,7 +35,7 @@ def validate_repository_cases() -> ValidationReport:
 
     for case in cases:
         prefix = case.manifest.id
-        checks += 15
+        checks += 19
         if not case.manifest.public or not case.manifest.fictional:
             failures.append(f"{prefix}:public_fictional_flags")
         if len(case.rounds) != 3:
@@ -50,6 +50,9 @@ def validate_repository_cases() -> ValidationReport:
             failures.append(f"{prefix}:collection_budgets")
 
         truth = case.world_bible.resolved_hypothesis
+        generated_ids = {item.id for item in case.hypotheses if item.requires_generation}
+        if generated_ids != {"H2", "H3"}:
+            failures.append(f"{prefix}:generated_hypothesis_slots")
         first_round = case.visible_evidence(1, set())
         if not any(truth in item.supports and item.reliability >= 0.75 for item in first_round):
             failures.append(f"{prefix}:pre_surprise_warning_path")
@@ -87,8 +90,17 @@ def validate_repository_cases() -> ValidationReport:
                 failures.append(f"{prefix}:hidden_truth_leak_round_{round_number}")
             if "world_bible" in prompt.casefold() or "resolved_hypothesis" in prompt.casefold():
                 failures.append(f"{prefix}:answer_key_label_leak_round_{round_number}")
+            for item in case.hypotheses:
+                if item.requires_generation and (
+                    f"- {item.id}: {item.label}" in prompt or item.description in prompt
+                ):
+                    failures.append(f"{prefix}:latent_hypothesis_leak_round_{round_number}")
         if any(not item.required_meaning or not item.near_misses for item in case.rubric):
             failures.append(f"{prefix}:atomic_rubric_completeness")
+        if len(case.rubric) != 6 or sum(
+            item.dimension == "alternatives" for item in case.rubric
+        ) != 4:
+            failures.append(f"{prefix}:creative_rubric_coverage")
 
     return ValidationReport(
         passed=not failures,

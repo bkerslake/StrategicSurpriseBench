@@ -1,11 +1,12 @@
 judge_mode: calibration
-judge_a: openai/REPLACE_WITH_MODEL_ID
-judge_b: anthropic/REPLACE_WITH_MODEL_ID
-validator: fireworks/REPLACE_WITH_MODEL_ID
-judge_prompt_version: 0.1.0
+judge_a: openai/gpt-5.6-terra
+judge_b: anthropic/claude-sonnet-5
+validator: openai/gpt-5.6-luna
+judge_prompt_version: 0.2.0
 calibration_report: null
 notes:
   - Judge A and Judge B must use different provider families.
+  - Terra is the primary semantic judge; Luna is the independent evidence validator.
+  - Swap judge_a and validator if you want Luna to judge and Terra to validate.
   - Calibration mode produces labels for meta-evaluation but never marks them publishable.
   - Published mode additionally requires a passing locked gate report.
-

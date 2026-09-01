@@ -7,6 +7,9 @@ from inspect_ai._util.registry import registry_info
 from inspect_ai.model import ModelOutput, ModelUsage, get_model
 
 from strategic_surprise_bench.inspect_task import (
+    DEFAULT_JUDGE_A,
+    DEFAULT_JUDGE_B,
+    DEFAULT_VALIDATOR,
     MAX_OUTPUT_TOKENS,
     MESSAGE_LIMIT,
     strategic_surprise,
@@ -25,6 +28,18 @@ def test_task_constructs_both_conditions_with_identical_case_input():
     assert [item.input for item in plain.dataset] == [item.input for item in agent.dataset]
     assert plain.config.max_tokens == agent.config.max_tokens == MAX_OUTPUT_TOKENS == 8000
     assert plain.message_limit == agent.message_limit == MESSAGE_LIMIT == 80
+
+
+def test_default_judge_cascade_uses_terra_cross_family_and_luna():
+    task = strategic_surprise(case_id="lattice_signal", judge_mode="calibration")
+    assert DEFAULT_JUDGE_A == "openai/gpt-5.6-terra"
+    assert DEFAULT_JUDGE_B.startswith("anthropic/")
+    assert DEFAULT_VALIDATOR == "openai/gpt-5.6-luna"
+    assert task.metadata["judge_models"] == {
+        "judge_a": DEFAULT_JUDGE_A,
+        "judge_b": DEFAULT_JUDGE_B,
+        "validator": DEFAULT_VALIDATOR,
+    }
 
 
 def test_agent_tools_are_bounded_note_takers():

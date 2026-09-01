@@ -1,7 +1,7 @@
 {
-  "benchmark_version": "0.1.0",
-  "rubric_version": "0.1.0",
-  "judge_prompt_version": "0.1.0",
+  "benchmark_version": "0.2.0",
+  "rubric_version": "0.2.0",
+  "judge_prompt_version": "0.2.0",
   "calibration_version": "UNSET",
   "locked_at": null,
   "criterion_labels": [],
@@ -10,4 +10,3 @@
   "paraphrase_invariance": 0.0,
   "evidence_deletion_sensitivity": 0.0
 }
-

@@ -1,7 +1,7 @@
 manifest:
   id: meridian_shock
   title: Meridian Shock
-  version: 0.1.0
+  version: 0.2.0
   domain: economic and financial
   summary: Look past a vivid chokepoint closure to detect a leveraged commodity and insurance counterparty cascade.
   construct_tags: [economic-security, financial-contagion, chokepoint, second-order-effects, information-operations]
@@ -27,8 +27,8 @@ background: >-
 
 hypotheses:
   - {id: "H1", label: "Deliberate Nemer blockade", description: "Nemer created or is prolonging the closure as economic coercion."}
-  - {id: "H2", label: "Temporary physical accident", description: "The canal disruption is an ordinary casualty that will be resolved without a strategic campaign."}
-  - {id: "H3", label: "Financial contagion surprise", description: "Leverage, margin calls, insurance withdrawals, and a major counterparty will cause the dominant economic damage."}
+  - {id: "H2", label: "Temporary physical accident", description: "The canal disruption is an ordinary casualty that will be resolved without a strategic campaign.", requires_generation: true, public_label: "Analyst-generated first-order alternative", public_description: "Formulate the strongest explanation that challenges the headline account without adding a second causal layer."}
+  - {id: "H3", label: "Financial contagion surprise", description: "Leverage, margin calls, insurance withdrawals, and a major counterparty will cause the dominant economic damage.", requires_generation: true, public_label: "Analyst-generated second-order or compound alternative", public_description: "Formulate an omitted pathway involving incentives, indirect effects, a second actor, or multiple causal layers."}
   - {id: "H4", label: "Primarily information-driven panic", description: "False sabotage claims and herding are causing a market overreaction without lasting physical or balance-sheet stress."}
 
 rounds:
@@ -83,7 +83,7 @@ collection_actions:
 forecasts:
   - {id: "MS-F01", question: "Will the canal remain physically closed longer than fourteen days?", horizon: "14 days", outcome: 0, resolution: "Verified transit logs."}
   - {id: "MS-F02", question: "Will evidence show Nemer deliberately caused or prolonged the casualty?", horizon: "60 days", outcome: 0, resolution: "Forensic and government records."}
-  - {id: "MS-F03", question: "Will Orbis default on a clearing or margin obligation?", horizon: "30 days", outcome: 1, resolution: "Exchange default notice."}
+  - {id: "MS-F03", question: "Will a systemically connected commodity intermediary default on a clearing or margin obligation?", horizon: "30 days", outcome: 1, resolution: "Exchange default notice."}
   - {id: "MS-F04", question: "Will at least one regulated financial institution require extraordinary liquidity support?", horizon: "60 days", outcome: 1, resolution: "Public or confidential supervisory action."}
   - {id: "MS-F05", question: "Will food-import finance remain impaired after physical transit resumes?", horizon: "30 days", outcome: 1, resolution: "Confirmed letters-of-credit and shipment data."}
   - {id: "MS-F06", question: "Will convoy volume recover above eighty percent of normal within two weeks of reopening?", horizon: "30 days", outcome: 1, resolution: "Canal traffic statistics."}
@@ -112,6 +112,8 @@ rubric:
   - {id: "MS-R02", dimension: "alternatives", criterion: "Recognizes correlated sources and manipulation in shipping warnings.", required_meaning: "Multiple shipping warnings share an insurer model and sabotage narrative, so they are not independent confirmation of a blockade.", minimum_depth: "analysis", acceptable_equivalents: [correlated bulletins, common model dependence, circular sabotage reporting], required_evidence: true, allowed_evidence_ids: [MS-E02, MS-E04, MS-C05, MS-C06], near_misses: [social media may be wrong], critical: true}
   - {id: "MS-R03", dimension: "policy", criterion: "Targets liquidity and collateral while avoiding premature state sanctions.", required_meaning: "Pair reopening support with targeted resolution, liquidity, and collateral transparency rather than treating Nemer as a verified coercive actor.", minimum_depth: "recommendation", acceptable_equivalents: [financial containment, resolve Orbis, evidence-led state response], required_evidence: false, near_misses: [stabilize markets, support shipping], critical: true}
   - {id: "MS-R04", dimension: "memo", criterion: "Identifies second-order economic triggers.", required_meaning: "The memo tracks margin calls, duplicate collateral, insurance withdrawals, trade-finance failures, and essential-goods effects as update triggers.", minimum_depth: "contingency", acceptable_equivalents: [contagion indicators, funding triggers, financial signposts], required_evidence: false, near_misses: [monitor volatility]}
+  - {id: "MS-R05", dimension: "alternatives", criterion: "Explains the incentives and feedback loop behind the financial cascade.", required_meaning: "A stressed intermediary benefits from sabotage rumors that delay scrutiny, while shared insurer models and withdrawals transform a short accident into self-reinforcing funding stress.", minimum_depth: "analysis", acceptable_equivalents: [rumor buys time, correlated risk models amplify stress, endogenous liquidity spiral], required_evidence: true, allowed_evidence_ids: [MS-E02, MS-E03, MS-E04, MS-E05, MS-E06, MS-C03], near_misses: [panic could spread], critical: true}
+  - {id: "MS-R06", dimension: "alternatives", criterion: "Uses a physical-recovery counterfactual and traces second-order harm.", required_meaning: "If the closure alone drove losses, reopening should normalize finance; persistent margin, insurance, collateral, and food-import failures instead identify a balance-sheet transmission mechanism.", minimum_depth: "contingency", acceptable_equivalents: [reopening counterfactual, financial persistence falsifies physical-only account, trade-finance second order], required_evidence: true, allowed_evidence_ids: [MS-E01, MS-E03, MS-E05, MS-E06, MS-C03, MS-C04], near_misses: [markets may lag reopening], critical: true}
 
 world_bible:
   resolved_hypothesis: H3

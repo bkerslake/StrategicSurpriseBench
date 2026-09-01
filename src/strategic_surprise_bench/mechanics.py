@@ -82,6 +82,9 @@ def validate_round_response(
         raise ResponseValidationError("response hypothesis IDs must exactly match the case")
     if set(response_forecast_ids) != forecast_ids or len(response_forecast_ids) != 6:
         raise ResponseValidationError("response forecast IDs must exactly match the case")
+    generated_slot_ids = {item.id for item in case.hypotheses if item.requires_generation}
+    if {item.slot_id for item in response.generated_hypotheses} != generated_slot_ids:
+        raise ResponseValidationError("generated hypothesis slots must exactly match the case")
 
     visible_ids = {
         item.id for item in case.visible_evidence(response.round, prior_selected_action_ids)
@@ -91,6 +94,8 @@ def validate_round_response(
         cited_ids.update(item.supporting_evidence_ids)
         cited_ids.update(item.contradicting_evidence_ids)
     for item in response.findings:
+        cited_ids.update(item.evidence_ids)
+    for item in response.generated_hypotheses:
         cited_ids.update(item.evidence_ids)
     cited_ids.update(item.evidence_id for item in response.source_assessments)
     unknown_evidence = cited_ids - set(case.evidence_by_id())

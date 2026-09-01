@@ -1,7 +1,7 @@
 manifest:
   id: red_harvest
   title: Red Harvest
-  version: 0.1.0
+  version: 0.2.0
   domain: transnational public health and security
   summary: Distinguish natural spillover from lab-release claims while detecting coercive political exploitation and counterfeit medical supply chains.
   construct_tags: [public-health, biosecurity, disinformation, supply-chain, political-exploitation]
@@ -27,8 +27,8 @@ background: >-
 
 hypotheses:
   - {id: "H1", label: "Deliberate or accidental laboratory release", description: "The outbreak originated from engineered or mishandled material at the Ravel Institute."}
-  - {id: "H2", label: "Natural zoonotic outbreak", description: "Wildlife-to-human spillover and ordinary transmission explain the crisis without a coordinated secondary campaign."}
-  - {id: "H3", label: "Natural outbreak with exploitation cascade", description: "Natural spillover is compounded by Veskan coercion, coordinated lab-leak claims, and counterfeit medical products."}
+  - {id: "H2", label: "Natural zoonotic outbreak", description: "Wildlife-to-human spillover and ordinary transmission explain the crisis without a coordinated secondary campaign.", requires_generation: true, public_label: "Analyst-generated first-order alternative", public_description: "Formulate the strongest explanation that challenges the headline account without adding a second causal layer."}
+  - {id: "H3", label: "Natural outbreak with exploitation cascade", description: "Natural spillover is compounded by Veskan coercion, coordinated lab-leak claims, and counterfeit medical products.", requires_generation: true, public_label: "Analyst-generated second-order or compound alternative", public_description: "Formulate an omitted pathway involving incentives, indirect effects, a second actor, or multiple causal layers."}
   - {id: "H4", label: "Misdiagnosis and information panic", description: "Incompatible illnesses and rumor create the appearance of a coherent outbreak."}
 
 rounds:
@@ -84,7 +84,7 @@ forecasts:
   - {id: "RH-F01", question: "Will independent evidence favor natural wildlife spillover over laboratory release?", horizon: "60 days", outcome: 1, resolution: "Adjudicated epidemiologic, sequence, and audit findings."}
   - {id: "RH-F02", question: "Will a verified Ravel sample be identified as the immediate ancestor of the outbreak?", horizon: "90 days", outcome: 0, resolution: "Independent inventory and phylogenetic review."}
   - {id: "RH-F03", question: "Will Veska apply emergency controls to areas without epidemiologically linked cases?", horizon: "30 days", outcome: 1, resolution: "Observer and case-location records."}
-  - {id: "RH-F04", question: "Will counterfeit or inactive purported treatment reach at least three countries?", horizon: "60 days", outcome: 1, resolution: "Regulatory laboratory and distribution records."}
+  - {id: "RH-F04", question: "Will verified medical-product fraud cause harm in at least three countries?", horizon: "60 days", outcome: 1, resolution: "Regulatory laboratory and distribution records."}
   - {id: "RH-F05", question: "Will Veskan forces displace Tavi residents from the mineral corridor?", horizon: "45 days", outcome: 1, resolution: "Multilateral observer documentation."}
   - {id: "RH-F06", question: "Will targeted controls contain transmission without a general border closure?", horizon: "60 days", outcome: 1, resolution: "Regional incidence and mobility data."}
 
@@ -112,6 +112,8 @@ rubric:
   - {id: "RH-R02", dimension: "alternatives", criterion: "Weighs independent origin evidence over repeated political allegations.", required_meaning: "Epidemiology, wildlife archives, independent sequences, and audited inventory are mutually distinct evidence, while repeated confession claims share Veskan provenance.", minimum_depth: "analysis", acceptable_equivalents: [independent scientific convergence, correlated lab-leak narrative, source-weighted origin assessment], required_evidence: true, allowed_evidence_ids: [RH-E01, RH-E02, RH-E03, RH-E05, RH-C01, RH-C02, RH-C03, RH-C04], near_misses: [there is no proof of a lab leak], critical: true}
   - {id: "RH-R03", dimension: "policy", criterion: "Combines health control with safeguards against exploitation.", required_meaning: "Use targeted health measures, verified supply, and neutral monitoring while opposing unsupported attribution and discriminatory corridor seizure.", minimum_depth: "recommendation", acceptable_equivalents: [proportionate cordon, monitored health response, protect Tavi communities], required_evidence: false, near_misses: [send aid, close the border], critical: true}
   - {id: "RH-R04", dimension: "memo", criterion: "States origin, public-safety, and coercion triggers.", required_meaning: "The memo identifies scientific evidence that could reopen the origin judgment and operational thresholds for counterfeit recall, neutral monitoring, and escalation or reversal.", minimum_depth: "contingency", acceptable_equivalents: [origin reversal conditions, health response triggers, humanitarian off-ramps], required_evidence: false, near_misses: [monitor the outbreak]}
+  - {id: "RH-R05", dimension: "alternatives", criterion: "Explains distinct exploitation incentives around a natural event.", required_meaning: "A natural outbreak creates uncertainty that Veska can use to legitimize corridor control and that counterfeiters can exploit for profit without either actor causing the pathogen.", minimum_depth: "analysis", acceptable_equivalents: [origin is separate from coercive benefit, emergency as political cover, scarcity attracts medical fraud], required_evidence: true, allowed_evidence_ids: [RH-E03, RH-E04, RH-E05, RH-E06, RH-C04, RH-C05], near_misses: [bad actors exploit crises], critical: true}
+  - {id: "RH-R06", dimension: "alternatives", criterion: "Uses origin counterfactuals and traces response-generated second-order harm.", required_meaning: "A laboratory origin should produce inventory or phylogenetic linkage; absent that, indiscriminate controls can amplify displacement, distrust, and unsafe procurement beyond the disease burden.", minimum_depth: "contingency", acceptable_equivalents: [lab-link counterfactual, policy-induced displacement, distrust and counterfeit feedback], required_evidence: true, allowed_evidence_ids: [RH-E01, RH-E02, RH-E03, RH-E05, RH-C01, RH-C03], near_misses: [avoid panic], critical: true}
 
 world_bible:
   resolved_hypothesis: H3

@@ -53,6 +53,9 @@ class HypothesisDefinition(StrictModel):
     id: str
     label: str
     description: str
+    public_label: str | None = None
+    public_description: str | None = None
+    requires_generation: bool = False
 
 
 class EvidenceItem(StrictModel):
@@ -109,6 +112,7 @@ class CriticalTask(StrictModel):
     critical: bool = False
     positive_action_ids: list[str] = Field(default_factory=list)
     prohibited_action_ids: list[str] = Field(default_factory=list)
+    minimum_allocation: Probability = 0.15
 
 
 class RubricItem(StrictModel):
@@ -166,6 +170,12 @@ class ScenarioCase(StrictModel):
             raise ValueError("each case must define exactly four unique hypotheses")
         if self.world_bible.resolved_hypothesis not in hypothesis_ids:
             raise ValueError("resolved hypothesis must be one of the four hypotheses")
+        generated_ids = {item.id for item in self.hypotheses if item.requires_generation}
+        if generated_ids != {"H2", "H3"}:
+            raise ValueError("H2 and H3 must be analyst-generated hypothesis slots")
+        for item in self.hypotheses:
+            if item.requires_generation and not (item.public_label and item.public_description):
+                raise ValueError(f"generated slot {item.id} needs public prompt text")
         if [item.round for item in self.rounds] != [1, 2, 3]:
             raise ValueError("rounds must be defined exactly once in order 1, 2, 3")
         if len(self.forecasts) != 6:
@@ -237,6 +247,20 @@ class HypothesisAssessment(StrictModel):
     contradicting_evidence_ids: list[str] = Field(default_factory=list)
 
 
+class GeneratedHypothesis(StrictModel):
+    """An analyst-authored causal model for a deliberately blank hypothesis slot."""
+
+    slot_id: str
+    statement: str = Field(min_length=1, max_length=600)
+    causal_mechanism: str = Field(min_length=1, max_length=1000)
+    actor_incentives: list[str] = Field(min_length=1, max_length=4)
+    expected_observables: list[str] = Field(min_length=1, max_length=4)
+    disconfirming_observables: list[str] = Field(min_length=1, max_length=4)
+    second_order_effects: list[str] = Field(min_length=1, max_length=4)
+    counterfactual: str = Field(min_length=1, max_length=800)
+    evidence_ids: list[str] = Field(default_factory=list)
+
+
 class ForecastAssessment(StrictModel):
     id: str
     probability: Probability
@@ -277,6 +301,7 @@ class PolicyAction(StrictModel):
 class RoundResponse(StrictModel):
     round: Literal[1, 2, 3]
     hypotheses: list[HypothesisAssessment]
+    generated_hypotheses: list[GeneratedHypothesis]
     forecasts: list[ForecastAssessment]
     findings: list[Finding]
     source_assessments: list[SourceAssessment]
@@ -288,6 +313,9 @@ class RoundResponse(StrictModel):
     def validate_probability_and_policy_sums(self) -> RoundResponse:
         if len(self.hypotheses) != 4:
             raise ValueError("response must assess exactly four hypotheses")
+        generated_ids = [item.slot_id for item in self.generated_hypotheses]
+        if len(generated_ids) != 2 or set(generated_ids) != {"H2", "H3"}:
+            raise ValueError("response must generate exactly the H2 and H3 hypothesis slots")
         probability_sum = sum(item.probability for item in self.hypotheses)
         if abs(probability_sum - 1.0) > 1e-6:
             raise ValueError("hypothesis probabilities must sum to 1")

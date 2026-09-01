@@ -10,6 +10,7 @@ from strategic_surprise_bench.models import (
     Confidence,
     Finding,
     ForecastAssessment,
+    GeneratedHypothesis,
     HypothesisAssessment,
     PolicyAction,
     RoundResponse,
@@ -133,6 +134,60 @@ def make_mock_session(case: ScenarioCase, quality: str = "perfect") -> list[Roun
             else []
         )
 
+        generated_hypotheses: list[GeneratedHypothesis] = []
+        by_hypothesis = {item.id: item for item in case.hypotheses}
+        for slot_id in ("H2", "H3"):
+            definition = by_hypothesis[slot_id]
+            supporting_ids = [item.id for item in visible if slot_id in item.supports]
+            if quality in {"perfect", "calibrated"}:
+                statement = f"{definition.label}: {definition.description}"
+                mechanism = " -> ".join(case.world_bible.causal_pathway)
+                incentives = [
+                    f"{actor}: {motive}"
+                    for actor, motive in list(case.world_bible.actor_motives.items())[:2]
+                ]
+                expected = [
+                    f"Evidence {item.id} should be observed: {item.text}"
+                    for item in visible
+                    if slot_id in item.supports
+                ][:3] or ["The causal pathway should produce an independently observable trace."]
+                disconfirming = [
+                    f"Evidence {item.id} cuts against this slot: {item.text}"
+                    for item in visible
+                    if slot_id in item.contradicts
+                ][:3] or ["Independent evidence tying every event to one cause would weaken it."]
+                second_order = [
+                    "Attention and policy resources shift toward the vivid headline while the "
+                    "quieter pathway compounds."
+                ]
+                counterfactual = (
+                    "If the headline single-actor account were true, independent implementation "
+                    "and "
+                    "timing evidence would converge instead of separating into these causal layers."
+                )
+            else:
+                statement = f"Generic alternative for {slot_id}."
+                mechanism = "The visible events may share an unspecified cause."
+                incentives = ["Actors generally prefer favorable outcomes."]
+                expected = ["More activity may occur."]
+                disconfirming = ["No additional activity may occur."]
+                second_order = ["There may be unspecified downstream effects."]
+                counterfactual = "A different world could produce different observations."
+                supporting_ids = []
+            generated_hypotheses.append(
+                GeneratedHypothesis(
+                    slot_id=slot_id,
+                    statement=statement,
+                    causal_mechanism=mechanism,
+                    actor_incentives=incentives,
+                    expected_observables=expected,
+                    disconfirming_observables=disconfirming,
+                    second_order_effects=second_order,
+                    counterfactual=counterfactual,
+                    evidence_ids=supporting_ids,
+                )
+            )
+
         collection_orders: list[CollectionOrder] = []
         if round_number < 3 and quality in {"perfect", "calibrated"}:
             actions, _ = optimal_collection_portfolio(
@@ -197,6 +252,7 @@ def make_mock_session(case: ScenarioCase, quality: str = "perfect") -> list[Roun
         response = RoundResponse(
             round=round_number,
             hypotheses=hypotheses,
+            generated_hypotheses=generated_hypotheses,
             forecasts=[
                 ForecastAssessment(
                     id=item.id,

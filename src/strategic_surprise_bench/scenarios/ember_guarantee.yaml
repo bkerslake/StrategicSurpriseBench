@@ -1,7 +1,7 @@
 manifest:
   id: ember_guarantee
   title: Ember Guarantee
-  version: 0.1.0
+  version: 0.2.0
   domain: diplomatic and nonproliferation
   summary: Distinguish weapons intent from bargaining and latency while detecting a quiet alliance realignment.
   construct_tags: [diplomacy, nonproliferation, alliance-assurance, intent-capability, alternative-hypotheses]
@@ -27,8 +27,8 @@ background: >-
 
 hypotheses:
   - {id: "H1", label: "Aras weapons sprint", description: "Aras has decided to build a nuclear weapon on an accelerated timeline."}
-  - {id: "H2", label: "Aras bargaining and latency", description: "Aras seeks negotiating leverage and a reversible threshold capability without a current weapon decision."}
-  - {id: "H3", label: "Alliance realignment surprise", description: "Varin's eroding confidence is driving a quiet independent hedge or security alignment with Sorell."}
+  - {id: "H2", label: "Aras bargaining and latency", description: "Aras seeks negotiating leverage and a reversible threshold capability without a current weapon decision.", requires_generation: true, public_label: "Analyst-generated first-order alternative", public_description: "Formulate the strongest explanation that challenges the headline account without adding a second causal layer."}
+  - {id: "H3", label: "Alliance realignment surprise", description: "Varin's eroding confidence is driving a quiet independent hedge or security alignment with Sorell.", requires_generation: true, public_label: "Analyst-generated second-order or compound alternative", public_description: "Formulate an omitted pathway involving incentives, indirect effects, a second actor, or multiple causal layers."}
   - {id: "H4", label: "Compliance dispute", description: "Technical ambiguity and domestic rhetoric are producing a crisis without a weapons decision or alliance break."}
 
 rounds:
@@ -83,7 +83,7 @@ collection_actions:
 forecasts:
   - {id: "EG-F01", question: "Will inspectors find undeclared Aras weapons material or weaponization work?", horizon: "90 days", outcome: 0, resolution: "Safeguards report or corroborated technical evidence."}
   - {id: "EG-F02", question: "Will Aras accept a monitored enrichment cap in exchange for economic talks?", horizon: "120 days", outcome: 1, resolution: "Signed interim arrangement."}
-  - {id: "EG-F03", question: "Will Varin formalize a security agreement with Sorell?", horizon: "120 days", outcome: 1, resolution: "Public agreement or authenticated annex."}
+  - {id: "EG-F03", question: "Will Varin add an external security or strategic-access arrangement outside Lydia's framework?", horizon: "120 days", outcome: 1, resolution: "Public agreement or authenticated annex."}
   - {id: "EG-F04", question: "Will the Lydian guarantee remain Varin's sole external defense framework?", horizon: "180 days", outcome: 0, resolution: "Absence or presence of an alternative guarantee."}
   - {id: "EG-F05", question: "Will Aras enrich above 60 percent?", horizon: "120 days", outcome: 0, resolution: "Verified safeguards measurement."}
   - {id: "EG-F06", question: "Will Lydia establish a durable regional assurance and fuel-cycle initiative?", horizon: "180 days", outcome: 1, resolution: "Funded multilateral program."}
@@ -112,6 +112,8 @@ rubric:
   - {id: "EG-R02", dimension: "alternatives", criterion: "Identifies Varin's guarantee gap as the strategic surprise pathway.", required_meaning: "Varin's travel, public confidence, cabinet deliberations, or Sorell infrastructure show alliance realignment risk outside the visible Aras dispute.", minimum_depth: "analysis", acceptable_equivalents: [assurance failure, allied hedge, Sorell alignment], required_evidence: true, allowed_evidence_ids: [EG-E03, EG-E06, EG-C04, EG-C05, EG-C06], near_misses: [consult allies], critical: true}
   - {id: "EG-R03", dimension: "policy", criterion: "Combines verification with alliance reassurance and avoids premature force.", required_meaning: "Use monitored limits for Aras while repairing Varin's assurance gap and retaining diplomatic off-ramps rather than striking on ambiguous evidence.", minimum_depth: "recommendation", acceptable_equivalents: [verify and reassure, dual-track diplomacy, proportional nonproliferation response], required_evidence: false, near_misses: [increase pressure, strengthen alliances], critical: true}
   - {id: "EG-R04", dimension: "memo", criterion: "Defines separate indicators for weaponization and alliance defection.", required_meaning: "The memo states which technical indicators would raise the weapons judgment and which political or basing indicators would confirm realignment.", minimum_depth: "contingency", acceptable_equivalents: [two warning pathways, distinct update triggers, intent and assurance signposts], required_evidence: false, near_misses: [monitor the situation]}
+  - {id: "EG-R05", dimension: "alternatives", criterion: "Explains how bargaining salience and assurance incentives interact.", required_meaning: "Aras can gain leverage from reversible latency while the visible nuclear dispute weakens Lydia's credibility and gives Varin incentives to secure a different backstop.", minimum_depth: "analysis", acceptable_equivalents: [threshold bargaining masks alliance hedge, assurance gap creates realignment incentive, salience displacement], required_evidence: true, allowed_evidence_ids: [EG-E01, EG-E03, EG-E04, EG-E06, EG-C01, EG-C04], near_misses: [reassure allies], critical: true}
+  - {id: "EG-R06", dimension: "alternatives", criterion: "States separate counterfactual observables and second-order effects.", required_meaning: "A weapons sprint should produce weaponization traces, whereas a guarantee failure should produce political, access, or basing steps; overreacting to the former can accelerate the latter.", minimum_depth: "contingency", acceptable_equivalents: [weaponization versus alignment signposts, response worsens assurance gap, dual counterfactual], required_evidence: true, allowed_evidence_ids: [EG-E01, EG-E03, EG-E05, EG-E06, EG-C01, EG-C05], near_misses: [monitor both tracks], critical: true}
 
 world_bible:
   resolved_hypothesis: H3
