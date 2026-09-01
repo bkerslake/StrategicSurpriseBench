@@ -1,0 +1,14 @@
+.env
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+logs/
+*.eval
+*.jsonl
+calibration/private/
+outputs/private/
+build/
+dist/
+*.egg-info/

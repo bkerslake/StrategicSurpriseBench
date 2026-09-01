@@ -1,0 +1,251 @@
+manifest:
+  id: lattice_signal
+  title: Lattice Signal
+  version: 0.1.0
+  domain: emerging technology
+  summary: Separate a loud cryptographic bluff from commercial sensing progress and a quiet third-party computing breakthrough.
+  construct_tags: [deception, technical-feasibility, horizon-scanning, source-correlation, portfolio-policy]
+  collection_budgets: {1: 10, 2: 6}
+  provenance:
+    - title: Private strategic-surprise workshop format
+      license: Not redistributed; structural inspiration only
+      elements_used: Three-round steering-group progression from triage to injects to resource allocation.
+      transformation: All prose, actors, technologies, evidence, causal relationships, and scoring keys are newly authored.
+    - title: CISA Secure Tomorrow Series
+      url: https://www.cisa.gov/resources-tools/resources/secure-tomorrow-series-fact-sheet
+      license: U.S. Government work; source terms apply
+      elements_used: Long-horizon technology foresight framing.
+      transformation: Recast as controlled fictional indicators with a pre-registered hidden truth.
+
+role: You support the Republic of Arken's Strategic Technology Warning Board.
+background: >-
+  Arken is a technologically advanced democracy whose finance, defense, and infrastructure sectors
+  still depend heavily on public-key cryptography. Rival power Veyra frequently uses technology
+  announcements for both industrial policy and foreign influence. Norland is a small Arken partner
+  with a respected materials-science sector but limited computing visibility. The Board must avoid
+  both complacency and costly reactions to strategically shaped claims.
+
+hypotheses:
+  - id: H1
+    label: Veyran breakthrough
+    description: Veyra has a cryptographically relevant quantum computer and its migration reflects a genuine capability.
+  - id: H2
+    label: Veyran deception
+    description: Veyra is coordinating a perception campaign without the claimed technical capability.
+  - id: H3
+    label: Overlooked third-party breakthrough
+    description: A less salient partner or commercial network is closest to a discontinuous computing advance.
+  - id: H4
+    label: Mundane and unrelated events
+    description: The visible indicators have conventional explanations and no strategic breakthrough is imminent.
+
+rounds:
+  - round: 1
+    title: Competing indicators
+    brief: Veyra announces a cryptographic transition while several technology stories compete for attention.
+    common_evidence_ids: [LS-E01, LS-E02, LS-E03, LS-E04]
+  - round: 2
+    title: Technical checks
+    brief: One month later, independent implementation evidence and a commercial demonstration become available.
+    common_evidence_ids: [LS-E05, LS-E06]
+  - round: 3
+    title: The quiet program surfaces
+    brief: A partner-state laboratory demonstrates a modular room-temperature processor with clear materials-science utility.
+    common_evidence_ids: [LS-E07, LS-E08]
+
+evidence:
+  - id: LS-E01
+    round_available: 1
+    source: Veyran Ministry of Networks and synchronized state media
+    text: Veyra will retire legacy public-key protocols within six months; dozens of recently reactivated accounts repeat that Veyra has rendered foreign encryption obsolete.
+    reliability: 0.45
+    deception_risk: 0.85
+    correlation_group: veyran-public-narrative
+    supports: [H1, H2]
+    public_inject: true
+  - id: LS-E02
+    round_available: 1
+    source: Two commercial supply trackers using the same customs aggregator
+    text: Orders attributed to Veyran buyers show a rise in cryogenic controllers and photonic packaging, though final end users are unresolved.
+    reliability: 0.62
+    deception_risk: 0.35
+    correlation_group: shared-customs-feed
+    supports: [H1]
+    public_inject: true
+  - id: LS-E03
+    round_available: 1
+    source: Independent digital-forensics cooperative
+    text: A dormant cryptocurrency wallet was emptied after its owner reused a private key in a poorly secured mobile backup.
+    reliability: 0.90
+    deception_risk: 0.08
+    correlation_group: wallet-forensics
+    supports: [H4]
+    contradicts: [H1]
+    public_inject: true
+  - id: LS-E04
+    round_available: 1
+    source: Norland corporate registry and export statistics
+    text: A small diamond-photonics supplier assigned interconnect patents to a Norland public laboratory while high-purity substrate exports to the laboratory tripled from a low base.
+    reliability: 0.82
+    deception_risk: 0.12
+    correlation_group: norland-commercial-records
+    supports: [H3]
+    public_inject: true
+  - id: LS-E05
+    round_available: 2
+    source: Trusted telecom audit
+    text: Major Veyran banks still use legacy libraries; auditors found no compatible replacement hardware, deployment documentation, or benchmark results.
+    reliability: 0.92
+    deception_risk: 0.10
+    correlation_group: veyran-implementation-audit
+    supports: [H2]
+    contradicts: [H1]
+    public_inject: true
+  - id: LS-E06
+    round_available: 2
+    source: Independent observers at the Darsun sensing demonstration
+    text: A distributed diamond-magnetometer mesh mapped traffic successfully, but sensitivity and range were below promotional claims and did not demonstrate computation.
+    reliability: 0.86
+    deception_risk: 0.10
+    correlation_group: sensing-demo
+    supports: [H4]
+    contradicts: [H1]
+    public_inject: true
+  - id: LS-E07
+    round_available: 3
+    source: Multi-laboratory replication announcement
+    text: Norland researchers demonstrate modular room-temperature logical qubits and reproduce a novel lightweight alloy calculation at two foreign laboratories.
+    reliability: 0.96
+    deception_risk: 0.04
+    correlation_group: norland-replication
+    supports: [H3]
+    contradicts: [H1, H4]
+    public_inject: true
+  - id: LS-E08
+    round_available: 3
+    source: Authenticated internal Veyran directive
+    text: Regional officials were instructed to prioritize external perception and narrative discipline rather than technical deployment.
+    reliability: 0.94
+    deception_risk: 0.08
+    correlation_group: veyran-internal
+    supports: [H2]
+    contradicts: [H1]
+    public_inject: true
+  - {id: "LS-C01", round_available: 2, source: "Laboratory procurement audit", text: "Veyran cryogenic purchases are dispersed among metrology and radar programs with no processor-scale integration site.", reliability: 0.88, deception_risk: 0.12, correlation_group: "veyran-procurement", supports: [H2], contradicts: [H1]}
+  - {id: "LS-C02", round_available: 2, source: "Research-network telemetry", text: "Veyran conference withdrawals track a new security review applied across several unrelated disciplines.", reliability: 0.75, deception_risk: 0.20, correlation_group: "veyran-research", supports: [H2], contradicts: []}
+  - {id: "LS-C03", round_available: 2, source: "Cryptographic implementation scan", text: "Sampled Veyran services continue to negotiate legacy handshakes without a coherent new standard.", reliability: 0.93, deception_risk: 0.07, correlation_group: "veyran-implementation-audit", supports: [H2], contradicts: [H1]}
+  - {id: "LS-C04", round_available: 2, source: "Norland grant ledger", text: "Three materials grants converge on room-temperature defect control and modular optical links.", reliability: 0.85, deception_risk: 0.10, correlation_group: "norland-commercial-records", supports: [H3], contradicts: []}
+  - {id: "LS-C05", round_available: 2, source: "Technical interview", text: "A Norland engineer describes resolving thermal-noise instability but declines to discuss logical-qubit counts.", reliability: 0.67, deception_risk: 0.18, correlation_group: "norland-human-source", supports: [H3], contradicts: []}
+  - {id: "LS-C06", round_available: 2, source: "Wallet image reanalysis", text: "The breached wallet backup contained a recoverable plaintext seed fragment.", reliability: 0.96, deception_risk: 0.03, correlation_group: "wallet-forensics", supports: [H4], contradicts: [H1]}
+  - {id: "LS-C07", round_available: 2, source: "Commercial sensing teardown", text: "The sensor mesh uses credible room-temperature magnetometry but conventional processing electronics.", reliability: 0.89, deception_risk: 0.07, correlation_group: "sensing-demo", supports: [H4], contradicts: [H1]}
+  - {id: "LS-C08", round_available: 2, source: "State-media graph analysis", text: "Most breakthrough claims trace to one editorial coordination cluster rather than independent experts.", reliability: 0.87, deception_risk: 0.10, correlation_group: "veyran-public-narrative", supports: [H2], contradicts: [H1]}
+  - {id: "LS-D01", round_available: 3, source: "Standards committee minutes", text: "Veyra requested an extension for implementing its announced replacement protocol.", reliability: 0.91, deception_risk: 0.08, correlation_group: "veyran-implementation-audit", supports: [H2], contradicts: [H1]}
+  - {id: "LS-D02", round_available: 3, source: "Partner liaison report", text: "Norland quietly requested export clearances for modular photonic test equipment six months earlier.", reliability: 0.83, deception_risk: 0.12, correlation_group: "norland-liaison", supports: [H3], contradicts: []}
+  - {id: "LS-D03", round_available: 3, source: "Independent patent review", text: "Norland interconnect claims solve a scaling bottleneck but do not alone prove error-corrected operation.", reliability: 0.88, deception_risk: 0.05, correlation_group: "norland-commercial-records", supports: [H3], contradicts: []}
+  - {id: "LS-D04", round_available: 3, source: "Allied cyber center", text: "No increase in decrypted diplomatic traffic can be attributed to Veyra.", reliability: 0.79, deception_risk: 0.14, correlation_group: "allied-cyber", supports: [H2], contradicts: [H1]}
+  - {id: "LS-D05", round_available: 3, source: "Materials replication team", text: "The Norland alloy result reproduces within stated tolerances using the disclosed processor output.", reliability: 0.97, deception_risk: 0.02, correlation_group: "norland-replication", supports: [H3], contradicts: [H4]}
+  - {id: "LS-D06", round_available: 3, source: "Financial regulator survey", text: "Veyran banks budgeted for ordinary compliance migration rather than new quantum hardware.", reliability: 0.86, deception_risk: 0.11, correlation_group: "veyran-finance", supports: [H2], contradicts: [H1]}
+  - {id: "LS-D07", round_available: 3, source: "Sensing customer interviews", text: "Buyers value navigation and infrastructure monitoring but report no cryptanalytic use.", reliability: 0.81, deception_risk: 0.09, correlation_group: "sensing-customers", supports: [H4], contradicts: [H1]}
+  - {id: "LS-D08", round_available: 3, source: "Strategic communications intercept", text: "Veyran officials celebrate foreign emergency meetings as the campaign's principal output.", reliability: 0.90, deception_risk: 0.08, correlation_group: "veyran-internal", supports: [H2], contradicts: [H1]}
+
+collection_actions:
+  - {id: "LS-A01", round_available: 1, label: "Trace Veyran cryogenic end users", description: "Resolve purchasers and integration locations.", cost: 3, correlation_group: "veyran-procurement", likelihood_positive: {H1: 0.85, H2: 0.20, H3: 0.15, H4: 0.20}, observed: "negative", return_evidence_id: "LS-C01"}
+  - {id: "LS-A02", round_available: 1, label: "Review researcher withdrawals", description: "Test whether withdrawals are quantum-specific.", cost: 2, correlation_group: "veyran-research", likelihood_positive: {H1: 0.70, H2: 0.35, H3: 0.10, H4: 0.25}, observed: "negative", return_evidence_id: "LS-C02"}
+  - {id: "LS-A03", round_available: 1, label: "Scan deployed cryptography", description: "Sample production handshakes and libraries.", cost: 3, correlation_group: "veyran-implementation-audit", likelihood_positive: {H1: 0.90, H2: 0.15, H3: 0.10, H4: 0.20}, observed: "negative", return_evidence_id: "LS-C03"}
+  - {id: "LS-A04", round_available: 1, label: "Map Norland grants", description: "Connect grants, patents, people, and equipment.", cost: 3, correlation_group: "norland-commercial-records", likelihood_positive: {H1: 0.10, H2: 0.10, H3: 0.85, H4: 0.20}, observed: "positive", return_evidence_id: "LS-C04"}
+  - {id: "LS-A05", round_available: 1, label: "Interview Norland engineers", description: "Seek independent technical milestones.", cost: 4, correlation_group: "norland-human-source", likelihood_positive: {H1: 0.10, H2: 0.15, H3: 0.80, H4: 0.25}, observed: "positive", return_evidence_id: "LS-C05"}
+  - {id: "LS-A06", round_available: 1, label: "Reimage breached wallet", description: "Search for conventional compromise paths.", cost: 2, correlation_group: "wallet-forensics", likelihood_positive: {H1: 0.15, H2: 0.30, H3: 0.15, H4: 0.85}, observed: "positive", return_evidence_id: "LS-C06"}
+  - {id: "LS-A07", round_available: 1, label: "Teardown sensing mesh", description: "Separate sensor physics from promotional claims.", cost: 3, correlation_group: "sensing-demo", likelihood_positive: {H1: 0.25, H2: 0.20, H3: 0.30, H4: 0.75}, observed: "positive", return_evidence_id: "LS-C07"}
+  - {id: "LS-A08", round_available: 1, label: "Analyze media coordination", description: "Identify independent versus centrally seeded claims.", cost: 2, correlation_group: "veyran-public-narrative", likelihood_positive: {H1: 0.25, H2: 0.90, H3: 0.15, H4: 0.35}, observed: "positive", return_evidence_id: "LS-C08"}
+  - {id: "LS-B01", round_available: 2, label: "Obtain standards minutes", description: "Check implementation delays and exceptions.", cost: 2, correlation_group: "veyran-implementation-audit", likelihood_positive: {H1: 0.15, H2: 0.85, H3: 0.10, H4: 0.30}, observed: "positive", return_evidence_id: "LS-D01"}
+  - {id: "LS-B02", round_available: 2, label: "Query partner export liaison", description: "Recover overlooked Norland equipment requests.", cost: 2, correlation_group: "norland-liaison", likelihood_positive: {H1: 0.10, H2: 0.10, H3: 0.88, H4: 0.20}, observed: "positive", return_evidence_id: "LS-D02"}
+  - {id: "LS-B03", round_available: 2, label: "Commission patent review", description: "Test whether interconnect claims close a real bottleneck.", cost: 3, correlation_group: "norland-commercial-records", likelihood_positive: {H1: 0.10, H2: 0.15, H3: 0.82, H4: 0.25}, observed: "positive", return_evidence_id: "LS-D03"}
+  - {id: "LS-B04", round_available: 2, label: "Hunt decrypted traffic", description: "Search allied networks for Veyran cryptanalytic effects.", cost: 4, correlation_group: "allied-cyber", likelihood_positive: {H1: 0.88, H2: 0.20, H3: 0.15, H4: 0.20}, observed: "negative", return_evidence_id: "LS-D04"}
+  - {id: "LS-B05", round_available: 2, label: "Replicate materials output", description: "Independently reproduce the rumored alloy calculation.", cost: 4, correlation_group: "norland-replication", likelihood_positive: {H1: 0.10, H2: 0.10, H3: 0.93, H4: 0.12}, observed: "positive", return_evidence_id: "LS-D05"}
+  - {id: "LS-B06", round_available: 2, label: "Survey Veyran bank budgets", description: "Distinguish hardware deployment from ordinary compliance.", cost: 2, correlation_group: "veyran-finance", likelihood_positive: {H1: 0.75, H2: 0.25, H3: 0.10, H4: 0.35}, observed: "negative", return_evidence_id: "LS-D06"}
+  - {id: "LS-B07", round_available: 2, label: "Interview sensing customers", description: "Identify demonstrated downstream uses.", cost: 2, correlation_group: "sensing-customers", likelihood_positive: {H1: 0.20, H2: 0.20, H3: 0.35, H4: 0.75}, observed: "positive", return_evidence_id: "LS-D07"}
+  - {id: "LS-B08", round_available: 2, label: "Collect Veyran campaign reporting", description: "Determine how officials measure success.", cost: 3, correlation_group: "veyran-internal", likelihood_positive: {H1: 0.15, H2: 0.92, H3: 0.10, H4: 0.25}, observed: "positive", return_evidence_id: "LS-D08"}
+
+forecasts:
+  - {id: "LS-F01", question: "Will an independent laboratory verify Veyra's ability to defeat current public-key cryptography?", horizon: "90 days", outcome: 0, resolution: "Independent reproduction or instrumented demonstration."}
+  - {id: "LS-F02", question: "Will sampled Veyran critical infrastructure still use legacy public-key implementations?", horizon: "60 days", outcome: 1, resolution: "Two independent technical audits."}
+  - {id: "LS-F03", question: "Will the commercial sensing mesh demonstrate a useful non-cryptanalytic product?", horizon: "60 days", outcome: 1, resolution: "Verified customer demonstration."}
+  - {id: "LS-F04", question: "Will a less salient third party demonstrate the major computing breakthrough?", horizon: "120 days", outcome: 1, resolution: "Replicated functional demonstration."}
+  - {id: "LS-F05", question: "Will the wallet breach be attributed to quantum computation?", horizon: "30 days", outcome: 0, resolution: "Published digital-forensics report."}
+  - {id: "LS-F06", question: "Will Arken create a cross-sector technology-surprise investment program?", horizon: "120 days", outcome: 1, resolution: "Formal cabinet authorization."}
+
+policy_levers:
+  - {id: "LS-P01", label: "Independent validation network", description: "Fund replication, metrology, and standing technical red teams.", reversible: true, affected_domains: [science, intelligence, alliances]}
+  - {id: "LS-P02", label: "Cryptographic migration", description: "Accelerate inventory and standards-based post-quantum migration.", reversible: false, affected_domains: [cyber, economy, infrastructure]}
+  - {id: "LS-P03", label: "Partner innovation fund", description: "Invest with Norland and other partners in scalable hardware and materials.", reversible: true, affected_domains: [science, diplomacy, economy]}
+  - {id: "LS-P04", label: "Broad export embargo", description: "Immediately embargo all quantum-adjacent components to Veyra and neutral markets.", reversible: false, affected_domains: [trade, diplomacy, security]}
+  - {id: "LS-P05", label: "Warning and collection cell", description: "Maintain indicators, alternative hypotheses, and rapid collection across less salient actors.", reversible: true, affected_domains: [intelligence, governance]}
+
+policy_consequences:
+  - {action_id: "LS-P01", consequence: "False claims are rejected faster without suppressing genuine advances.", probability_if_selected: 0.82, desirable: true}
+  - {action_id: "LS-P02", consequence: "Arken reduces harvest-now-decrypt-later exposure.", probability_if_selected: 0.76, desirable: true}
+  - {action_id: "LS-P03", consequence: "Arken gains access to Norland's platform and talent.", probability_if_selected: 0.72, desirable: true}
+  - {action_id: "LS-P04", consequence: "Neutral suppliers route around controls while partner trust declines.", probability_if_selected: 0.68, desirable: false}
+  - {action_id: "LS-P05", consequence: "Weak signals outside priority adversaries receive sustained review.", probability_if_selected: 0.80, desirable: true}
+
+critical_tasks:
+  - {id: "LS-T01", criterion: "Fund independent technical validation rather than treating announcements as proof.", critical: true, positive_action_ids: [LS-P01], prohibited_action_ids: []}
+  - {id: "LS-T02", criterion: "Reduce cryptographic exposure on a standards-based schedule.", critical: true, positive_action_ids: [LS-P02], prohibited_action_ids: []}
+  - {id: "LS-T03", criterion: "Preserve partner access and avoid an indiscriminate embargo.", critical: false, positive_action_ids: [LS-P03, LS-P05], prohibited_action_ids: [LS-P04]}
+
+rubric:
+  - id: LS-R01
+    dimension: alternatives
+    criterion: Recognizes coordinated Veyran deception before the final reveal.
+    required_meaning: Veyra's public cryptographic pivot is likely a coordinated perception campaign rather than proof of capability.
+    minimum_depth: analysis
+    acceptable_equivalents: [narrative operation unsupported by implementation, strategic bluff, external perception management]
+    required_evidence: true
+    allowed_evidence_ids: [LS-E01, LS-E05, LS-C03, LS-C08, LS-E08]
+    near_misses: [Veyra may be exaggerating, deception should be considered]
+    contradiction_terms: [verified Veyran quantum computer]
+    critical: true
+  - id: LS-R02
+    dimension: alternatives
+    criterion: Preserves an overlooked third-party hypothesis using pre-surprise indicators.
+    required_meaning: Norland's patents, substrates, grants, or equipment requests form a credible weak-signal pathway to a computing breakthrough.
+    minimum_depth: analysis
+    acceptable_equivalents: [quiet partner breakthrough, Norland scaling pathway, diamond-photonics wildcard]
+    required_evidence: true
+    allowed_evidence_ids: [LS-E04, LS-C04, LS-C05, LS-D02, LS-D03]
+    near_misses: [monitor other countries, maintain horizon scanning]
+    critical: true
+  - id: LS-R03
+    dimension: policy
+    criterion: Recommends validation and resilient migration rather than panic controls.
+    required_meaning: Pair independent technical validation with a standards-based cryptographic migration while avoiding blanket controls unsupported by evidence.
+    minimum_depth: recommendation
+    acceptable_equivalents: [replication plus crypto inventory, validate then target controls, reversible evidence-led response]
+    required_evidence: false
+    near_misses: [invest more in quantum, impose immediate controls]
+    critical: true
+  - id: LS-R04
+    dimension: memo
+    criterion: Separates likelihood, confidence, and reversal indicators.
+    required_meaning: The memo states a probabilistic judgment, explains evidentiary confidence, and identifies observations that would change the assessment.
+    minimum_depth: contingency
+    acceptable_equivalents: [confidence and signposts, update triggers, falsifiable warning indicators]
+    required_evidence: false
+    near_misses: [high confidence, continue monitoring]
+
+world_bible:
+  resolved_hypothesis: H3
+  hidden_truth: >-
+    Veyra orchestrated a bluff to force foreign spending and elevate its status. The wallet breach was
+    conventional and the sensing mesh was useful but unrelated. Norland achieved the discontinuous
+    modular computing breakthrough after years of quiet materials and interconnect work.
+  actor_motives:
+    Veyra: Gain prestige, induce foreign cost, and mask ordinary implementation delays.
+    Norland: Protect intellectual property until replication and partner agreements are ready.
+    Darsun sensing firm: Attract customers and investment by stretching legitimate product claims.
+  causal_pathway:
+    - Diamond defect-control grants converge with modular photonic interconnect patents.
+    - Export and equipment requests scale a quiet Norland test program.
+    - Veyran narrative activity captures foreign collection attention.
+    - Norland reaches a replicated materials result and publicly demonstrates the platform.
+  surprise_type: capability surprise displaced by adversary deception

@@ -1,0 +1,9 @@
+{
+  "benchmark": "0.1.0",
+  "scenario_schema": "0.1.0",
+  "rubric": "0.1.0",
+  "judge_prompt": "0.1.0",
+  "calibration": null,
+  "release_tag": null,
+  "note": "Set calibration and release_tag only after the expert holdout passes and the repository is tagged."
+}

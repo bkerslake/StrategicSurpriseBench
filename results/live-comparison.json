@@ -1,0 +1,177 @@
+{
+  "agent_minus_plain": {
+    "cost_usd": 0.06559280000000006,
+    "elapsed_seconds": -43.19200000000001,
+    "score": -1.488064498356536
+  },
+  "case": "lattice_signal",
+  "caveat": "One run per condition is a smoke test, not an agent-uplift estimate.",
+  "model": "openai/gpt-5.6-sol",
+  "reasoning_effort": "medium",
+  "runs": [
+    {
+      "automation_coverage": 0.0,
+      "collection_orders": [
+        [
+          "LS-A01",
+          "LS-A03",
+          "LS-A04"
+        ],
+        [
+          "LS-B03",
+          "LS-B08"
+        ]
+      ],
+      "condition": "plain",
+      "elapsed_seconds": 177.334,
+      "human_review_items": [
+        "LS-R01",
+        "LS-R02",
+        "LS-R03",
+        "LS-R04"
+      ],
+      "message_count": 7,
+      "model_generations": 3,
+      "policy_allocation": {
+        "LS-P01": 25,
+        "LS-P02": 30,
+        "LS-P03": 30,
+        "LS-P05": 15
+      },
+      "prompt_audit": {
+        "exact_expected_prompts": true,
+        "forbidden_internal_markers_absent": true,
+        "user_prompt_count": 3
+      },
+      "resolved_hypothesis_probability": [
+        0.22,
+        0.24,
+        0.7
+      ],
+      "response_size": [
+        {
+          "findings": 5,
+          "memo_words": 251,
+          "round": 1
+        },
+        {
+          "findings": 6,
+          "memo_words": 261,
+          "round": 2
+        },
+        {
+          "findings": 6,
+          "memo_words": 320,
+          "round": 3
+        }
+      ],
+      "schema_repairs": [
+        false,
+        false,
+        false
+      ],
+      "score": 65.72284038319954,
+      "score_components": {
+        "collection": 15.387965599686265,
+        "epistemics": 39.38287478351327,
+        "policy": 10.951999999999998
+      },
+      "status": "success",
+      "tool_calls": 0,
+      "tool_counts": {},
+      "turn_count": 3,
+      "usage": {
+        "cache_read_tokens": 10955,
+        "cache_write_tokens": 15028,
+        "output_tokens": 12064,
+        "reasoning_tokens": 4244,
+        "total_cost_usd": 0.32083799999999996
+      },
+      "working_seconds": 175.538
+    },
+    {
+      "automation_coverage": 0.0,
+      "collection_orders": [
+        [
+          "LS-A01",
+          "LS-A03",
+          "LS-A04"
+        ],
+        [
+          "LS-B04",
+          "LS-B02"
+        ]
+      ],
+      "condition": "agent",
+      "elapsed_seconds": 134.142,
+      "human_review_items": [
+        "LS-R01",
+        "LS-R02",
+        "LS-R03",
+        "LS-R04"
+      ],
+      "message_count": 40,
+      "model_generations": 6,
+      "policy_allocation": {
+        "LS-P01": 30,
+        "LS-P02": 27,
+        "LS-P03": 28,
+        "LS-P05": 15
+      },
+      "prompt_audit": {
+        "exact_expected_prompts": true,
+        "forbidden_internal_markers_absent": true,
+        "user_prompt_count": 3
+      },
+      "resolved_hypothesis_probability": [
+        0.23,
+        0.27,
+        0.86
+      ],
+      "response_size": [
+        {
+          "findings": 4,
+          "memo_words": 228,
+          "round": 1
+        },
+        {
+          "findings": 5,
+          "memo_words": 240,
+          "round": 2
+        },
+        {
+          "findings": 5,
+          "memo_words": 312,
+          "round": 3
+        }
+      ],
+      "schema_repairs": [
+        false,
+        false,
+        false
+      ],
+      "score": 64.234775884843,
+      "score_components": {
+        "collection": 13.00982079497372,
+        "epistemics": 40.242555089869285,
+        "policy": 10.9824
+      },
+      "status": "success",
+      "tool_calls": 30,
+      "tool_counts": {
+        "collection_plan": 5,
+        "evidence_ledger": 13,
+        "hypothesis_table": 12
+      },
+      "turn_count": 6,
+      "usage": {
+        "cache_read_tokens": 54197,
+        "cache_write_tokens": 24592,
+        "output_tokens": 12086,
+        "reasoning_tokens": 2619,
+        "total_cost_usd": 0.3864308
+      },
+      "working_seconds": 131.418
+    }
+  ]
+}

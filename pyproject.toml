@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "strategic-surprise-bench"
+version = "0.1.0"
+description = "A controlled-world benchmark for strategic warning, collection, forecasting, and policy analysis."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+license-files = ["LICENSE", "SCENARIO_LICENSE.md"]
+authors = [{ name = "Strategic Surprise Bench contributors" }]
+dependencies = [
+  "anthropic>=1.0.0",
+  "inspect-ai>=0.3.100",
+  "numpy>=2.0",
+  "openai>=3.1.0",
+  "pydantic>=2.9",
+  "PyYAML>=6.0.2",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3",
+  "pytest-asyncio>=0.24",
+  "ruff>=0.9",
+]
+
+[project.scripts]
+strategic-surprise = "strategic_surprise_bench.cli:main"
+
+[project.entry-points.inspect_ai]
+strategic_surprise_bench = "strategic_surprise_bench.inspect_task"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+strategic_surprise_bench = ["scenarios/*.yaml"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+pythonpath = ["src"]
+asyncio_mode = "auto"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

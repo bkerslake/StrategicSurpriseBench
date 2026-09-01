@@ -1,0 +1,128 @@
+manifest:
+  id: ember_guarantee
+  title: Ember Guarantee
+  version: 0.1.0
+  domain: diplomatic and nonproliferation
+  summary: Distinguish weapons intent from bargaining and latency while detecting a quiet alliance realignment.
+  construct_tags: [diplomacy, nonproliferation, alliance-assurance, intent-capability, alternative-hypotheses]
+  collection_budgets: {1: 10, 2: 6}
+  provenance:
+    - title: International Nuclear Crisis
+      url: https://diplomacy.state.gov/teacher-resources/international-nuclear-crisis/
+      license: Public domain and explicitly editable
+      elements_used: Regional nonproliferation negotiation with multiple stakeholder interests.
+      transformation: New actors, hidden truth, evidence sequence, alliance surprise, collection choices, and scoring.
+    - title: CIA strategic warning materials
+      url: https://www.cia.gov/resources/csi/studies-in-intelligence/volume-66-no-4-december-2022/combating-surprise-introducing-the-kinetic-predictive-analytic-technique/
+      license: U.S. Government work
+      elements_used: Antecedent pathways and emphasis on behavior over public intent claims.
+      transformation: Encoded as fictional signposts and forecast resolutions.
+
+role: You advise the Lydian National Security Council on a regional nuclear and alliance crisis.
+background: >-
+  Lydia extends security guarantees to Varin and supports safeguards in neighboring Aras. Aras has
+  civilian enrichment rights under treaty but uses nuclear latency as political leverage. Varin's
+  coalition government faces an election and increasingly doubts whether Lydia would honor its
+  guarantee. Distant power Sorell is seeking regional access through energy and defense agreements.
+
+hypotheses:
+  - {id: "H1", label: "Aras weapons sprint", description: "Aras has decided to build a nuclear weapon on an accelerated timeline."}
+  - {id: "H2", label: "Aras bargaining and latency", description: "Aras seeks negotiating leverage and a reversible threshold capability without a current weapon decision."}
+  - {id: "H3", label: "Alliance realignment surprise", description: "Varin's eroding confidence is driving a quiet independent hedge or security alignment with Sorell."}
+  - {id: "H4", label: "Compliance dispute", description: "Technical ambiguity and domestic rhetoric are producing a crisis without a weapons decision or alliance break."}
+
+rounds:
+  - {round: 1, title: Enrichment alarm, brief: "New enrichment, rhetoric, and regional travel generate competing interpretations.", common_evidence_ids: [EG-E01, EG-E02, EG-E03, EG-E04]}
+  - {round: 2, title: Intent and assurance, brief: "Inspector access reduces one danger while private allied behavior raises another.", common_evidence_ids: [EG-E05, EG-E06]}
+  - {round: 3, title: The guarantee gap, brief: "Varin unveils a Sorell-backed defense and fuel-cycle arrangement negotiated outside Lydian channels.", common_evidence_ids: [EG-E07, EG-E08]}
+
+evidence:
+  - {id: "EG-E01", round_available: 1, source: "International safeguards agency", text: "Aras has begun enriching a small stock to 20 percent at a declared pilot cascade while requesting a technical consultation.", reliability: 0.92, deception_risk: 0.08, correlation_group: "safeguards", supports: [H1, H2, H4], contradicts: [], public_inject: true}
+  - {id: "EG-E02", round_available: 1, source: "Aras presidential rally and aligned outlets", text: "The president says no foreign power can prevent Aras from mastering every stage of the nuclear cycle.", reliability: 0.55, deception_risk: 0.68, correlation_group: "aras-public", supports: [H1, H2], contradicts: [], public_inject: true}
+  - {id: "EG-E03", round_available: 1, source: "Varin parliamentary calendar and travel notices", text: "Varin's defense minister and energy chair made unannounced consecutive visits to Sorell before a confidence vote.", reliability: 0.86, deception_risk: 0.14, correlation_group: "varin-travel", supports: [H3], contradicts: [], public_inject: true}
+  - {id: "EG-E04", round_available: 1, source: "Commercial procurement database", text: "Aras seeks corrosion-resistant valves usable in civilian enrichment; no weaponization-specific procurement is identified.", reliability: 0.78, deception_risk: 0.20, correlation_group: "aras-procurement", supports: [H2, H4], contradicts: [H1], public_inject: true}
+  - {id: "EG-E05", round_available: 2, source: "Safeguards inspection team", text: "Inspectors account for declared material and see no cascade reconfiguration, high-explosive testing, or undeclared conversion work.", reliability: 0.95, deception_risk: 0.05, correlation_group: "safeguards", supports: [H2, H4], contradicts: [H1], public_inject: true}
+  - {id: "EG-E06", round_available: 2, source: "Varin cabinet minutes from a trusted source", text: "Ministers assess Lydia's guarantee as politically unreliable and authorize talks on Sorell basing, reactor fuel, and emergency defense commitments.", reliability: 0.88, deception_risk: 0.12, correlation_group: "varin-internal", supports: [H3], contradicts: [], public_inject: true}
+  - {id: "EG-E07", round_available: 3, source: "Joint Varin-Sorell communiqué", text: "Varin grants Sorell rotational access and joins a Sorell-controlled regional fuel-cycle consortium with an emergency consultation clause.", reliability: 0.98, deception_risk: 0.03, correlation_group: "varin-sorell-official", supports: [H3], contradicts: [H4], public_inject: true}
+  - {id: "EG-E08", round_available: 3, source: "Updated safeguards report", text: "Aras caps its 20-percent stock and accepts continuous monitoring in exchange for sanctions talks.", reliability: 0.96, deception_risk: 0.04, correlation_group: "safeguards", supports: [H2], contradicts: [H1], public_inject: true}
+  - {id: "EG-C01", round_available: 2, source: "Cascade power analysis", text: "Aras operates well below the configuration needed for a rapid weapons sprint.", reliability: 0.91, deception_risk: 0.07, correlation_group: "technical-monitoring", supports: [H2, H4], contradicts: [H1]}
+  - {id: "EG-C02", round_available: 2, source: "Procurement network audit", text: "Ordered valves match the declared cascade and no covert parallel network is found.", reliability: 0.87, deception_risk: 0.10, correlation_group: "aras-procurement", supports: [H2, H4], contradicts: [H1]}
+  - {id: "EG-C03", round_available: 2, source: "Leadership speech comparison", text: "Aras uses stronger nuclear language before economic negotiations and moderates it after concessions.", reliability: 0.82, deception_risk: 0.12, correlation_group: "aras-public", supports: [H2], contradicts: []}
+  - {id: "EG-C04", round_available: 2, source: "Varin public-opinion series", text: "Confidence in Lydia's defense guarantee fell from 61 to 34 percent while support for an alternative guarantor rose.", reliability: 0.90, deception_risk: 0.06, correlation_group: "varin-politics", supports: [H3], contradicts: []}
+  - {id: "EG-C05", round_available: 2, source: "Varin-Sorell flight and hotel records", text: "Legal, basing, and nuclear-energy delegations overlap during three ostensibly commercial visits.", reliability: 0.85, deception_risk: 0.10, correlation_group: "varin-travel", supports: [H3], contradicts: []}
+  - {id: "EG-C06", round_available: 2, source: "Lydian readiness review", text: "Delayed exercises and conflicting public statements created a visible assurance gap despite adequate forces.", reliability: 0.88, deception_risk: 0.08, correlation_group: "lydia-assurance", supports: [H3], contradicts: []}
+  - {id: "EG-C07", round_available: 2, source: "Regional rumor monitoring", text: "Claims of an Aras warhead design trace to two partisan Varin outlets citing each other.", reliability: 0.68, deception_risk: 0.55, correlation_group: "varin-media", supports: [H4], contradicts: [H1]}
+  - {id: "EG-C08", round_available: 2, source: "Sorell commercial registry", text: "A state defense company created a Varin infrastructure subsidiary with no operating history.", reliability: 0.89, deception_risk: 0.08, correlation_group: "sorell-commercial", supports: [H3], contradicts: []}
+  - {id: "EG-D01", round_available: 3, source: "Environmental sampling", text: "Samples remain consistent with declared enrichment and show no undeclared high-enrichment campaign.", reliability: 0.96, deception_risk: 0.03, correlation_group: "safeguards", supports: [H2, H4], contradicts: [H1]}
+  - {id: "EG-D02", round_available: 3, source: "Aras negotiating channel", text: "Aras offers a monitored cap in exchange for banking relief and reactor fuel.", reliability: 0.79, deception_risk: 0.22, correlation_group: "aras-diplomacy", supports: [H2], contradicts: [H1]}
+  - {id: "EG-D03", round_available: 3, source: "Varin coalition whip count", text: "The government needs Sorell-linked investment votes to survive the confidence motion.", reliability: 0.86, deception_risk: 0.08, correlation_group: "varin-politics", supports: [H3], contradicts: []}
+  - {id: "EG-D04", round_available: 3, source: "Draft basing annex", text: "Varin negotiated access, logistics, and emergency consultation language for six months.", reliability: 0.93, deception_risk: 0.05, correlation_group: "varin-internal", supports: [H3], contradicts: []}
+  - {id: "EG-D05", round_available: 3, source: "Sorell fuel contract", text: "Fuel take-back terms give Sorell enduring leverage but do not transfer weapons material.", reliability: 0.91, deception_risk: 0.04, correlation_group: "sorell-commercial", supports: [H3], contradicts: [H1]}
+  - {id: "EG-D06", round_available: 3, source: "Lydian alliance consultations", text: "Other allies report that ambiguous Lydian statements have prompted their own hedging reviews.", reliability: 0.84, deception_risk: 0.09, correlation_group: "lydia-assurance", supports: [H3], contradicts: []}
+  - {id: "EG-D07", round_available: 3, source: "Weaponization indicator review", text: "No hydrodynamic testing, delivery integration, or warhead-security activity is observed in Aras.", reliability: 0.90, deception_risk: 0.08, correlation_group: "technical-monitoring", supports: [H2, H4], contradicts: [H1]}
+  - {id: "EG-D08", round_available: 3, source: "Varin opposition interview", text: "Opposition leaders would retain the Sorell agreement unless Lydia offers durable parliamentary guarantees.", reliability: 0.75, deception_risk: 0.15, correlation_group: "varin-politics", supports: [H3], contradicts: []}
+
+collection_actions:
+  - {id: "EG-A01", round_available: 1, label: "Analyze cascade power", description: "Estimate actual enrichment configuration and breakout pace.", cost: 3, correlation_group: "technical-monitoring", likelihood_positive: {H1: 0.90, H2: 0.35, H3: 0.10, H4: 0.25}, observed: "negative", return_evidence_id: "EG-C01"}
+  - {id: "EG-A02", round_available: 1, label: "Audit procurement network", description: "Search for undeclared weaponization or parallel cascades.", cost: 3, correlation_group: "aras-procurement", likelihood_positive: {H1: 0.86, H2: 0.25, H3: 0.10, H4: 0.25}, observed: "negative", return_evidence_id: "EG-C02"}
+  - {id: "EG-A03", round_available: 1, label: "Compare leadership rhetoric", description: "Test whether nuclear claims follow bargaining cycles.", cost: 2, correlation_group: "aras-public", likelihood_positive: {H1: 0.35, H2: 0.82, H3: 0.15, H4: 0.35}, observed: "positive", return_evidence_id: "EG-C03"}
+  - {id: "EG-A04", round_available: 1, label: "Poll Varin assurance", description: "Measure confidence in Lydia and support for alternatives.", cost: 2, correlation_group: "varin-politics", likelihood_positive: {H1: 0.20, H2: 0.30, H3: 0.88, H4: 0.35}, observed: "positive", return_evidence_id: "EG-C04"}
+  - {id: "EG-A05", round_available: 1, label: "Reconstruct Varin-Sorell travel", description: "Identify negotiating teams and overlapping agendas.", cost: 3, correlation_group: "varin-travel", likelihood_positive: {H1: 0.15, H2: 0.20, H3: 0.90, H4: 0.25}, observed: "positive", return_evidence_id: "EG-C05"}
+  - {id: "EG-A06", round_available: 1, label: "Review Lydian assurance signals", description: "Identify exercises, statements, and implementation gaps.", cost: 2, correlation_group: "lydia-assurance", likelihood_positive: {H1: 0.20, H2: 0.25, H3: 0.80, H4: 0.40}, observed: "positive", return_evidence_id: "EG-C06"}
+  - {id: "EG-A07", round_available: 1, label: "Trace warhead rumors", description: "Resolve circular reporting and original access.", cost: 1, correlation_group: "varin-media", likelihood_positive: {H1: 0.75, H2: 0.35, H3: 0.25, H4: 0.60}, observed: "negative", return_evidence_id: "EG-C07"}
+  - {id: "EG-A08", round_available: 1, label: "Search Sorell corporate entries", description: "Detect infrastructure created for a strategic agreement.", cost: 2, correlation_group: "sorell-commercial", likelihood_positive: {H1: 0.10, H2: 0.15, H3: 0.85, H4: 0.25}, observed: "positive", return_evidence_id: "EG-C08"}
+  - {id: "EG-B01", round_available: 2, label: "Expand environmental sampling", description: "Test for undeclared high enrichment.", cost: 3, correlation_group: "safeguards", likelihood_positive: {H1: 0.88, H2: 0.25, H3: 0.10, H4: 0.30}, observed: "negative", return_evidence_id: "EG-D01"}
+  - {id: "EG-B02", round_available: 2, label: "Open Aras negotiating channel", description: "Test willingness to accept monitored limits.", cost: 2, correlation_group: "aras-diplomacy", likelihood_positive: {H1: 0.25, H2: 0.85, H3: 0.15, H4: 0.55}, observed: "positive", return_evidence_id: "EG-D02"}
+  - {id: "EG-B03", round_available: 2, label: "Map Varin coalition incentives", description: "Link political survival to the Sorell arrangement.", cost: 2, correlation_group: "varin-politics", likelihood_positive: {H1: 0.15, H2: 0.20, H3: 0.88, H4: 0.30}, observed: "positive", return_evidence_id: "EG-D03"}
+  - {id: "EG-B04", round_available: 2, label: "Obtain basing annex", description: "Establish duration and strategic scope of talks.", cost: 4, correlation_group: "varin-internal", likelihood_positive: {H1: 0.10, H2: 0.10, H3: 0.94, H4: 0.15}, observed: "positive", return_evidence_id: "EG-D04"}
+  - {id: "EG-B05", round_available: 2, label: "Review Sorell fuel terms", description: "Distinguish energy dependence from weapons transfer.", cost: 2, correlation_group: "sorell-commercial", likelihood_positive: {H1: 0.20, H2: 0.25, H3: 0.82, H4: 0.35}, observed: "positive", return_evidence_id: "EG-D05"}
+  - {id: "EG-B06", round_available: 2, label: "Consult other allies", description: "Test whether Varin's hedge reflects a wider guarantee problem.", cost: 2, correlation_group: "lydia-assurance", likelihood_positive: {H1: 0.15, H2: 0.20, H3: 0.80, H4: 0.35}, observed: "positive", return_evidence_id: "EG-D06"}
+  - {id: "EG-B07", round_available: 2, label: "Search weaponization indicators", description: "Hunt high-explosive, delivery, and warhead-security activity.", cost: 4, correlation_group: "technical-monitoring", likelihood_positive: {H1: 0.92, H2: 0.20, H3: 0.10, H4: 0.20}, observed: "negative", return_evidence_id: "EG-D07"}
+  - {id: "EG-B08", round_available: 2, label: "Interview Varin opposition", description: "Test durability across a possible government change.", cost: 1, correlation_group: "varin-politics", likelihood_positive: {H1: 0.15, H2: 0.20, H3: 0.78, H4: 0.40}, observed: "positive", return_evidence_id: "EG-D08"}
+
+forecasts:
+  - {id: "EG-F01", question: "Will inspectors find undeclared Aras weapons material or weaponization work?", horizon: "90 days", outcome: 0, resolution: "Safeguards report or corroborated technical evidence."}
+  - {id: "EG-F02", question: "Will Aras accept a monitored enrichment cap in exchange for economic talks?", horizon: "120 days", outcome: 1, resolution: "Signed interim arrangement."}
+  - {id: "EG-F03", question: "Will Varin formalize a security agreement with Sorell?", horizon: "120 days", outcome: 1, resolution: "Public agreement or authenticated annex."}
+  - {id: "EG-F04", question: "Will the Lydian guarantee remain Varin's sole external defense framework?", horizon: "180 days", outcome: 0, resolution: "Absence or presence of an alternative guarantee."}
+  - {id: "EG-F05", question: "Will Aras enrich above 60 percent?", horizon: "120 days", outcome: 0, resolution: "Verified safeguards measurement."}
+  - {id: "EG-F06", question: "Will Lydia establish a durable regional assurance and fuel-cycle initiative?", horizon: "180 days", outcome: 1, resolution: "Funded multilateral program."}
+
+policy_levers:
+  - {id: "EG-P01", label: "Intrusive verification bargain", description: "Offer phased relief for continuous monitoring and stockpile limits.", reversible: true, affected_domains: [diplomacy, intelligence, economy]}
+  - {id: "EG-P02", label: "Durable alliance assurance", description: "Codify exercises, consultations, and parliamentary commitments with Varin and other allies.", reversible: true, affected_domains: [diplomacy, defense, domestic-politics]}
+  - {id: "EG-P03", label: "Multilateral fuel bank", description: "Provide reliable civilian fuel with take-back and safeguards conditions.", reversible: false, affected_domains: [energy, economy, nonproliferation]}
+  - {id: "EG-P04", label: "Preventive strike", description: "Attack declared Aras nuclear facilities before inspectors find weaponization.", reversible: false, affected_domains: [military, diplomacy, public-safety]}
+  - {id: "EG-P05", label: "Targeted Sorell negotiations", description: "Seek transparency, access limits, and non-transfer commitments without demanding public rupture.", reversible: true, affected_domains: [diplomacy, alliances, economy]}
+
+policy_consequences:
+  - {action_id: "EG-P01", consequence: "Aras caps enrichment while preserving a face-saving civilian program.", probability_if_selected: 0.78, desirable: true}
+  - {action_id: "EG-P02", consequence: "Varin confidence recovers and further allied hedging slows.", probability_if_selected: 0.75, desirable: true}
+  - {action_id: "EG-P03", consequence: "Regional states gain a credible alternative to national fuel-cycle expansion.", probability_if_selected: 0.70, desirable: true}
+  - {action_id: "EG-P04", consequence: "Aras exits safeguards and regional support for independent deterrents rises.", probability_if_selected: 0.82, desirable: false}
+  - {action_id: "EG-P05", consequence: "Varin-Sorell access becomes bounded and more transparent.", probability_if_selected: 0.63, desirable: true}
+
+critical_tasks:
+  - {id: "EG-T01", criterion: "Match the Aras response to verified intent and capability.", critical: true, positive_action_ids: [EG-P01, EG-P03], prohibited_action_ids: [EG-P04]}
+  - {id: "EG-T02", criterion: "Repair the guarantee gap driving allied hedging.", critical: true, positive_action_ids: [EG-P02, EG-P05], prohibited_action_ids: []}
+  - {id: "EG-T03", criterion: "Preserve safeguards and civilian-energy off-ramps.", critical: false, positive_action_ids: [EG-P01, EG-P03], prohibited_action_ids: []}
+
+rubric:
+  - {id: "EG-R01", dimension: "alternatives", criterion: "Distinguishes nuclear latency from a weapon decision.", required_meaning: "Aras's enrichment and rhetoric support bargaining or threshold latency but lack weaponization indicators required for a sprint judgment.", minimum_depth: "analysis", acceptable_equivalents: [reversible hedge, bargaining leverage, capability without current intent], required_evidence: true, allowed_evidence_ids: [EG-E01, EG-E04, EG-E05, EG-C01, EG-D07], near_misses: [Aras might not build a bomb], critical: true}
+  - {id: "EG-R02", dimension: "alternatives", criterion: "Identifies Varin's guarantee gap as the strategic surprise pathway.", required_meaning: "Varin's travel, public confidence, cabinet deliberations, or Sorell infrastructure show alliance realignment risk outside the visible Aras dispute.", minimum_depth: "analysis", acceptable_equivalents: [assurance failure, allied hedge, Sorell alignment], required_evidence: true, allowed_evidence_ids: [EG-E03, EG-E06, EG-C04, EG-C05, EG-C06], near_misses: [consult allies], critical: true}
+  - {id: "EG-R03", dimension: "policy", criterion: "Combines verification with alliance reassurance and avoids premature force.", required_meaning: "Use monitored limits for Aras while repairing Varin's assurance gap and retaining diplomatic off-ramps rather than striking on ambiguous evidence.", minimum_depth: "recommendation", acceptable_equivalents: [verify and reassure, dual-track diplomacy, proportional nonproliferation response], required_evidence: false, near_misses: [increase pressure, strengthen alliances], critical: true}
+  - {id: "EG-R04", dimension: "memo", criterion: "Defines separate indicators for weaponization and alliance defection.", required_meaning: "The memo states which technical indicators would raise the weapons judgment and which political or basing indicators would confirm realignment.", minimum_depth: "contingency", acceptable_equivalents: [two warning pathways, distinct update triggers, intent and assurance signposts], required_evidence: false, near_misses: [monitor the situation]}
+
+world_bible:
+  resolved_hypothesis: H3
+  hidden_truth: Aras sought a monitored threshold capability for bargaining and had not decided to build a weapon. Varin's loss of confidence in Lydia drove a six-month negotiation granting Sorell access and fuel-cycle leverage.
+  actor_motives:
+    Aras: Gain sanctions relief and prestige while keeping future technical options.
+    Varin: Secure a politically credible backstop before an election and confidence vote.
+    Sorell: Convert energy investment into durable strategic access.
+  causal_pathway:
+    - Ambiguous Lydian statements and delayed exercises reduce Varin confidence.
+    - Aras enrichment rhetoric dominates regional attention.
+    - Varin quietly links coalition survival, energy investment, and Sorell security access.
+    - Safeguards stabilize the Aras track as Varin announces the already-negotiated realignment.
+  surprise_type: alliance and intent surprise displaced by proliferation salience

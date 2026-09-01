@@ -1,0 +1,8 @@
+include LICENSE
+include SCENARIO_LICENSE.md
+include versions.json
+recursive-include calibration *.json *.md
+recursive-include configs *.yaml
+recursive-include scripts *.py
+recursive-include src/strategic_surprise_bench/scenarios *.yaml
+recursive-include tests *.py

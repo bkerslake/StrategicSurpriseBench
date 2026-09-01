@@ -1,0 +1,129 @@
+manifest:
+  id: red_harvest
+  title: Red Harvest
+  version: 0.1.0
+  domain: transnational public health and security
+  summary: Distinguish natural spillover from lab-release claims while detecting coercive political exploitation and counterfeit medical supply chains.
+  construct_tags: [public-health, biosecurity, disinformation, supply-chain, political-exploitation]
+  collection_budgets: {1: 10, 2: 6}
+  provenance:
+    - title: International Ebola Response Simulation
+      url: https://diplomacy.state.gov/teacher-resources/international-ebola-crisis/
+      license: Public domain and explicitly editable
+      elements_used: Multilateral outbreak response, border measures, and allocation dilemmas.
+      transformation: Replaced pathogen, geography, actors, evidence, political surprise, and policy branches.
+    - title: CISA Synthetic Biology Foresight
+      url: https://www.cisa.gov/topics/risk-management/critical-infrastructure-security-and-resilience/emerging-technologies
+      license: U.S. Government work
+      elements_used: High-level bioeconomy and critical-supply-chain risk framing.
+      transformation: Uses no operational biological procedures; all technical clues and outcomes are newly fictionalized.
+
+role: You advise the Oranta Regional Health and Security Council during a cross-border disease cluster.
+background: >-
+  The fictional states of Lydon and Veska share the Marrow River wildlife corridor and a politically
+  contested border district populated by the Tavi minority. Lydon's Ravel Institute studies endemic
+  animal diseases under international monitoring. Veskan leaders accuse it of causing a new outbreak.
+  Medical purchasing is fragmented, and one distributor supplies several countries through related firms.
+
+hypotheses:
+  - {id: "H1", label: "Deliberate or accidental laboratory release", description: "The outbreak originated from engineered or mishandled material at the Ravel Institute."}
+  - {id: "H2", label: "Natural zoonotic outbreak", description: "Wildlife-to-human spillover and ordinary transmission explain the crisis without a coordinated secondary campaign."}
+  - {id: "H3", label: "Natural outbreak with exploitation cascade", description: "Natural spillover is compounded by Veskan coercion, coordinated lab-leak claims, and counterfeit medical products."}
+  - {id: "H4", label: "Misdiagnosis and information panic", description: "Incompatible illnesses and rumor create the appearance of a coherent outbreak."}
+
+rounds:
+  - {round: 1, title: Border cluster, brief: "A severe febrile illness appears as wildlife deaths, lab allegations, and unusual medical tenders converge.", common_evidence_ids: [RH-E01, RH-E02, RH-E03, RH-E04]}
+  - {round: 2, title: Origin clarification, brief: "Independent sequence and exposure evidence favors spillover while Veskan pressure and suspect supplies grow.", common_evidence_ids: [RH-E05, RH-E06]}
+  - {round: 3, title: Exploitation cascade, brief: "Veska seizes a corridor under quarantine authority and counterfeit treatment causes avoidable deaths.", common_evidence_ids: [RH-E07, RH-E08]}
+
+evidence:
+  - {id: "RH-E01", round_available: 1, source: "Local hospitals and international clinicians", text: "Twenty-three patients share a severe febrile syndrome; most first cases handled bush meat near the Marrow wildlife die-off.", reliability: 0.88, deception_risk: 0.07, correlation_group: "clinical-epidemiology", supports: [H2, H3], contradicts: [H4], public_inject: true}
+  - {id: "RH-E02", round_available: 1, source: "Veskan government and affiliated broadcasters", text: "Veska says an anonymous Ravel scientist confessed to a laboratory escape and demands control of the border cordon.", reliability: 0.31, deception_risk: 0.84, correlation_group: "veskan-narrative", supports: [H1, H3], contradicts: [], public_inject: true}
+  - {id: "RH-E03", round_available: 1, source: "Wildlife surveillance consortium", text: "Archived samples show a related virus in Marrow fruit bats six months before the first recognized human case.", reliability: 0.91, deception_risk: 0.04, correlation_group: "wildlife-surveillance", supports: [H2, H3], contradicts: [H1, H4], public_inject: true}
+  - {id: "RH-E04", round_available: 1, source: "Regional procurement notices", text: "A new distributor offers a purported antiviral at half price before national laboratories have confirmed drug susceptibility.", reliability: 0.87, deception_risk: 0.12, correlation_group: "procurement-records", supports: [H3], contradicts: [], public_inject: true}
+  - {id: "RH-E05", round_available: 2, source: "Three independent public-health laboratories", text: "Full sequences form a diverse cluster nested within local wildlife samples and lack a single recent laboratory ancestor.", reliability: 0.96, deception_risk: 0.02, correlation_group: "independent-sequencing", supports: [H2, H3], contradicts: [H1, H4], public_inject: true}
+  - {id: "RH-E06", round_available: 2, source: "Veskan security directives and satellite observation", text: "Veska moves internal-security units toward Tavi villages and a mineral road outside the epidemiologically defined cordon.", reliability: 0.91, deception_risk: 0.06, correlation_group: "veskan-operations", supports: [H3], contradicts: [H2], public_inject: true}
+  - {id: "RH-E07", round_available: 3, source: "Multilateral observer mission", text: "Veskan units use emergency quarantine authority to occupy the mineral corridor and expel Tavi residents despite no cases there.", reliability: 0.97, deception_risk: 0.02, correlation_group: "veskan-operations", supports: [H3], contradicts: [H2], public_inject: true}
+  - {id: "RH-E08", round_available: 3, source: "Pharmacovigilance network", text: "Counterfeit vials contain no active medicine and cause toxic reactions across three countries supplied by related distributors.", reliability: 0.96, deception_risk: 0.03, correlation_group: "medical-forensics", supports: [H3], contradicts: [], public_inject: true}
+  - {id: "RH-C01", round_available: 2, source: "Joint case-control investigation", text: "Early illness is strongly associated with handling animals from the die-off and not with employment or residence near Ravel.", reliability: 0.94, deception_risk: 0.03, correlation_group: "clinical-epidemiology", supports: [H2, H3], contradicts: [H1]}
+  - {id: "RH-C02", round_available: 2, source: "Independent sequence consortium", text: "Genetic diversity and sampling dates fit multiple wildlife exposures followed by limited human transmission.", reliability: 0.96, deception_risk: 0.02, correlation_group: "independent-sequencing", supports: [H2, H3], contradicts: [H1, H4]}
+  - {id: "RH-C03", round_available: 2, source: "Ravel audit team with foreign observers", text: "Inventories reconcile, no stored isolate is an exact or immediate ancestor, and no unexplained exposure incident is recorded.", reliability: 0.90, deception_risk: 0.07, correlation_group: "institute-audit", supports: [H2, H3], contradicts: [H1]}
+  - {id: "RH-C04", round_available: 2, source: "Narrative coordination analysis", text: "The confession story began with one Veskan security contractor and was translated by nominally independent accounts within minutes.", reliability: 0.89, deception_risk: 0.08, correlation_group: "veskan-narrative", supports: [H3], contradicts: [H1]}
+  - {id: "RH-C05", round_available: 2, source: "Distributor ownership registry", text: "Three low-bid suppliers share directors and a warehouse with a firm previously sanctioned for falsified medicines.", reliability: 0.92, deception_risk: 0.04, correlation_group: "procurement-records", supports: [H3], contradicts: []}
+  - {id: "RH-C06", round_available: 2, source: "Independent border mobility data", text: "A focused health cordon around affected markets would reduce exposure without closing the mineral road or Tavi villages.", reliability: 0.90, deception_risk: 0.04, correlation_group: "mobility-model", supports: [H2, H3], contradicts: []}
+  - {id: "RH-C07", round_available: 2, source: "Veskan cabinet reporting", text: "Officials discuss using laboratory accusations to obtain emergency control over the corridor before international observers arrive.", reliability: 0.80, deception_risk: 0.16, correlation_group: "veskan-intent", supports: [H3], contradicts: [H1, H2]}
+  - {id: "RH-C08", round_available: 2, source: "Community health network", text: "Tavi leaders will support contact tracing if security units remain outside clinics and aid is distributed transparently.", reliability: 0.86, deception_risk: 0.07, correlation_group: "community-trust", supports: [H2, H3], contradicts: []}
+  - {id: "RH-D01", round_available: 3, source: "Longitudinal sequence analysis", text: "Later human samples accumulate changes along the observed transmission chain without convergence on any institute sample.", reliability: 0.97, deception_risk: 0.02, correlation_group: "independent-sequencing", supports: [H2, H3], contradicts: [H1]}
+  - {id: "RH-D02", round_available: 3, source: "Counterfeit-vial laboratory network", text: "Packaging, inactive contents, and toxic contaminant profiles tie the vials to the shared distributor warehouse.", reliability: 0.96, deception_risk: 0.02, correlation_group: "medical-forensics", supports: [H3], contradicts: []}
+  - {id: "RH-D03", round_available: 3, source: "Financial intelligence unit", text: "Distributor profits move through accounts controlled by an organized crime group with customs protection in two states.", reliability: 0.90, deception_risk: 0.06, correlation_group: "illicit-finance", supports: [H3], contradicts: []}
+  - {id: "RH-D04", round_available: 3, source: "Multilateral observers", text: "Veskan checkpoints inspect ethnicity and land records rather than symptoms while unaffected commercial convoys pass.", reliability: 0.95, deception_risk: 0.03, correlation_group: "veskan-operations", supports: [H3], contradicts: [H2]}
+  - {id: "RH-D05", round_available: 3, source: "Independent aid distribution audit", text: "Verified medicines delivered through monitored clinics reduce fatality while suspect distributor lots correlate with toxic reactions.", reliability: 0.94, deception_risk: 0.03, correlation_group: "aid-monitoring", supports: [H3], contradicts: [H4]}
+  - {id: "RH-D06", round_available: 3, source: "Wildlife ecology teams", text: "Seasonal habitat disruption concentrated infected bats around the same markets used by the earliest patients.", reliability: 0.91, deception_risk: 0.04, correlation_group: "wildlife-surveillance", supports: [H2, H3], contradicts: [H1]}
+  - {id: "RH-D07", round_available: 3, source: "Veskan broadcast archive", text: "State outlets continue the laboratory accusation after receiving the independent sequence findings and pair it with claims that Tavi residents spread disease.", reliability: 0.92, deception_risk: 0.05, correlation_group: "veskan-narrative", supports: [H3], contradicts: [H1]}
+  - {id: "RH-D08", round_available: 3, source: "Regional health operations center", text: "Targeted surveillance and voluntary isolation control transmission without a general border closure.", reliability: 0.95, deception_risk: 0.02, correlation_group: "clinical-epidemiology", supports: [H2, H3], contradicts: []}
+
+collection_actions:
+  - {id: "RH-A01", round_available: 1, label: "Conduct case-control fieldwork", description: "Compare wildlife, institute, market, and household exposures.", cost: 3, correlation_group: "clinical-epidemiology", likelihood_positive: {H1: 0.30, H2: 0.86, H3: 0.87, H4: 0.20}, observed: "positive", return_evidence_id: "RH-C01"}
+  - {id: "RH-A02", round_available: 1, label: "Commission independent sequencing", description: "Test ancestry, diversity, and transmission structure.", cost: 4, correlation_group: "independent-sequencing", likelihood_positive: {H1: 0.82, H2: 0.84, H3: 0.85, H4: 0.16}, observed: "positive", return_evidence_id: "RH-C02"}
+  - {id: "RH-A03", round_available: 1, label: "Audit Ravel with foreign observers", description: "Reconcile samples, access records, and safety incidents.", cost: 4, correlation_group: "institute-audit", likelihood_positive: {H1: 0.87, H2: 0.24, H3: 0.25, H4: 0.20}, observed: "negative", return_evidence_id: "RH-C03"}
+  - {id: "RH-A04", round_available: 1, label: "Trace confession narrative", description: "Identify original sources and coordination.", cost: 2, correlation_group: "veskan-narrative", likelihood_positive: {H1: 0.28, H2: 0.30, H3: 0.91, H4: 0.70}, observed: "positive", return_evidence_id: "RH-C04"}
+  - {id: "RH-A05", round_available: 1, label: "Map medical suppliers", description: "Check common ownership, quality history, and inventory.", cost: 3, correlation_group: "procurement-records", likelihood_positive: {H1: 0.12, H2: 0.20, H3: 0.88, H4: 0.18}, observed: "positive", return_evidence_id: "RH-C05"}
+  - {id: "RH-A06", round_available: 1, label: "Model targeted mobility controls", description: "Bound health benefit and humanitarian cost of alternative cordons.", cost: 2, correlation_group: "mobility-model", likelihood_positive: {H1: 0.55, H2: 0.76, H3: 0.78, H4: 0.45}, observed: "positive", return_evidence_id: "RH-C06"}
+  - {id: "RH-A07", round_available: 1, label: "Collect Veskan deliberations", description: "Test public-health purpose against territorial intent.", cost: 4, correlation_group: "veskan-intent", likelihood_positive: {H1: 0.25, H2: 0.20, H3: 0.90, H4: 0.30}, observed: "positive", return_evidence_id: "RH-C07"}
+  - {id: "RH-A08", round_available: 1, label: "Survey community trust", description: "Identify conditions for safe tracing and care access.", cost: 1, correlation_group: "community-trust", likelihood_positive: {H1: 0.45, H2: 0.75, H3: 0.80, H4: 0.55}, observed: "positive", return_evidence_id: "RH-C08"}
+  - {id: "RH-B01", round_available: 2, label: "Extend sequence surveillance", description: "Test the origin conclusion against later transmission.", cost: 3, correlation_group: "independent-sequencing", likelihood_positive: {H1: 0.86, H2: 0.88, H3: 0.89, H4: 0.10}, observed: "positive", return_evidence_id: "RH-D01"}
+  - {id: "RH-B02", round_available: 2, label: "Test suspect medical lots", description: "Determine identity, potency, safety, and common origin.", cost: 3, correlation_group: "medical-forensics", likelihood_positive: {H1: 0.15, H2: 0.18, H3: 0.94, H4: 0.20}, observed: "positive", return_evidence_id: "RH-D02"}
+  - {id: "RH-B03", round_available: 2, label: "Trace distributor finance", description: "Identify beneficiaries and protection networks.", cost: 2, correlation_group: "illicit-finance", likelihood_positive: {H1: 0.12, H2: 0.18, H3: 0.87, H4: 0.18}, observed: "positive", return_evidence_id: "RH-D03"}
+  - {id: "RH-B04", round_available: 2, label: "Deploy corridor observers", description: "Compare checkpoint behavior with epidemiologic necessity.", cost: 2, correlation_group: "veskan-operations", likelihood_positive: {H1: 0.25, H2: 0.24, H3: 0.92, H4: 0.30}, observed: "positive", return_evidence_id: "RH-D04"}
+  - {id: "RH-B05", round_available: 2, label: "Audit medicine outcomes", description: "Compare verified and suspect supply chains.", cost: 2, correlation_group: "aid-monitoring", likelihood_positive: {H1: 0.45, H2: 0.50, H3: 0.91, H4: 0.22}, observed: "positive", return_evidence_id: "RH-D05"}
+  - {id: "RH-B06", round_available: 2, label: "Expand wildlife ecology sampling", description: "Test the proposed spillover route independently.", cost: 3, correlation_group: "wildlife-surveillance", likelihood_positive: {H1: 0.24, H2: 0.85, H3: 0.86, H4: 0.14}, observed: "positive", return_evidence_id: "RH-D06"}
+  - {id: "RH-B07", round_available: 2, label: "Archive state messaging", description: "Test whether claims update with contrary scientific evidence.", cost: 1, correlation_group: "veskan-narrative", likelihood_positive: {H1: 0.45, H2: 0.25, H3: 0.90, H4: 0.65}, observed: "positive", return_evidence_id: "RH-D07"}
+  - {id: "RH-B08", round_available: 2, label: "Monitor targeted-control results", description: "Test whether proportionate public-health measures control spread.", cost: 2, correlation_group: "clinical-epidemiology", likelihood_positive: {H1: 0.55, H2: 0.82, H3: 0.83, H4: 0.48}, observed: "positive", return_evidence_id: "RH-D08"}
+
+forecasts:
+  - {id: "RH-F01", question: "Will independent evidence favor natural wildlife spillover over laboratory release?", horizon: "60 days", outcome: 1, resolution: "Adjudicated epidemiologic, sequence, and audit findings."}
+  - {id: "RH-F02", question: "Will a verified Ravel sample be identified as the immediate ancestor of the outbreak?", horizon: "90 days", outcome: 0, resolution: "Independent inventory and phylogenetic review."}
+  - {id: "RH-F03", question: "Will Veska apply emergency controls to areas without epidemiologically linked cases?", horizon: "30 days", outcome: 1, resolution: "Observer and case-location records."}
+  - {id: "RH-F04", question: "Will counterfeit or inactive purported treatment reach at least three countries?", horizon: "60 days", outcome: 1, resolution: "Regulatory laboratory and distribution records."}
+  - {id: "RH-F05", question: "Will Veskan forces displace Tavi residents from the mineral corridor?", horizon: "45 days", outcome: 1, resolution: "Multilateral observer documentation."}
+  - {id: "RH-F06", question: "Will targeted controls contain transmission without a general border closure?", horizon: "60 days", outcome: 1, resolution: "Regional incidence and mobility data."}
+
+policy_levers:
+  - {id: "RH-P01", label: "Independent health response", description: "Fund shared surveillance, verified care, sequencing, and targeted voluntary controls.", reversible: true, affected_domains: [public-health, humanitarian, science]}
+  - {id: "RH-P02", label: "Verified medical supply corridor", description: "Centralize lot verification, publish recalls, and protect essential procurement.", reversible: true, affected_domains: [public-health, trade, law-enforcement]}
+  - {id: "RH-P03", label: "Monitored border arrangement", description: "Place neutral observers at health cordons and condition security presence on epidemiologic need.", reversible: true, affected_domains: [diplomacy, public-health, human-rights]}
+  - {id: "RH-P04", label: "Immediate punitive lab attribution", description: "Publicly blame and isolate Lydon before the origin evidence is resolved.", reversible: false, affected_domains: [diplomacy, science, trade]}
+  - {id: "RH-P05", label: "Targeted anti-exploitation measures", description: "Sanction proven counterfeit networks and officials responsible for territorial abuse while preserving health cooperation.", reversible: true, affected_domains: [law-enforcement, diplomacy, finance]}
+
+policy_consequences:
+  - {action_id: "RH-P01", consequence: "Transmission falls while origin evidence remains independently auditable and communities retain access to care.", probability_if_selected: 0.84, desirable: true}
+  - {action_id: "RH-P02", consequence: "Counterfeit lots are recalled and verified medicines remain available.", probability_if_selected: 0.81, desirable: true}
+  - {action_id: "RH-P03", consequence: "Quarantine powers become harder to use for corridor seizure or ethnic displacement.", probability_if_selected: 0.72, desirable: true}
+  - {action_id: "RH-P04", consequence: "Scientific cooperation collapses and Veska cites the premature claim to entrench its occupation.", probability_if_selected: 0.76, desirable: false}
+  - {action_id: "RH-P05", consequence: "Costs fall on identified exploiters without blocking regional disease response.", probability_if_selected: 0.70, desirable: true}
+
+critical_tasks:
+  - {id: "RH-T01", criterion: "Control disease while keeping origin assessment evidence-led.", critical: true, positive_action_ids: [RH-P01, RH-P02], prohibited_action_ids: [RH-P04]}
+  - {id: "RH-T02", criterion: "Protect civilians against discriminatory or territorial use of health powers.", critical: true, positive_action_ids: [RH-P03, RH-P05], prohibited_action_ids: []}
+  - {id: "RH-T03", criterion: "Remove counterfeit products without disrupting verified medicine access.", critical: true, positive_action_ids: [RH-P02, RH-P05], prohibited_action_ids: []}
+
+rubric:
+  - {id: "RH-R01", dimension: "alternatives", criterion: "Separates outbreak origin from political and criminal exploitation.", required_meaning: "Natural spillover can coexist with manufactured laboratory claims, territorial coercion, and counterfeit distribution; these require separate attribution.", minimum_depth: "analysis", acceptable_equivalents: [compound crisis, natural origin with opportunistic exploitation, distinct causal layers], required_evidence: true, allowed_evidence_ids: [RH-E03, RH-E04, RH-E05, RH-E06, RH-C04, RH-C05], near_misses: [bad actors may exploit the outbreak], critical: true}
+  - {id: "RH-R02", dimension: "alternatives", criterion: "Weighs independent origin evidence over repeated political allegations.", required_meaning: "Epidemiology, wildlife archives, independent sequences, and audited inventory are mutually distinct evidence, while repeated confession claims share Veskan provenance.", minimum_depth: "analysis", acceptable_equivalents: [independent scientific convergence, correlated lab-leak narrative, source-weighted origin assessment], required_evidence: true, allowed_evidence_ids: [RH-E01, RH-E02, RH-E03, RH-E05, RH-C01, RH-C02, RH-C03, RH-C04], near_misses: [there is no proof of a lab leak], critical: true}
+  - {id: "RH-R03", dimension: "policy", criterion: "Combines health control with safeguards against exploitation.", required_meaning: "Use targeted health measures, verified supply, and neutral monitoring while opposing unsupported attribution and discriminatory corridor seizure.", minimum_depth: "recommendation", acceptable_equivalents: [proportionate cordon, monitored health response, protect Tavi communities], required_evidence: false, near_misses: [send aid, close the border], critical: true}
+  - {id: "RH-R04", dimension: "memo", criterion: "States origin, public-safety, and coercion triggers.", required_meaning: "The memo identifies scientific evidence that could reopen the origin judgment and operational thresholds for counterfeit recall, neutral monitoring, and escalation or reversal.", minimum_depth: "contingency", acceptable_equivalents: [origin reversal conditions, health response triggers, humanitarian off-ramps], required_evidence: false, near_misses: [monitor the outbreak]}
+
+world_bible:
+  resolved_hypothesis: H3
+  hidden_truth: Seasonal habitat disruption caused a natural wildlife spillover. Veska coordinated false laboratory accusations to justify control of a valuable corridor and displacement of Tavi residents. An organized network exploited fragmented procurement to distribute counterfeit treatment.
+  actor_motives:
+    Veskan leadership: Secure the mineral corridor and weaken the Tavi community under emergency authority.
+    Counterfeit network: Profit from urgent, fragmented medical purchasing.
+    Lydon: Preserve sovereignty and scientific credibility while controlling disease.
+    Tavi communities: Obtain safe care without coercive security screening or displacement.
+  causal_pathway:
+    - Wildlife habitat disruption produces multiple related spillovers near markets.
+    - Correlated political accounts transform uncertainty into a laboratory accusation.
+    - Emergency authority is redirected toward territorial and ethnic objectives.
+    - Counterfeit suppliers exploit procurement scarcity and cause additional harm.
+  surprise_type: natural public-health emergency compounded by coordinated political and criminal exploitation

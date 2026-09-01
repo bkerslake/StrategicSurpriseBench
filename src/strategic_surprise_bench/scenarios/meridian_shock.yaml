@@ -1,0 +1,128 @@
+manifest:
+  id: meridian_shock
+  title: Meridian Shock
+  version: 0.1.0
+  domain: economic and financial
+  summary: Look past a vivid chokepoint closure to detect a leveraged commodity and insurance counterparty cascade.
+  construct_tags: [economic-security, financial-contagion, chokepoint, second-order-effects, information-operations]
+  collection_budgets: {1: 10, 2: 6}
+  provenance:
+    - title: Suez Canal Crisis simulation
+      url: https://diplomacy.state.gov/teacher-resources/suez-canal-crisis/
+      license: Public domain and explicitly editable
+      elements_used: International access, sovereignty, and shipping-stakeholder tensions.
+      transformation: Replaced the historical event with a fictional accident and hidden financial cascade.
+    - title: Federal Reserve 2026 Stress Test Scenarios
+      url: https://www.federalreserve.gov/publications/2026-stress-test-scenarios.htm
+      license: U.S. Government work
+      elements_used: Counterparty default, market shock, and macro-financial transmission structure.
+      transformation: Converted quantitative stress mechanisms into immediately resolvable fictional forecasts.
+
+role: You advise the Peloran Economic Security Committee during a trade and market disruption.
+background: >-
+  Pelora is a major trading economy dependent on the Meridian Canal. The canal crosses Nemer, whose
+  government has tense relations with Pelora but depends on transit revenue. Orbis Commodities is a
+  large private trader and derivatives counterparty. Several maritime insurers use similar risk models
+  and collateral providers, making superficially separate market signals potentially dependent.
+
+hypotheses:
+  - {id: "H1", label: "Deliberate Nemer blockade", description: "Nemer created or is prolonging the closure as economic coercion."}
+  - {id: "H2", label: "Temporary physical accident", description: "The canal disruption is an ordinary casualty that will be resolved without a strategic campaign."}
+  - {id: "H3", label: "Financial contagion surprise", description: "Leverage, margin calls, insurance withdrawals, and a major counterparty will cause the dominant economic damage."}
+  - {id: "H4", label: "Primarily information-driven panic", description: "False sabotage claims and herding are causing a market overreaction without lasting physical or balance-sheet stress."}
+
+rounds:
+  - {round: 1, title: Canal closure, brief: "A casualty blocks transit as sabotage allegations and market stress spread.", common_evidence_ids: [MS-E01, MS-E02, MS-E03, MS-E04]}
+  - {round: 2, title: Reopening and margin stress, brief: "Engineering evidence points toward rapid reopening while financial plumbing deteriorates.", common_evidence_ids: [MS-E05, MS-E06]}
+  - {round: 3, title: Counterparty failure, brief: "The canal reopens but Orbis defaults, transmitting losses through insurers, banks, and commodity markets.", common_evidence_ids: [MS-E07, MS-E08]}
+
+evidence:
+  - {id: "MS-E01", round_available: 1, source: "Canal authority and independent pilots", text: "A bulk carrier lost steering during a dust storm and is wedged across one channel; no explosive damage is visible.", reliability: 0.89, deception_risk: 0.12, correlation_group: "canal-operations", supports: [H2], contradicts: [H1], public_inject: true}
+  - {id: "MS-E02", round_available: 1, source: "Nemer nationalist outlets and anonymous accounts", text: "Posts claim Nemer commandos deliberately closed the canal to punish Pelora, citing an unnamed military source.", reliability: 0.30, deception_risk: 0.82, correlation_group: "sabotage-narrative", supports: [H1, H4], contradicts: [], public_inject: true}
+  - {id: "MS-E03", round_available: 1, source: "Commodity exchange data", text: "Energy and grain volatility triples while Orbis Commodities posts unusually large variation-margin transfers.", reliability: 0.94, deception_risk: 0.04, correlation_group: "exchange-data", supports: [H3], contradicts: [], public_inject: true}
+  - {id: "MS-E04", round_available: 1, source: "Three shipping bulletins using the same insurer model", text: "Bulletins forecast a four-week closure and recommend immediate war-risk surcharges.", reliability: 0.58, deception_risk: 0.18, correlation_group: "shared-insurer-model", supports: [H1, H3, H4], contradicts: [], public_inject: true}
+  - {id: "MS-E05", round_available: 2, source: "Multinational salvage team", text: "The vessel can be refloated within seventy-two hours; Nemer approves around-the-clock work and waives emergency transit fees.", reliability: 0.94, deception_risk: 0.05, correlation_group: "canal-operations", supports: [H2], contradicts: [H1], public_inject: true}
+  - {id: "MS-E06", round_available: 2, source: "Clearinghouse risk notice", text: "Orbis has concentrated options losses, exhausted two credit lines, and pledged the same warehouse receipts to multiple affiliates.", reliability: 0.93, deception_risk: 0.04, correlation_group: "clearinghouse", supports: [H3], contradicts: [H4], public_inject: true}
+  - {id: "MS-E07", round_available: 3, source: "Exchange default committee", text: "Orbis misses variation margin, triggering close-out losses at two insurers and a regional bank despite canal reopening.", reliability: 0.98, deception_risk: 0.02, correlation_group: "clearinghouse", supports: [H3], contradicts: [H2, H4], public_inject: true}
+  - {id: "MS-E08", round_available: 3, source: "Verified canal traffic records", text: "Convoys resume after eighty-one hours with no evidence that Nemer delayed salvage for coercive purposes.", reliability: 0.96, deception_risk: 0.03, correlation_group: "canal-operations", supports: [H2], contradicts: [H1], public_inject: true}
+  - {id: "MS-C01", round_available: 2, source: "Steering-system inspection", text: "Hydraulic contamination and deferred maintenance explain the casualty; no sabotage is found.", reliability: 0.95, deception_risk: 0.03, correlation_group: "vessel-forensics", supports: [H2], contradicts: [H1]}
+  - {id: "MS-C02", round_available: 2, source: "Salvage progress imagery", text: "Dredging and lightering are ahead of a three-day reopening schedule.", reliability: 0.92, deception_risk: 0.04, correlation_group: "canal-operations", supports: [H2], contradicts: [H1]}
+  - {id: "MS-C03", round_available: 2, source: "Orbis derivatives inventory", text: "Short-volatility positions lose heavily under either rapid reopening or prolonged closure because implied-volatility hedges were mismatched.", reliability: 0.91, deception_risk: 0.05, correlation_group: "orbis-books", supports: [H3], contradicts: [H4]}
+  - {id: "MS-C04", round_available: 2, source: "Bank exposure survey", text: "A regional bank and two trade-finance funds share Orbis collateral and liquidity facilities.", reliability: 0.88, deception_risk: 0.07, correlation_group: "bank-exposures", supports: [H3], contradicts: []}
+  - {id: "MS-C05", round_available: 2, source: "Insurance model audit", text: "Five insurers rely on one vendor model that assumes Orbis warehouse receipts remain liquid during route disruption.", reliability: 0.89, deception_risk: 0.06, correlation_group: "shared-insurer-model", supports: [H3], contradicts: []}
+  - {id: "MS-C06", round_available: 2, source: "Narrative network analysis", text: "The sabotage story originates with a commodity influencer paid by an Orbis affiliate to sustain volatility.", reliability: 0.86, deception_risk: 0.09, correlation_group: "sabotage-narrative", supports: [H3, H4], contradicts: [H1]}
+  - {id: "MS-C07", round_available: 2, source: "Alternative-route capacity check", text: "Rail and pipeline capacity can offset only eight percent of delayed energy cargoes but inventories cover two weeks.", reliability: 0.90, deception_risk: 0.04, correlation_group: "logistics-capacity", supports: [H2], contradicts: [H1]}
+  - {id: "MS-C08", round_available: 2, source: "Nemer cabinet minutes", text: "Ministers prioritize reopening revenue and reject a proposal to use the casualty for political concessions.", reliability: 0.84, deception_risk: 0.12, correlation_group: "nemer-internal", supports: [H2], contradicts: [H1]}
+  - {id: "MS-D01", round_available: 3, source: "Collateral registry reconciliation", text: "Orbis affiliates double-pledged warehouse receipts representing twelve percent of deliverable copper stocks.", reliability: 0.96, deception_risk: 0.03, correlation_group: "orbis-books", supports: [H3], contradicts: [H4]}
+  - {id: "MS-D02", round_available: 3, source: "Clearing member liquidity calls", text: "Two insurers and the regional bank face same-day calls larger than available liquid assets.", reliability: 0.95, deception_risk: 0.03, correlation_group: "clearinghouse", supports: [H3], contradicts: []}
+  - {id: "MS-D03", round_available: 3, source: "Port queue model", text: "Physical shipping backlogs normalize within twelve days if financing remains available.", reliability: 0.90, deception_risk: 0.04, correlation_group: "logistics-capacity", supports: [H2], contradicts: [H1]}
+  - {id: "MS-D04", round_available: 3, source: "Nemer military disposition", text: "Units remain at normal posture and no assets move to enforce a blockade.", reliability: 0.87, deception_risk: 0.08, correlation_group: "nemer-security", supports: [H2], contradicts: [H1]}
+  - {id: "MS-D05", round_available: 3, source: "Insurer reinsurance contracts", text: "Common exclusions transmit Orbis losses to the same two reinsurers rather than dispersing them.", reliability: 0.92, deception_risk: 0.04, correlation_group: "insurance-contracts", supports: [H3], contradicts: []}
+  - {id: "MS-D06", round_available: 3, source: "Food-import stress dashboard", text: "Credit withdrawal rather than shipping delay now prevents importers from confirming grain cargoes.", reliability: 0.91, deception_risk: 0.05, correlation_group: "trade-finance", supports: [H3], contradicts: [H2]}
+  - {id: "MS-D07", round_available: 3, source: "Orbis communications", text: "Executives discuss extending panic long enough to raise collateral but do not discuss causing the casualty.", reliability: 0.89, deception_risk: 0.08, correlation_group: "orbis-internal", supports: [H3, H4], contradicts: [H1]}
+  - {id: "MS-D08", round_available: 3, source: "Central bank payment data", text: "Unsecured interbank volumes fall sharply around institutions exposed to Orbis.", reliability: 0.97, deception_risk: 0.02, correlation_group: "bank-exposures", supports: [H3], contradicts: [H4]}
+
+collection_actions:
+  - {id: "MS-A01", round_available: 1, label: "Inspect steering casualty", description: "Test accident versus sabotage.", cost: 3, correlation_group: "vessel-forensics", likelihood_positive: {H1: 0.85, H2: 0.20, H3: 0.15, H4: 0.30}, observed: "negative", return_evidence_id: "MS-C01"}
+  - {id: "MS-A02", round_available: 1, label: "Monitor salvage progress", description: "Estimate physical closure duration.", cost: 2, correlation_group: "canal-operations", likelihood_positive: {H1: 0.25, H2: 0.88, H3: 0.15, H4: 0.45}, observed: "positive", return_evidence_id: "MS-C02"}
+  - {id: "MS-A03", round_available: 1, label: "Obtain Orbis derivatives book", description: "Map nonlinear loss and margin exposure.", cost: 4, correlation_group: "orbis-books", likelihood_positive: {H1: 0.15, H2: 0.20, H3: 0.92, H4: 0.25}, observed: "positive", return_evidence_id: "MS-C03"}
+  - {id: "MS-A04", round_available: 1, label: "Survey bank exposures", description: "Trace shared credit and collateral links.", cost: 3, correlation_group: "bank-exposures", likelihood_positive: {H1: 0.15, H2: 0.20, H3: 0.88, H4: 0.25}, observed: "positive", return_evidence_id: "MS-C04"}
+  - {id: "MS-A05", round_available: 1, label: "Audit insurer models", description: "Check correlated assumptions and liquidity needs.", cost: 3, correlation_group: "shared-insurer-model", likelihood_positive: {H1: 0.25, H2: 0.25, H3: 0.86, H4: 0.45}, observed: "positive", return_evidence_id: "MS-C05"}
+  - {id: "MS-A06", round_available: 1, label: "Trace sabotage narrative", description: "Identify origin, coordination, and financial incentives.", cost: 2, correlation_group: "sabotage-narrative", likelihood_positive: {H1: 0.78, H2: 0.25, H3: 0.70, H4: 0.82}, observed: "positive", return_evidence_id: "MS-C06"}
+  - {id: "MS-A07", round_available: 1, label: "Check alternative logistics", description: "Bound physical shortages and duration.", cost: 2, correlation_group: "logistics-capacity", likelihood_positive: {H1: 0.25, H2: 0.75, H3: 0.45, H4: 0.60}, observed: "positive", return_evidence_id: "MS-C07"}
+  - {id: "MS-A08", round_available: 1, label: "Collect Nemer deliberations", description: "Test coercive intent versus revenue priority.", cost: 4, correlation_group: "nemer-internal", likelihood_positive: {H1: 0.88, H2: 0.22, H3: 0.15, H4: 0.25}, observed: "negative", return_evidence_id: "MS-C08"}
+  - {id: "MS-B01", round_available: 2, label: "Reconcile warehouse collateral", description: "Find duplicate pledges and delivery gaps.", cost: 3, correlation_group: "orbis-books", likelihood_positive: {H1: 0.10, H2: 0.15, H3: 0.94, H4: 0.20}, observed: "positive", return_evidence_id: "MS-D01"}
+  - {id: "MS-B02", round_available: 2, label: "Collect clearing liquidity calls", description: "Measure immediate institutional funding gaps.", cost: 3, correlation_group: "clearinghouse", likelihood_positive: {H1: 0.15, H2: 0.20, H3: 0.92, H4: 0.25}, observed: "positive", return_evidence_id: "MS-D02"}
+  - {id: "MS-B03", round_available: 2, label: "Model port normalization", description: "Separate physical backlog from financing constraints.", cost: 2, correlation_group: "logistics-capacity", likelihood_positive: {H1: 0.20, H2: 0.82, H3: 0.40, H4: 0.65}, observed: "positive", return_evidence_id: "MS-D03"}
+  - {id: "MS-B04", round_available: 2, label: "Check Nemer force posture", description: "Look for preparations to enforce a blockade.", cost: 2, correlation_group: "nemer-security", likelihood_positive: {H1: 0.90, H2: 0.20, H3: 0.10, H4: 0.20}, observed: "negative", return_evidence_id: "MS-D04"}
+  - {id: "MS-B05", round_available: 2, label: "Review reinsurance contracts", description: "Map hidden common exposure.", cost: 3, correlation_group: "insurance-contracts", likelihood_positive: {H1: 0.15, H2: 0.20, H3: 0.86, H4: 0.30}, observed: "positive", return_evidence_id: "MS-D05"}
+  - {id: "MS-B06", round_available: 2, label: "Track food-import finance", description: "Identify whether credit or shipping is binding.", cost: 2, correlation_group: "trade-finance", likelihood_positive: {H1: 0.35, H2: 0.35, H3: 0.84, H4: 0.30}, observed: "positive", return_evidence_id: "MS-D06"}
+  - {id: "MS-B07", round_available: 2, label: "Obtain Orbis communications", description: "Test manipulation and causal involvement.", cost: 4, correlation_group: "orbis-internal", likelihood_positive: {H1: 0.20, H2: 0.20, H3: 0.82, H4: 0.75}, observed: "positive", return_evidence_id: "MS-D07"}
+  - {id: "MS-B08", round_available: 2, label: "Monitor interbank payments", description: "Detect funding contagion in real time.", cost: 2, correlation_group: "bank-exposures", likelihood_positive: {H1: 0.15, H2: 0.20, H3: 0.90, H4: 0.30}, observed: "positive", return_evidence_id: "MS-D08"}
+
+forecasts:
+  - {id: "MS-F01", question: "Will the canal remain physically closed longer than fourteen days?", horizon: "14 days", outcome: 0, resolution: "Verified transit logs."}
+  - {id: "MS-F02", question: "Will evidence show Nemer deliberately caused or prolonged the casualty?", horizon: "60 days", outcome: 0, resolution: "Forensic and government records."}
+  - {id: "MS-F03", question: "Will Orbis default on a clearing or margin obligation?", horizon: "30 days", outcome: 1, resolution: "Exchange default notice."}
+  - {id: "MS-F04", question: "Will at least one regulated financial institution require extraordinary liquidity support?", horizon: "60 days", outcome: 1, resolution: "Public or confidential supervisory action."}
+  - {id: "MS-F05", question: "Will food-import finance remain impaired after physical transit resumes?", horizon: "30 days", outcome: 1, resolution: "Confirmed letters-of-credit and shipment data."}
+  - {id: "MS-F06", question: "Will convoy volume recover above eighty percent of normal within two weeks of reopening?", horizon: "30 days", outcome: 1, resolution: "Canal traffic statistics."}
+
+policy_levers:
+  - {id: "MS-P01", label: "Salvage and logistics coordination", description: "Support rapid reopening, transparent queues, and temporary alternative routes.", reversible: true, affected_domains: [trade, diplomacy, infrastructure]}
+  - {id: "MS-P02", label: "Targeted liquidity and resolution facility", description: "Backstop solvent institutions while resolving Orbis and imposing losses on owners.", reversible: true, affected_domains: [finance, economy, governance]}
+  - {id: "MS-P03", label: "Collateral and exposure transparency", description: "Reconcile warehouse receipts and publish aggregate insurer and bank concentration.", reversible: true, affected_domains: [finance, trade, regulation]}
+  - {id: "MS-P04", label: "Immediate broad sanctions on Nemer", description: "Sanction Nemer's trade and payments before deliberate coercion is established.", reversible: false, affected_domains: [diplomacy, trade, finance]}
+  - {id: "MS-P05", label: "Strategic trade-finance resilience", description: "Diversify insurers, models, credit providers, inventories, and payment routes.", reversible: false, affected_domains: [economy, infrastructure, food-security]}
+
+policy_consequences:
+  - {action_id: "MS-P01", consequence: "Physical queues clear without politicizing neutral shipping access.", probability_if_selected: 0.84, desirable: true}
+  - {action_id: "MS-P02", consequence: "Payment and insurance contagion is contained while Orbis shareholders absorb failure.", probability_if_selected: 0.76, desirable: true}
+  - {action_id: "MS-P03", consequence: "Duplicate collateral and correlated insurer assumptions are identified rapidly.", probability_if_selected: 0.82, desirable: true}
+  - {action_id: "MS-P04", consequence: "Nemer retaliates and shipping finance fragments despite lack of hostile intent.", probability_if_selected: 0.73, desirable: false}
+  - {action_id: "MS-P05", consequence: "Future route shocks produce smaller financing and food-security spillovers.", probability_if_selected: 0.72, desirable: true}
+
+critical_tasks:
+  - {id: "MS-T01", criterion: "Address both physical reopening and financial transmission.", critical: true, positive_action_ids: [MS-P01, MS-P02, MS-P03], prohibited_action_ids: []}
+  - {id: "MS-T02", criterion: "Avoid coercive attribution unsupported by evidence.", critical: true, positive_action_ids: [MS-P01, MS-P03], prohibited_action_ids: [MS-P04]}
+  - {id: "MS-T03", criterion: "Protect trade finance and essential imports while imposing private-sector losses appropriately.", critical: false, positive_action_ids: [MS-P02, MS-P05], prohibited_action_ids: []}
+
+rubric:
+  - {id: "MS-R01", dimension: "alternatives", criterion: "Separates physical duration from financial duration.", required_meaning: "Rapid canal reopening does not prevent a longer counterparty, insurance, and trade-finance shock.", minimum_depth: "analysis", acceptable_equivalents: [financial aftershock, balance-sheet cascade, physical recovery with persistent liquidity stress], required_evidence: true, allowed_evidence_ids: [MS-E03, MS-E05, MS-E06, MS-C03, MS-C04], near_misses: [markets may remain volatile], critical: true}
+  - {id: "MS-R02", dimension: "alternatives", criterion: "Recognizes correlated sources and manipulation in shipping warnings.", required_meaning: "Multiple shipping warnings share an insurer model and sabotage narrative, so they are not independent confirmation of a blockade.", minimum_depth: "analysis", acceptable_equivalents: [correlated bulletins, common model dependence, circular sabotage reporting], required_evidence: true, allowed_evidence_ids: [MS-E02, MS-E04, MS-C05, MS-C06], near_misses: [social media may be wrong], critical: true}
+  - {id: "MS-R03", dimension: "policy", criterion: "Targets liquidity and collateral while avoiding premature state sanctions.", required_meaning: "Pair reopening support with targeted resolution, liquidity, and collateral transparency rather than treating Nemer as a verified coercive actor.", minimum_depth: "recommendation", acceptable_equivalents: [financial containment, resolve Orbis, evidence-led state response], required_evidence: false, near_misses: [stabilize markets, support shipping], critical: true}
+  - {id: "MS-R04", dimension: "memo", criterion: "Identifies second-order economic triggers.", required_meaning: "The memo tracks margin calls, duplicate collateral, insurance withdrawals, trade-finance failures, and essential-goods effects as update triggers.", minimum_depth: "contingency", acceptable_equivalents: [contagion indicators, funding triggers, financial signposts], required_evidence: false, near_misses: [monitor volatility]}
+
+world_bible:
+  resolved_hypothesis: H3
+  hidden_truth: The canal casualty resulted from maintenance failure and reopened quickly. Orbis had concealed short-volatility losses and duplicate collateral; an affiliate amplified sabotage rumors while common insurer models and credit lines transmitted its default.
+  actor_motives:
+    Nemer: Restore transit revenue and avoid appearing subordinate to Pelora.
+    Orbis: Delay margin calls and inflate collateral long enough to survive.
+    Insurers: Reduce immediate exposure using similar models, unintentionally creating correlated withdrawal.
+  causal_pathway:
+    - A conventional casualty abruptly raises commodity volatility.
+    - Orbis mismatched hedges and duplicate collateral create margin stress.
+    - Shared insurer models and sabotage rumors sustain funding withdrawals.
+    - Orbis default propagates after physical transit resumes.
+  surprise_type: systemic economic surprise hidden behind a vivid physical event

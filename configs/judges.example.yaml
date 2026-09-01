@@ -1,0 +1,11 @@
+judge_mode: calibration
+judge_a: openai/REPLACE_WITH_MODEL_ID
+judge_b: anthropic/REPLACE_WITH_MODEL_ID
+validator: fireworks/REPLACE_WITH_MODEL_ID
+judge_prompt_version: 0.1.0
+calibration_report: null
+notes:
+  - Judge A and Judge B must use different provider families.
+  - Calibration mode produces labels for meta-evaluation but never marks them publishable.
+  - Published mode additionally requires a passing locked gate report.
+

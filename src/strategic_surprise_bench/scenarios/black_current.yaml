@@ -1,0 +1,129 @@
+manifest:
+  id: black_current
+  title: Black Current
+  version: 0.1.0
+  domain: military and maritime
+  summary: Attribute a submarine grounding and undersea infrastructure failures without allowing the most visible actor to monopolize analysis.
+  construct_tags: [attribution, escalation, maritime, third-party, denial-and-deception]
+  collection_budgets: {1: 10, 2: 6}
+  provenance:
+    - title: IQT Snow Globe
+      url: https://github.com/IQTLabs/snowglobe
+      license: Apache-2.0
+      elements_used: Open-ended maritime crisis and actor-goal structure.
+      transformation: Replaced the historical plot, actors, intent, evidence, outcome, and decision structure.
+    - title: Panopticon
+      url: https://github.com/Max-Highsmith/panopticon
+      license: MIT
+      elements_used: Missing-submarine and cable-sabotage scenario categories.
+      transformation: Combined into a non-binary warning and attribution problem with costed collection.
+
+role: You advise the Selene Maritime Security Council during a restricted-waters incident.
+background: >-
+  Selene is a small allied coastal state guarding the Nacre Passage, a route containing military
+  hydrophone arrays and civilian data cables. Major power Karsia contests some navigation rules but
+  normally avoids direct conflict. Melora, a regional intelligence competitor, operates research and
+  commercial survey firms through offshore ownership. Selene must protect sovereignty without turning
+  an ambiguous incident into an unnecessary confrontation.
+
+hypotheses:
+  - {id: "H1", label: "Deliberate Karsian intrusion", description: "The grounded Karsian submarine and nearby activity are parts of an intentional reconnaissance or coercive operation."}
+  - {id: "H2", label: "Karsian accident", description: "The submarine entered restricted waters because of navigation or mechanical failure and support activity is a rescue effort."}
+  - {id: "H3", label: "Third-party seabed operation", description: "A less visible commercial or state proxy exploited the crisis to map or compromise undersea infrastructure."}
+  - {id: "H4", label: "Unrelated technical failures", description: "The grounding, cable alarms, and acoustic anomalies are independent accidents or sensor errors."}
+
+rounds:
+  - {round: 1, title: Grounding in the passage, brief: "A Karsian submarine grounds as two cables report faults and unfamiliar vessels approach.", common_evidence_ids: [BC-E01, BC-E02, BC-E03, BC-E04]}
+  - {round: 2, title: Divergent attribution, brief: "Inspection and ownership records separate some events while increasing concern about others.", common_evidence_ids: [BC-E05, BC-E06]}
+  - {round: 3, title: The survey network, brief: "Recovered equipment reveals a third-party intelligence operation conducted under commercial cover.", common_evidence_ids: [BC-E07, BC-E08]}
+
+evidence:
+  - {id: "BC-E01", round_available: 1, source: "Selene coast guard visual report", text: "A Karsian diesel-electric submarine is hard aground inside a marked exclusion zone near a naval array.", reliability: 0.95, deception_risk: 0.05, correlation_group: "coast-guard", supports: [H1, H2], contradicts: [], public_inject: true}
+  - {id: "BC-E02", round_available: 1, source: "Cable operators sharing one seabed monitor", text: "Two civilian cables alarmed within forty minutes on opposite sides of the grounded submarine.", reliability: 0.72, deception_risk: 0.12, correlation_group: "shared-seabed-monitor", supports: [H1, H3, H4], contradicts: [], public_inject: true}
+  - {id: "BC-E03", round_available: 1, source: "Karsian embassy", text: "Karsia reports a cascading navigation failure and requests immediate access for two rescue tugs and a signals-support vessel.", reliability: 0.48, deception_risk: 0.65, correlation_group: "karsian-official", supports: [H2], contradicts: [], public_inject: true}
+  - {id: "BC-E04", round_available: 1, source: "Port automatic-identification records", text: "The commercial survey ship Pelagic Dawn disabled its transponder near the northern cable twelve hours before the grounding.", reliability: 0.88, deception_risk: 0.12, correlation_group: "port-records", supports: [H3], contradicts: [], public_inject: true}
+  - {id: "BC-E05", round_available: 2, source: "Joint mechanical inspection", text: "The submarine's inertial unit contains a burned timing board and its paper navigation backup was based on an obsolete chart.", reliability: 0.91, deception_risk: 0.08, correlation_group: "submarine-inspection", supports: [H2], contradicts: [H1], public_inject: true}
+  - {id: "BC-E06", round_available: 2, source: "Independent cable repair divers", text: "One cable failed from age, but the northern repeater housing bears recent tool marks inconsistent with the grounding.", reliability: 0.94, deception_risk: 0.04, correlation_group: "cable-forensics", supports: [H3], contradicts: [H4], public_inject: true}
+  - {id: "BC-E07", round_available: 3, source: "Seized survey pod forensics", text: "A pod recovered from Pelagic Dawn contains passive taps, array maps, and encrypted tasking linked to a Meloran defense cutout.", reliability: 0.97, deception_risk: 0.03, correlation_group: "survey-forensics", supports: [H3], contradicts: [H1, H4], public_inject: true}
+  - {id: "BC-E08", round_available: 3, source: "Submarine voyage-data reconstruction", text: "Recorded control inputs show the Karsian crew attempting an emergency turn and ballast response before grounding.", reliability: 0.93, deception_risk: 0.05, correlation_group: "submarine-inspection", supports: [H2], contradicts: [H1], public_inject: true}
+  - {id: "BC-C01", round_available: 2, source: "Inertial-unit teardown", text: "Thermal damage predates the grounding and would create the reported navigation drift.", reliability: 0.93, deception_risk: 0.05, correlation_group: "submarine-inspection", supports: [H2], contradicts: [H1]}
+  - {id: "BC-C02", round_available: 2, source: "Hydrophone waveform review", text: "The submarine approached at low speed with irregular propulsion rather than a controlled covert profile.", reliability: 0.87, deception_risk: 0.09, correlation_group: "selene-acoustics", supports: [H2], contradicts: [H1]}
+  - {id: "BC-C03", round_available: 2, source: "Cable fault localization", text: "The southern failure localizes to a fatigued splice while the northern anomaly centers on a repeater housing.", reliability: 0.95, deception_risk: 0.03, correlation_group: "cable-forensics", supports: [H3], contradicts: [H4]}
+  - {id: "BC-C04", round_available: 2, source: "Survey-vessel beneficial-ownership review", text: "Pelagic Dawn is controlled through a trust whose manager also directs a Meloran signals contractor.", reliability: 0.89, deception_risk: 0.10, correlation_group: "survey-ownership", supports: [H3], contradicts: []}
+  - {id: "BC-C05", round_available: 2, source: "Satellite wake analysis", text: "Pelagic Dawn repeatedly stopped over the northern cable before departing toward international waters.", reliability: 0.84, deception_risk: 0.08, correlation_group: "satellite-maritime", supports: [H3], contradicts: [H4]}
+  - {id: "BC-C06", round_available: 2, source: "Karsian rescue communications", text: "Tug crews discuss hull stress and crew evacuation but make no reference to cable or array objectives.", reliability: 0.78, deception_risk: 0.16, correlation_group: "karsian-comms", supports: [H2], contradicts: [H1]}
+  - {id: "BC-C07", round_available: 2, source: "Fisher interviews", text: "Reports of earlier submarine sounds combine engine noise with seasonal marine mammal activity.", reliability: 0.42, deception_risk: 0.15, correlation_group: "local-witnesses", supports: [H4], contradicts: []}
+  - {id: "BC-C08", round_available: 2, source: "Diplomatic behavior review", text: "Karsia accepts a Selene-led inspection if weapons compartments remain sealed.", reliability: 0.80, deception_risk: 0.25, correlation_group: "karsian-official", supports: [H2], contradicts: [H1]}
+  - {id: "BC-D01", round_available: 3, source: "Survey pod recovery team", text: "Divers locate an abandoned pod beside the northern repeater.", reliability: 0.96, deception_risk: 0.03, correlation_group: "survey-forensics", supports: [H3], contradicts: []}
+  - {id: "BC-D02", round_available: 3, source: "Financial intelligence unit", text: "A Meloran ministry reimbursed Pelagic Dawn's charter through three layered consulting invoices.", reliability: 0.91, deception_risk: 0.06, correlation_group: "survey-ownership", supports: [H3], contradicts: []}
+  - {id: "BC-D03", round_available: 3, source: "Karsian maintenance archive", text: "Two earlier timing-board failures triggered an unfunded replacement recommendation.", reliability: 0.86, deception_risk: 0.12, correlation_group: "karsian-maintenance", supports: [H2], contradicts: [H1]}
+  - {id: "BC-D04", round_available: 3, source: "Array integrity test", text: "The military hydrophone array remains operational but its topology appears in the survey pod map.", reliability: 0.94, deception_risk: 0.04, correlation_group: "selene-array", supports: [H3], contradicts: [H4]}
+  - {id: "BC-D05", round_available: 3, source: "Regional vessel registry", text: "Two other Meloran-linked survey vessels visited allied cable routes in the past year.", reliability: 0.83, deception_risk: 0.09, correlation_group: "survey-ownership", supports: [H3], contradicts: []}
+  - {id: "BC-D06", round_available: 3, source: "Hull trajectory simulation", text: "A deliberate approach could have avoided the shoal; the observed path matches accumulated navigation error.", reliability: 0.90, deception_risk: 0.05, correlation_group: "submarine-inspection", supports: [H2], contradicts: [H1]}
+  - {id: "BC-D07", round_available: 3, source: "Environmental sensor audit", text: "Storm-driven sediment explains several low-confidence acoustic alerts but not the repeater tool marks.", reliability: 0.82, deception_risk: 0.06, correlation_group: "environmental", supports: [H4], contradicts: []}
+  - {id: "BC-D08", round_available: 3, source: "Meloran cutout intercept", text: "Tasking orders operators to exploit any regional distraction rather than create one.", reliability: 0.88, deception_risk: 0.10, correlation_group: "meloran-comms", supports: [H3], contradicts: [H1]}
+
+collection_actions:
+  - {id: "BC-A01", round_available: 1, label: "Teardown navigation unit", description: "Establish whether failure predates grounding.", cost: 3, correlation_group: "submarine-inspection", likelihood_positive: {H1: 0.20, H2: 0.88, H3: 0.15, H4: 0.30}, observed: "positive", return_evidence_id: "BC-C01"}
+  - {id: "BC-A02", round_available: 1, label: "Reprocess hydrophones", description: "Compare the approach with covert and casualty signatures.", cost: 2, correlation_group: "selene-acoustics", likelihood_positive: {H1: 0.80, H2: 0.25, H3: 0.20, H4: 0.35}, observed: "negative", return_evidence_id: "BC-C02"}
+  - {id: "BC-A03", round_available: 1, label: "Localize cable faults", description: "Separate common-cause sabotage from independent faults.", cost: 3, correlation_group: "cable-forensics", likelihood_positive: {H1: 0.65, H2: 0.20, H3: 0.85, H4: 0.30}, observed: "positive", return_evidence_id: "BC-C03"}
+  - {id: "BC-A04", round_available: 1, label: "Unmask survey ownership", description: "Trace beneficial ownership and state ties.", cost: 3, correlation_group: "survey-ownership", likelihood_positive: {H1: 0.15, H2: 0.10, H3: 0.90, H4: 0.20}, observed: "positive", return_evidence_id: "BC-C04"}
+  - {id: "BC-A05", round_available: 1, label: "Analyze satellite wakes", description: "Reconstruct the survey vessel's stops and launch activity.", cost: 3, correlation_group: "satellite-maritime", likelihood_positive: {H1: 0.25, H2: 0.15, H3: 0.82, H4: 0.25}, observed: "positive", return_evidence_id: "BC-C05"}
+  - {id: "BC-A06", round_available: 1, label: "Monitor rescue communications", description: "Identify rescue, coercion, or evidence-removal intent.", cost: 2, correlation_group: "karsian-comms", likelihood_positive: {H1: 0.75, H2: 0.30, H3: 0.15, H4: 0.25}, observed: "negative", return_evidence_id: "BC-C06"}
+  - {id: "BC-A07", round_available: 1, label: "Interview maritime witnesses", description: "Check earlier reports cheaply but noisily.", cost: 1, correlation_group: "local-witnesses", likelihood_positive: {H1: 0.55, H2: 0.40, H3: 0.45, H4: 0.55}, observed: "inconclusive", return_evidence_id: "BC-C07"}
+  - {id: "BC-A08", round_available: 1, label: "Test inspection terms", description: "Use diplomatic behavior as an intent indicator.", cost: 2, correlation_group: "karsian-official", likelihood_positive: {H1: 0.25, H2: 0.78, H3: 0.20, H4: 0.30}, observed: "positive", return_evidence_id: "BC-C08"}
+  - {id: "BC-B01", round_available: 2, label: "Search for survey pods", description: "Sweep the northern repeater approaches.", cost: 3, correlation_group: "survey-forensics", likelihood_positive: {H1: 0.35, H2: 0.10, H3: 0.92, H4: 0.15}, observed: "positive", return_evidence_id: "BC-D01"}
+  - {id: "BC-B02", round_available: 2, label: "Trace charter payments", description: "Follow invoices to state or private sponsors.", cost: 2, correlation_group: "survey-ownership", likelihood_positive: {H1: 0.15, H2: 0.10, H3: 0.88, H4: 0.20}, observed: "positive", return_evidence_id: "BC-D02"}
+  - {id: "BC-B03", round_available: 2, label: "Acquire maintenance history", description: "Check prior failures and repair deferrals.", cost: 2, correlation_group: "karsian-maintenance", likelihood_positive: {H1: 0.20, H2: 0.84, H3: 0.10, H4: 0.35}, observed: "positive", return_evidence_id: "BC-D03"}
+  - {id: "BC-B04", round_available: 2, label: "Test array integrity", description: "Determine whether military sensors were compromised.", cost: 3, correlation_group: "selene-array", likelihood_positive: {H1: 0.75, H2: 0.15, H3: 0.80, H4: 0.20}, observed: "positive", return_evidence_id: "BC-D04"}
+  - {id: "BC-B05", round_available: 2, label: "Search regional survey pattern", description: "Find similar commercial cover activity.", cost: 2, correlation_group: "survey-ownership", likelihood_positive: {H1: 0.20, H2: 0.15, H3: 0.82, H4: 0.30}, observed: "positive", return_evidence_id: "BC-D05"}
+  - {id: "BC-B06", round_available: 2, label: "Simulate hull trajectory", description: "Compare intentional and failure paths.", cost: 3, correlation_group: "submarine-inspection", likelihood_positive: {H1: 0.80, H2: 0.25, H3: 0.15, H4: 0.25}, observed: "negative", return_evidence_id: "BC-D06"}
+  - {id: "BC-B07", round_available: 2, label: "Audit environmental sensors", description: "Quantify natural acoustic and cable noise.", cost: 1, correlation_group: "environmental", likelihood_positive: {H1: 0.20, H2: 0.35, H3: 0.20, H4: 0.82}, observed: "positive", return_evidence_id: "BC-D07"}
+  - {id: "BC-B08", round_available: 2, label: "Collect Meloran tasking", description: "Test opportunistic third-party intent.", cost: 4, correlation_group: "meloran-comms", likelihood_positive: {H1: 0.15, H2: 0.10, H3: 0.90, H4: 0.15}, observed: "positive", return_evidence_id: "BC-D08"}
+
+forecasts:
+  - {id: "BC-F01", question: "Will inspection show a genuine Karsian navigation or mechanical failure?", horizon: "14 days", outcome: 1, resolution: "Joint technical report."}
+  - {id: "BC-F02", question: "Will evidence show the submarine intentionally approached the naval array?", horizon: "30 days", outcome: 0, resolution: "Voyage-data and trajectory reconstruction."}
+  - {id: "BC-F03", question: "Will at least one cable fault prove deliberate?", horizon: "30 days", outcome: 1, resolution: "Repair-forensics report."}
+  - {id: "BC-F04", question: "Will a third actor be linked to the deliberate seabed activity?", horizon: "60 days", outcome: 1, resolution: "Attributable equipment, financing, or tasking."}
+  - {id: "BC-F05", question: "Will Karsian forces attempt a non-consensual rescue?", horizon: "7 days", outcome: 0, resolution: "Recorded entry into Selene waters without consent."}
+  - {id: "BC-F06", question: "Will allied cable and array protection posture increase?", horizon: "90 days", outcome: 1, resolution: "Formal operational directive."}
+
+policy_levers:
+  - {id: "BC-P01", label: "Controlled rescue and joint inspection", description: "Permit a Selene-led rescue under monitored access and evidence-preservation rules.", reversible: true, affected_domains: [military, diplomacy, safety]}
+  - {id: "BC-P02", label: "Immediate strike on support vessels", description: "Attack approaching Karsian vessels before intent is resolved.", reversible: false, affected_domains: [military, diplomacy]}
+  - {id: "BC-P03", label: "Seabed forensics surge", description: "Protect and inspect cables, arrays, survey ships, and recovered devices.", reversible: true, affected_domains: [intelligence, infrastructure, economy]}
+  - {id: "BC-P04", label: "Coordinated attribution package", description: "Share evidence with allies and impose targeted legal and financial measures on the responsible network.", reversible: true, affected_domains: [diplomacy, economy, intelligence]}
+  - {id: "BC-P05", label: "Resilient cable and sensor architecture", description: "Fund route diversity, tamper detection, and standing maritime-domain awareness.", reversible: false, affected_domains: [infrastructure, defense, economy]}
+
+policy_consequences:
+  - {action_id: "BC-P01", consequence: "Crew safety and sovereignty are protected while Karsian escalation incentives decline.", probability_if_selected: 0.82, desirable: true}
+  - {action_id: "BC-P02", consequence: "A localized accident escalates into interstate armed conflict.", probability_if_selected: 0.78, desirable: false}
+  - {action_id: "BC-P03", consequence: "The third-party operation is attributed before equipment is removed.", probability_if_selected: 0.84, desirable: true}
+  - {action_id: "BC-P04", consequence: "Allies sustain a targeted response based on shareable evidence.", probability_if_selected: 0.73, desirable: true}
+  - {action_id: "BC-P05", consequence: "Future opportunistic access becomes harder and outages less consequential.", probability_if_selected: 0.76, desirable: true}
+
+critical_tasks:
+  - {id: "BC-T01", criterion: "Preserve life and evidence without conceding sovereign control.", critical: true, positive_action_ids: [BC-P01, BC-P03], prohibited_action_ids: []}
+  - {id: "BC-T02", criterion: "Avoid irreversible force before hostile intent is established.", critical: true, positive_action_ids: [BC-P01, BC-P04], prohibited_action_ids: [BC-P02]}
+  - {id: "BC-T03", criterion: "Address the actual third-party seabed network and future resilience.", critical: false, positive_action_ids: [BC-P03, BC-P04, BC-P05], prohibited_action_ids: []}
+
+rubric:
+  - {id: "BC-R01", dimension: "alternatives", criterion: "Separates submarine intent from cable attribution.", required_meaning: "The Karsian grounding can be accidental even if separate seabed interference is deliberate.", minimum_depth: "analysis", acceptable_equivalents: [compound explanation, accident plus opportunistic sabotage, events need not share an actor], required_evidence: true, allowed_evidence_ids: [BC-E04, BC-E05, BC-E06, BC-C03, BC-C04], near_misses: [multiple possibilities exist], critical: true}
+  - {id: "BC-R02", dimension: "alternatives", criterion: "Identifies the commercial survey vessel as a third-party warning path.", required_meaning: "Pelagic Dawn's transponder gap, ownership, stops, or pods indicate a Meloran-linked operation.", minimum_depth: "analysis", acceptable_equivalents: [survey cover, third-party seabed intelligence, Meloran proxy], required_evidence: true, allowed_evidence_ids: [BC-E04, BC-C04, BC-C05, BC-D01, BC-D02], near_misses: [investigate all vessels], critical: true}
+  - {id: "BC-R03", dimension: "policy", criterion: "Uses controlled rescue and evidence-led attribution.", required_meaning: "Preserve crew safety and Selene control while conducting seabed forensics and delaying irreversible force.", minimum_depth: "recommendation", acceptable_equivalents: [monitored rescue, joint inspection, proportional evidence-led response], required_evidence: false, near_misses: [show resolve, demand an apology], critical: true}
+  - {id: "BC-R04", dimension: "memo", criterion: "States attribution confidence and escalation triggers separately.", required_meaning: "The memo distinguishes confidence in accident and third-party sabotage and identifies evidence that would justify stronger action.", minimum_depth: "contingency", acceptable_equivalents: [separate confidence judgments, force threshold, update trigger], required_evidence: false, near_misses: [remain vigilant]}
+
+world_bible:
+  resolved_hypothesis: H3
+  hidden_truth: The Karsian submarine grounded after a neglected timing-board failure. Melora independently tasked a commercial survey network to exploit regional distractions and tap the northern cable; the southern cable failed from age.
+  actor_motives:
+    Karsia: Recover personnel and sensitive equipment without public humiliation.
+    Melora: Map allied seabed infrastructure under deniable commercial cover.
+    Selene: Protect sovereignty, infrastructure, and alliance credibility without unnecessary war.
+  causal_pathway:
+    - Meloran contractors schedule a routine-looking survey over the northern cable.
+    - A separate Karsian maintenance failure causes navigation drift and grounding.
+    - The crisis diverts patrol attention while the survey pod is placed.
+    - Forensics separate the accident, natural fault, and deliberate third-party operation.
+  surprise_type: attribution surprise hidden inside a compound incident

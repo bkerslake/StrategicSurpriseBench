@@ -1,0 +1,21 @@
+benchmark_version: 0.1.0
+conditions: [plain, agent]
+cases:
+  - lattice_signal
+  - black_current
+  - ember_guarantee
+  - meridian_shock
+  - sable_patch
+  - red_harvest
+epochs: 3
+temperature: 0.2
+max_tokens_per_round: 6000
+models:
+  # Replace placeholders with exact dated model IDs before freezing a pilot.
+  - openai/REPLACE_WITH_MODEL_ID
+  - anthropic/REPLACE_WITH_MODEL_ID
+  - fireworks/REPLACE_WITH_MODEL_ID
+report:
+  hierarchical_bootstrap_samples: 5000
+  exploratory_only: true
+

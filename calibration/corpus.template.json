@@ -1,0 +1,13 @@
+{
+  "benchmark_version": "0.1.0",
+  "rubric_version": "0.1.0",
+  "judge_prompt_version": "0.1.0",
+  "calibration_version": "UNSET",
+  "locked_at": null,
+  "criterion_labels": [],
+  "aggregate_labels": [],
+  "scenario_reviews": [],
+  "paraphrase_invariance": 0.0,
+  "evidence_deletion_sensitivity": 0.0
+}
+
