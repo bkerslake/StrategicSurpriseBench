@@ -22,5 +22,5 @@ judging:
   judge_a: openai/gpt-5.6-terra
   judge_b: anthropic/claude-sonnet-5
   validator: openai/gpt-5.6-luna
-  judge_prompt_version: 0.2.0
+  judge_prompt_version: 0.2.1
   calibration_report: null

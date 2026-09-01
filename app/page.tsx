@@ -3,12 +3,15 @@ import { SignalPlot } from "@/components/signal-plot";
 import {
   benchmarkFacts,
   capabilities,
+  caseResults,
+  modelResults,
   resultsState,
   scenarios,
   scoreComponents,
 } from "@/lib/site-data";
 
 const repositoryUrl = "https://github.com/bkerslake/StrategicSurpriseBench";
+const reportUrl = `${repositoryUrl}/blob/main/results/MULTIMODEL_BENCHMARK_REPORT_2026-08-31.md`;
 
 function Arrow() {
   return (
@@ -215,8 +218,9 @@ export default function Home() {
             <h2>Most of the grade comes from code.</h2>
             <p>
               Forecast skill, collection choices, allocation thresholds, and modeled policy
-              consequences are deterministic. Open-ended rubric points stay at zero unless the
-              judge system has passed its expert calibration gate.
+              consequences are deterministic. Open-ended points require two judges, exact evidence
+              grounding, and a separate validator. Calibration scores are provisional; publication
+              remains locked behind the expert gate.
             </p>
             <a href={`${repositoryUrl}#what-is-evaluated`} target="_blank" rel="noreferrer">
               Inspect the scoring spec
@@ -244,35 +248,98 @@ export default function Home() {
               <p className="eyebrow">{resultsState.eyebrow}</p>
               <h2>{resultsState.title}</h2>
             </div>
-            <span className="status-pill"><i /> Awaiting pilot</span>
+            <span className="status-pill"><i /> {resultsState.statusLabel}</span>
           </Reveal>
 
           <Reveal className="results-board" delay={0.08}>
-            <div className="placeholder-chart" aria-label="Reserved area for future benchmark charts">
+            <div
+              className="result-chart"
+              role="img"
+              aria-label="Mean calibration scores: Claude Opus 5 53.96, GPT-5.6 Luna 50.69, GPT-5.6 Sol 50.37, and Claude Sonnet 5 39.64 out of 100"
+            >
               <div className="chart-y-axis" aria-hidden="true">
                 <span>100</span><span>75</span><span>50</span><span>25</span><span>0</span>
               </div>
               <div className="chart-field">
                 <div className="chart-grid" aria-hidden="true" />
-                <div className="chart-empty">
-                  <span>DATA SLOT / 01</span>
-                  <strong>Pilot results will load here.</strong>
-                  <p>One adapter. No redesign required.</p>
+                <div className="model-bars">
+                  {modelResults.map((result) => (
+                    <div className="model-result" key={result.key}>
+                      <span className="model-score">{result.score.toFixed(2)}</span>
+                      <div className="model-bar" aria-hidden="true">
+                        <i style={{ height: `${result.score}%` }} />
+                      </div>
+                      <strong>{result.shortName}</strong>
+                      <small>{result.provider}</small>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
             <div className="results-copy">
               <p>{resultsState.body}</p>
-              <div className="expected-grid">
-                {resultsState.expected.map((item, index) => (
-                  <span key={item}><b>0{index + 1}</b>{item}</span>
+              <div className="result-fact-grid">
+                {resultsState.facts.map((item) => (
+                  <span key={item.label}><b>{item.value}</b>{item.label}</span>
                 ))}
               </div>
+              <a className="results-report-link" href={reportUrl} target="_blank" rel="noreferrer">
+                Read the full judged report
+                <Arrow />
+              </a>
               <p className="results-footnote">
-                Six cases are still a small sample. The eventual release will report variation by
-                case and run, not just a single rank.
+                {resultsState.footnote}
               </p>
             </div>
+          </Reveal>
+
+          <Reveal className="case-results" delay={0.12}>
+            <div className="case-results-heading">
+              <div>
+                <p className="eyebrow">Case ledger</p>
+                <h3>Every score in the screen.</h3>
+              </div>
+              <p>Best result per case is highlighted. Scores are out of 100.</p>
+            </div>
+            <div className="case-results-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Case</th>
+                    {modelResults.map((model) => (
+                      <th scope="col" key={model.key}>{model.shortName}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {caseResults.map((result) => {
+                    const bestScore = Math.max(
+                      ...modelResults.map((model) => result[model.key]),
+                    );
+                    return (
+                      <tr key={result.case}>
+                        <th scope="row">{result.case}</th>
+                        {modelResults.map((model) => {
+                          const score = result[model.key];
+                          const isSchemaFailure =
+                            result.case === "Red Harvest" && model.key === "sonnet";
+                          return (
+                            <td className={score === bestScore ? "is-best" : undefined} key={model.key}>
+                              {score.toFixed(2)}
+                              {isSchemaFailure ? <sup>†</sup> : null}
+                            </td>
+                          );
+                        })}
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <p className="case-results-note">
+              † Fail-closed schema score. Automated rubric labels are calibration-only and have not
+              passed the expert publication gate.
+            </p>
           </Reveal>
         </div>
       </section>

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from types import SimpleNamespace
+
 import pytest
 
 from strategic_surprise_bench.models import (
@@ -8,11 +10,89 @@ from strategic_surprise_bench.models import (
     ValidationStatus,
 )
 from strategic_surprise_bench.rubric import (
+    ANTHROPIC_JUDGE_REFUSAL_FALLBACK,
+    JUDGE_VERDICT_RESPONSE_SCHEMA,
+    InspectJudgeBackend,
     JudgeCascade,
     StaticJudgeBackend,
+    _parse_judge_verdict,
     deterministic_topic_screen,
     spans_are_grounded,
 )
+
+
+def test_openai_judge_schema_is_fully_inlined_and_strict():
+    properties = JUDGE_VERDICT_RESPONSE_SCHEMA["properties"]
+    assert properties["label"] == {
+        "type": "string",
+        "enum": ["fail", "partial", "pass"],
+    }
+    assert set(JUDGE_VERDICT_RESPONSE_SCHEMA["required"]) == set(properties)
+    assert "$defs" not in JUDGE_VERDICT_RESPONSE_SCHEMA
+
+
+def test_judge_parser_extracts_fenced_or_prefixed_json():
+    payload = (
+        '{"rubric_id":"R1","label":"partial","supporting_spans":["\\\"brief span\\\""],'''
+        '"contradiction_spans":[],"confidence":0.8,"rationale":"brief"}'
+    )
+    parsed = _parse_judge_verdict(f"```json\n{payload}\n```")
+    assert parsed.rubric_id == "R1"
+    assert parsed.supporting_spans == ["brief span"]
+    assert _parse_judge_verdict(f"Result follows: {payload}").confidence == 0.8
+
+
+def test_judge_parser_ignores_unknown_provider_fields():
+    payload = (
+        '{"rubric_id":"alternatives","label":"partial","supporting_spans":[],'
+        '"contradiction_spans":[],"confidence":0.8,"rationale":"brief",'
+        '"dimension":"alternatives"}'
+    )
+
+    parsed = _parse_judge_verdict(payload)
+
+    assert parsed.rubric_id == "alternatives"
+    assert parsed.label == JudgeLabel.partial
+
+
+@pytest.mark.asyncio
+async def test_anthropic_judge_refusal_falls_back_to_luna(monkeypatch):
+    calls = []
+
+    class FakeModel:
+        def __init__(self, name):
+            self.name = name
+
+        async def generate(self, prompt, config):
+            calls.append((self.name, prompt, config))
+            if self.name == "anthropic/claude-sonnet-5":
+                return SimpleNamespace(
+                    choices=[SimpleNamespace(stop_reason="content_filter")],
+                    completion="",
+                )
+            return SimpleNamespace(
+                choices=[SimpleNamespace(stop_reason="stop")],
+                completion=(
+                    '{"rubric_id":"R1","label":"pass","supporting_spans":[],'
+                    '"contradiction_spans":[],"confidence":0.9,"rationale":"grounded"}'
+                ),
+            )
+
+    monkeypatch.setattr(
+        "inspect_ai.model.get_model",
+        lambda name: FakeModel(name),
+    )
+
+    verdict = await InspectJudgeBackend(
+        "anthropic/claude-sonnet-5"
+    )._generate_verdict("atomic prompt")
+
+    assert verdict.label == JudgeLabel.pass_
+    assert [name for name, _, _ in calls] == [
+        "anthropic/claude-sonnet-5",
+        ANTHROPIC_JUDGE_REFUSAL_FALLBACK,
+    ]
+    assert calls[1][2].response_schema is not None
 
 
 def verdict(rubric_id: str, label: JudgeLabel, span: str = "") -> JudgeVerdict:

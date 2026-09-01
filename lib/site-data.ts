@@ -91,9 +91,60 @@ export const scoreComponents = [
 ] as const;
 
 export const resultsState = {
-  status: "awaiting-pilot",
-  eyebrow: "Results / reserved",
-  title: "The leaderboard is intentionally empty.",
-  body: "A two-run API check proved that the runner works. It did not produce a ranking. The first public charts will appear after the six-case pilot, repeated runs, and expert calibration are complete.",
-  expected: ["Per-case scores", "Plain vs agent", "Uncertainty bands", "Cost + latency"],
+  status: "calibration-screen",
+  statusLabel: "Calibration only",
+  eyebrow: "Results / v0.2 judged screen",
+  title: "A first judged screen—not a leaderboard.",
+  body: "Four models completed one run on each public case. Opus posted the highest mean, while Luna and Sol were effectively tied. The expert calibration gate is still closed, so every score below is provisional.",
+  facts: [
+    { value: "24/24", label: "model-case scores" },
+    { value: "01", label: "run per cell" },
+    { value: "16.7%", label: "rubrics auto-accepted" },
+    { value: "0.32", label: "Luna–Sol gap" },
+  ],
+  footnote: "One run cannot establish a stable rank. Sonnet's 39.64 mean includes a fail-closed Red Harvest schema score of zero; its five structured sessions averaged 47.56.",
 } as const;
+
+export const modelResults = [
+  {
+    key: "opus",
+    name: "Claude Opus 5",
+    shortName: "Opus 5",
+    provider: "Anthropic",
+    score: 53.96,
+    range: "44.31–61.53",
+  },
+  {
+    key: "luna",
+    name: "GPT-5.6 Luna",
+    shortName: "Luna",
+    provider: "OpenAI",
+    score: 50.69,
+    range: "41.40–60.53",
+  },
+  {
+    key: "sol",
+    name: "GPT-5.6 Sol",
+    shortName: "Sol",
+    provider: "OpenAI",
+    score: 50.37,
+    range: "43.89–53.43",
+  },
+  {
+    key: "sonnet",
+    name: "Claude Sonnet 5",
+    shortName: "Sonnet 5",
+    provider: "Anthropic",
+    score: 39.64,
+    range: "0.00–52.55",
+  },
+] as const;
+
+export const caseResults = [
+  { case: "Lattice Signal", opus: 44.31, luna: 49.21, sol: 43.89, sonnet: 40.69 },
+  { case: "Black Current", opus: 57.70, luna: 60.53, sol: 52.66, sonnet: 50.85 },
+  { case: "Ember Guarantee", opus: 55.36, luna: 57.07, sol: 53.43, sonnet: 52.55 },
+  { case: "Meridian Shock", opus: 61.53, luna: 49.07, sol: 49.86, sonnet: 44.02 },
+  { case: "Sable Patch", opus: 56.72, luna: 46.86, sol: 52.82, sonnet: 49.71 },
+  { case: "Red Harvest", opus: 48.13, luna: 41.40, sol: 49.57, sonnet: 0.00 },
+] as const;

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import asyncio
 import json
 import re
 from pathlib import Path
@@ -208,13 +209,20 @@ def strategic_surprise_scorer(
                     InspectJudgeBackend(str(judge_b), "judge-b"),
                     InspectJudgeBackend(str(validator), "validator"),
                 )
-                for rubric in case.rubric:
-                    evaluation_response, authorized_facts = _rubric_evaluation_context(
-                        case, responses, rubric
-                    )
-                    decisions.append(
-                        await cascade.evaluate(rubric, evaluation_response, authorized_facts)
-                    )
+                judge_semaphore = asyncio.Semaphore(2)
+
+                async def evaluate_rubric(rubric: RubricItem) -> ValidationDecision:
+                    async with judge_semaphore:
+                        evaluation_response, authorized_facts = _rubric_evaluation_context(
+                            case, responses, rubric
+                        )
+                        return await cascade.evaluate(
+                            rubric, evaluation_response, authorized_facts
+                        )
+
+                decisions = list(
+                    await asyncio.gather(*(evaluate_rubric(rubric) for rubric in case.rubric))
+                )
 
         result = score_session(case, responses, decisions)
         metadata = result.model_dump(mode="json")
