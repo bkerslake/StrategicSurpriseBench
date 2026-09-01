@@ -42,6 +42,30 @@ def test_open_rubrics_fail_closed_until_review(lattice, perfect_session):
     assert result.breakdown.memo_quality == 0
 
 
+def test_strategic_reasoning_is_screened_before_the_reveal(lattice, perfect_session):
+    pre_reveal_removed = make_mock_session(lattice, "perfect")
+    pre_reveal_removed[1].findings = []
+    pre_reveal_removed[1].decision_memo = "Maintain a generic possibility without causal analysis."
+    pre_reveal_removed[1].generated_hypotheses = [
+        item.model_copy(
+            update={
+                "statement": "Generic possibility.",
+                "causal_mechanism": "An unspecified process may occur.",
+                "actor_incentives": ["Actors have preferences."],
+                "expected_observables": ["Something may happen."],
+                "disconfirming_observables": ["Something may not happen."],
+                "second_order_effects": ["There may be downstream effects."],
+                "counterfactual": "A different world could differ.",
+                "evidence_ids": [],
+            }
+        )
+        for item in pre_reveal_removed[1].generated_hypotheses
+    ]
+    result = score_session(lattice, pre_reveal_removed)
+    assert {"LS-R01", "LS-R02"}.isdisjoint(result.human_review_items)
+    assert result.breakdown.strategic_reasoning == 0
+
+
 def test_accepted_adjudicated_rubrics_complete_score(
     lattice, perfect_session, accepted_rubric_decisions
 ):

@@ -12,6 +12,7 @@ from strategic_surprise_bench.inspect_task import (
     DEFAULT_VALIDATOR,
     MAX_OUTPUT_TOKENS,
     MESSAGE_LIMIT,
+    _rubric_evaluation_context,
     strategic_surprise,
 )
 from strategic_surprise_bench.loader import load_case
@@ -40,6 +41,21 @@ def test_default_judge_cascade_uses_terra_cross_family_and_luna():
         "judge_b": DEFAULT_JUDGE_B,
         "validator": DEFAULT_VALIDATOR,
     }
+
+
+def test_strategic_judge_context_is_pre_reveal(lattice):
+    responses = make_mock_session(lattice, "perfect")
+    strategic = next(item for item in lattice.rubric if item.dimension == "alternatives")
+    policy = next(item for item in lattice.rubric if item.dimension == "policy")
+    strategic_response, strategic_facts = _rubric_evaluation_context(
+        lattice, responses, strategic
+    )
+    policy_response, policy_facts = _rubric_evaluation_context(lattice, responses, policy)
+    round_three_ids = set(lattice.rounds[2].common_evidence_ids)
+    assert strategic_response.round == 2
+    assert all(not any(f"[{item}]" in fact for item in round_three_ids) for fact in strategic_facts)
+    assert policy_response.round == 3
+    assert any(any(f"[{item}]" in fact for item in round_three_ids) for fact in policy_facts)
 
 
 def test_agent_tools_are_bounded_note_takers():

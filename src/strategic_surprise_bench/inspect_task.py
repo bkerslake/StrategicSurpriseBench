@@ -17,7 +17,12 @@ from pydantic import ValidationError
 from strategic_surprise_bench.calibration import gate_allows_automated_scoring
 from strategic_surprise_bench.loader import list_case_ids, load_case
 from strategic_surprise_bench.mechanics import ResponseValidationError, validate_round_response
-from strategic_surprise_bench.models import RoundResponse, ValidationDecision
+from strategic_surprise_bench.models import (
+    RoundResponse,
+    RubricItem,
+    ScenarioCase,
+    ValidationDecision,
+)
 from strategic_surprise_bench.prompts import (
     AGENT_ADDENDUM,
     SYSTEM_PROMPT,
@@ -130,6 +135,22 @@ def _judge_families_are_independent(judge_a: str, judge_b: str) -> bool:
     return judge_a.split("/", 1)[0].casefold() != judge_b.split("/", 1)[0].casefold()
 
 
+def _rubric_evaluation_context(
+    case: ScenarioCase, responses: list[RoundResponse], rubric: RubricItem
+) -> tuple[RoundResponse, list[str]]:
+    evidence_round = 2 if rubric.dimension == "alternatives" else 3
+    evaluation_response = responses[evidence_round - 1]
+    selected = {
+        order.action_id
+        for response in responses[: evidence_round - 1]
+        for order in response.collection_orders
+    }
+    authorized_facts = [
+        f"[{item.id}] {item.text}" for item in case.visible_evidence(evidence_round, selected)
+    ]
+    return evaluation_response, authorized_facts
+
+
 @scorer(metrics=[mean()])
 def strategic_surprise_scorer(
     *,
@@ -187,17 +208,12 @@ def strategic_surprise_scorer(
                     InspectJudgeBackend(str(judge_b), "judge-b"),
                     InspectJudgeBackend(str(validator), "validator"),
                 )
-                selected = {
-                    order.action_id
-                    for response in responses
-                    for order in response.collection_orders
-                }
-                authorized_facts = [
-                    f"[{item.id}] {item.text}" for item in case.visible_evidence(3, selected)
-                ]
                 for rubric in case.rubric:
+                    evaluation_response, authorized_facts = _rubric_evaluation_context(
+                        case, responses, rubric
+                    )
                     decisions.append(
-                        await cascade.evaluate(rubric, responses[-1], authorized_facts)
+                        await cascade.evaluate(rubric, evaluation_response, authorized_facts)
                     )
 
         result = score_session(case, responses, decisions)

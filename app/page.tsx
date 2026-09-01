@@ -10,16 +10,6 @@ import {
 
 const repositoryUrl = "https://github.com/bkerslake/StrategicSurpriseBench";
 
-function BrandMark() {
-  return (
-    <svg className="brand-mark" viewBox="0 0 28 28" aria-hidden="true">
-      <circle cx="14" cy="14" r="12.5" fill="none" />
-      <path d="M14 2v24M2 14h24" />
-      <circle cx="14" cy="14" r="3.5" />
-    </svg>
-  );
-}
-
 function Arrow() {
   return (
     <svg className="arrow" viewBox="0 0 18 18" aria-hidden="true">
@@ -53,7 +43,6 @@ export default function Home() {
 
       <header className="site-header">
         <a className="brand" href="#top" aria-label="Strategic Surprise Bench home">
-          <BrandMark />
           <span>Strategic Surprise Bench</span>
         </a>
         <nav aria-label="Main navigation">
@@ -70,7 +59,6 @@ export default function Home() {
 
       <section className="hero shell" id="top">
         <Reveal className="hero-copy">
-          <p className="eyebrow">Open benchmark / v0.2</p>
           <h1>
             Can a model see past the story it was <em>meant</em> to believe?
           </h1>
@@ -314,13 +302,6 @@ export default function Home() {
 
       <footer className="site-footer">
         <div className="shell footer-grid">
-          <div>
-            <a className="brand footer-brand" href="#top">
-              <BrandMark />
-              <span>Strategic Surprise Bench</span>
-            </a>
-            <p>Research code for warning before the surprise becomes obvious.</p>
-          </div>
           <div className="footer-links">
             <a href="#benchmark">Benchmark</a>
             <a href="#cases">Cases</a>

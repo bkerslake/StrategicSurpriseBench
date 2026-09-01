@@ -142,13 +142,14 @@ def _evidence_score(case: ScenarioCase, responses: list[RoundResponse]) -> float
 
 def _rubric_scores(
     case: ScenarioCase,
-    final_response: RoundResponse,
+    responses: list[RoundResponse],
     decisions: dict[str, ValidationDecision] | None,
 ) -> tuple[dict[str, float], list[str], float]:
     scores: dict[str, float] = {}
     human_review: list[str] = []
     automated = 0
     for rubric in case.rubric:
+        evaluation_response = responses[1] if rubric.dimension == "alternatives" else responses[-1]
         decision = decisions.get(rubric.id) if decisions else None
         if decision and decision.status == ValidationStatus.accepted and decision.score is not None:
             scores[rubric.id] = decision.score
@@ -157,7 +158,7 @@ def _rubric_scores(
             scores[rubric.id] = 0.0
             human_review.append(rubric.id)
         else:
-            screen = deterministic_topic_screen(final_response, rubric)
+            screen = deterministic_topic_screen(evaluation_response, rubric)
             if screen.label.value == "fail" and screen.confidence >= 0.9:
                 scores[rubric.id] = 0.0
                 automated += 1
@@ -280,7 +281,7 @@ def score_session(
 ) -> BenchmarkScore:
     validate_session(case, responses)
     decisions = {item.rubric_id: item for item in rubric_decisions or []}
-    rubric_scores, human_review, coverage = _rubric_scores(case, responses[-1], decisions)
+    rubric_scores, human_review, coverage = _rubric_scores(case, responses, decisions)
 
     forecast, weighted_brier = _forecast_score(case, responses)
     evidence = _evidence_score(case, responses)

@@ -42,6 +42,10 @@ Reviewers must treat these distinctions consistently:
 - a contradiction elsewhere in the response prevents a full hit unless the response explicitly
   resolves it.
 
+Strategic-reasoning items are labeled from the Round 2 response and only the evidence available at
+that point. Reviewers must not use the Round 3 reveal to rescue an omitted pre-surprise hypothesis.
+Policy and memo items are labeled from Round 3.
+
 Separately, two or three case reviewers and one cross-case methods reviewer rate scenario
 plausibility, answerability, clue sufficiency, collection likelihoods, policy branches, rubric
 coverage, and leakage. Each case must average at least 4/5 on plausibility and answerability and must
