@@ -72,60 +72,67 @@ export const scoreComponents = [
 ] as const;
 
 export const resultsState = {
-  status: "calibration-screen",
-  statusLabel: "Historical v0.2",
-  eyebrow: "Archive / v0.2 guided protocol",
-  title: "Historical results from the earlier benchmark.",
-  body: "These results used the old guided workflow and do not measure v0.3 spontaneous assessment. A first v0.3 screen is now documented in the repository. The historical scores remain provisional and are not comparable with the new 10-point scale.",
+  status: "v0.3.1-screen",
+  statusLabel: "v0.3.1 screen",
+  eyebrow: "Results / v0.3.1 paired screen",
+  title: "Provisional grades from the current protocol.",
+  body: "Four models answered the same six crises, both updates, one run each, with Claude Opus 5 as the common judge. Scores are out of 10 across five private criteria. Three models are fully graded; no grade was lost to the judge. These are single-run model grades and have not been validated by expert reviewers.",
   facts: [
-    { value: "24/24", label: "model-case scores" },
-    { value: "01", label: "run per cell" },
-    { value: "16.7%", label: "rubrics auto-accepted" },
-    { value: "0.32", label: "Luna–Sol gap" },
+    { value: "48", label: "sessions graded" },
+    { value: "230/240", label: "grades accepted" },
+    { value: "03/04", label: "models fully graded" },
+    { value: "0.84", label: "Sol–Luna gap" },
   ],
-  footnote: "One run cannot establish a stable rank. Sonnet's 39.64 mean includes a fail-closed Red Harvest schema score of zero; its five structured sessions averaged 47.56.",
+  footnote: "One run cannot establish a stable rank. Sonnet's 8.90 averages its ten graded sessions; both Red Harvest sessions were filtered by the provider before grading and are not scored. Its all-resolutions bound is 7.42–9.08.",
 } as const;
 
 export const modelResults = [
-  {
-    key: "opus",
-    name: "Claude Opus 5",
-    shortName: "Opus 5",
-    provider: "Anthropic",
-    score: 53.96,
-    range: "44.31–61.53",
-  },
-  {
-    key: "luna",
-    name: "GPT-5.6 Luna",
-    shortName: "Luna",
-    provider: "OpenAI",
-    score: 50.69,
-    range: "41.40–60.53",
-  },
   {
     key: "sol",
     name: "GPT-5.6 Sol",
     shortName: "Sol",
     provider: "OpenAI",
-    score: 50.37,
-    range: "43.89–53.43",
+    score: 9.17,
+    range: "8.00–10.00",
+    sessions: "12/12",
   },
   {
     key: "sonnet",
     name: "Claude Sonnet 5",
     shortName: "Sonnet 5",
     provider: "Anthropic",
-    score: 39.64,
-    range: "0.00–52.55",
+    score: 8.9,
+    range: "7.00–10.00",
+    sessions: "10/12",
+  },
+  {
+    key: "luna",
+    name: "GPT-5.6 Luna",
+    shortName: "Luna",
+    provider: "OpenAI",
+    score: 8.33,
+    range: "7.00–10.00",
+    sessions: "12/12",
+  },
+  {
+    key: "gpt4o",
+    name: "GPT-4o",
+    shortName: "GPT-4o",
+    provider: "OpenAI",
+    score: 5.83,
+    range: "5.00–7.00",
+    sessions: "12/12",
   },
 ] as const;
 
-export const caseResults = [
-  { case: "Lattice Signal", opus: 44.31, luna: 49.21, sol: 43.89, sonnet: 40.69 },
-  { case: "Black Current", opus: 57.70, luna: 60.53, sol: 52.66, sonnet: 50.85 },
-  { case: "Ember Guarantee", opus: 55.36, luna: 57.07, sol: 53.43, sonnet: 52.55 },
-  { case: "Meridian Shock", opus: 61.53, luna: 49.07, sol: 49.86, sonnet: 44.02 },
-  { case: "Sable Patch", opus: 56.72, luna: 46.86, sol: 52.82, sonnet: 49.71 },
-  { case: "Red Harvest", opus: 48.13, luna: 41.40, sol: 49.57, sonnet: 0.00 },
-] as const;
+export type ModelKey = (typeof modelResults)[number]["key"];
+
+// Mean of the two matched variants per case. null: no scorable session.
+export const caseResults: ReadonlyArray<{ case: string } & Record<ModelKey, number | null>> = [
+  { case: "Lattice Signal", sol: 9.5, sonnet: 8.5, luna: 9.0, gpt4o: 5.0 },
+  { case: "Black Current", sol: 10.0, sonnet: 9.5, luna: 8.0, gpt4o: 6.0 },
+  { case: "Ember Guarantee", sol: 8.5, sonnet: 7.0, luna: 7.0, gpt4o: 5.5 },
+  { case: "Meridian Shock", sol: 9.0, sonnet: 10.0, luna: 8.5, gpt4o: 5.5 },
+  { case: "Sable Patch", sol: 10.0, sonnet: 9.5, luna: 10.0, gpt4o: 6.0 },
+  { case: "Red Harvest", sol: 8.0, sonnet: null, luna: 7.5, gpt4o: 7.0 },
+];

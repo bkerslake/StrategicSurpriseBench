@@ -11,7 +11,7 @@ import {
 } from "@/lib/site-data";
 
 const repositoryUrl = "https://github.com/bkerslake/StrategicSurpriseBench";
-const reportUrl = `${repositoryUrl}/blob/main/results/MULTIMODEL_BENCHMARK_REPORT_2026-08-31.md`;
+const reportUrl = `${repositoryUrl}/blob/main/results/V0_3_1_SCREEN_2026-09-15.md`;
 
 function Arrow() {
   return (
@@ -254,19 +254,22 @@ export default function Home() {
             <div
               className="result-chart"
               role="img"
-              aria-label="Mean calibration scores: Claude Opus 5 53.96, GPT-5.6 Luna 50.69, GPT-5.6 Sol 50.37, and Claude Sonnet 5 39.64 out of 100"
+              aria-label="Mean provisional scores out of 10: GPT-5.6 Sol 9.17, Claude Sonnet 5 8.90 over ten graded sessions, GPT-5.6 Luna 8.33, and GPT-4o 5.83"
             >
               <div className="chart-y-axis" aria-hidden="true">
-                <span>100</span><span>75</span><span>50</span><span>25</span><span>0</span>
+                <span>10</span><span>7.5</span><span>5</span><span>2.5</span><span>0</span>
               </div>
               <div className="chart-field">
                 <div className="chart-grid" aria-hidden="true" />
                 <div className="model-bars">
                   {modelResults.map((result) => (
                     <div className="model-result" key={result.key}>
-                      <span className="model-score">{result.score.toFixed(2)}</span>
+                      <span className="model-score">
+                        {result.score.toFixed(2)}
+                        {result.sessions !== "12/12" ? <sup>†</sup> : null}
+                      </span>
                       <div className="model-bar" aria-hidden="true">
-                        <i style={{ height: `${result.score}%` }} />
+                        <i style={{ height: `${result.score * 10}%` }} />
                       </div>
                       <strong>{result.shortName}</strong>
                       <small>{result.provider}</small>
@@ -298,7 +301,7 @@ export default function Home() {
                 <p className="eyebrow">Case ledger</p>
                 <h3>Every score in the screen.</h3>
               </div>
-              <p>Best result per case is highlighted. Scores are out of 100.</p>
+              <p>Best result per case is highlighted. Scores are out of 10, averaged over both updates.</p>
             </div>
             <div className="case-results-scroll">
               <table>
@@ -313,19 +316,16 @@ export default function Home() {
                 <tbody>
                   {caseResults.map((result) => {
                     const bestScore = Math.max(
-                      ...modelResults.map((model) => result[model.key]),
+                      ...modelResults.map((model) => result[model.key] ?? -Infinity),
                     );
                     return (
                       <tr key={result.case}>
                         <th scope="row">{result.case}</th>
                         {modelResults.map((model) => {
                           const score = result[model.key];
-                          const isSchemaFailure =
-                            result.case === "Red Harvest" && model.key === "sonnet";
                           return (
                             <td className={score === bestScore ? "is-best" : undefined} key={model.key}>
-                              {score.toFixed(2)}
-                              {isSchemaFailure ? <sup>†</sup> : null}
+                              {score === null ? <>—<sup>†</sup></> : score.toFixed(2)}
                             </td>
                           );
                         })}
@@ -336,8 +336,9 @@ export default function Home() {
               </table>
             </div>
             <p className="case-results-note">
-              † Fail-closed schema score. Automated rubric labels are calibration-only and have not
-              passed the expert publication gate.
+              † Both Sonnet Red Harvest sessions were filtered by the provider before grading; they
+              are missing, not zero, and Sonnet's mean covers its ten graded sessions. Grades are
+              provisional single-judge labels and have not been validated by expert reviewers.
             </p>
           </Reveal>
         </div>
