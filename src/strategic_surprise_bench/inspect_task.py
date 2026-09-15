@@ -15,7 +15,9 @@ from inspect_ai.scorer import Score, mean, scorer
 from inspect_ai.solver import Generate, Solver, TaskState, solver, system_message
 from pydantic import ValidationError
 
+from strategic_surprise_bench.assessment_task import strategic_surprise  # noqa: F401
 from strategic_surprise_bench.calibration import gate_allows_automated_scoring
+from strategic_surprise_bench.legacy_versions import BENCHMARK_VERSION
 from strategic_surprise_bench.loader import list_case_ids, load_case
 from strategic_surprise_bench.mechanics import ResponseValidationError, validate_round_response
 from strategic_surprise_bench.models import (
@@ -33,7 +35,6 @@ from strategic_surprise_bench.prompts import (
 from strategic_surprise_bench.rubric import InspectJudgeBackend, JudgeCascade
 from strategic_surprise_bench.scoring import score_session
 from strategic_surprise_bench.tools import bounded_analyst_tools
-from strategic_surprise_bench.versions import BENCHMARK_VERSION
 
 Condition = Literal["plain", "agent"]
 JudgeMode = Literal["off", "calibration", "published"]
@@ -251,7 +252,7 @@ def strategic_surprise_scorer(
 
 
 @task
-def strategic_surprise(
+def strategic_surprise_legacy(
     condition: Condition = "plain",
     case_id: str | None = None,
     judge_mode: JudgeMode = "off",

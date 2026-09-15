@@ -1,26 +1,17 @@
-benchmark_version: 0.2.0
-conditions: [plain, agent]
-cases:
-  - lattice_signal
-  - black_current
-  - ember_guarantee
-  - meridian_shock
-  - sable_patch
-  - red_harvest
-epochs: 3
-temperature: 0.2
-max_tokens_per_round: 6000
-models:
-  - openai/gpt-5.6-luna
-  - openai/gpt-5.6-terra
-  - anthropic/claude-sonnet-5
-report:
-  hierarchical_bootstrap_samples: 5000
-  exploratory_only: true
+benchmark_version: 0.3.0
+protocol: unprompted_assessment
+cases: [lattice_signal, black_current, ember_guarantee, meridian_shock, sable_patch, red_harvest]
+variant: both
+epochs: 1
+max_tokens: 4096
+models: []  # Supply exact provider/model IDs; record provider-specific thinking settings.
 judging:
-  mode: calibration
-  judge_a: openai/gpt-5.6-terra
-  judge_b: anthropic/claude-sonnet-5
-  validator: openai/gpt-5.6-luna
-  judge_prompt_version: 0.2.1
-  calibration_report: null
+  judge: null  # Explicit provider/model ID enables provisional grading; null means human review.
+  calls_per_session: 2
+  status: unvalidated
+report:
+  exploratory_only: true
+  dimensions: true
+  paired_adaptation: true
+  missing_is_zero: false
+  note: This file records the design; pass task options to Inspect as documented in README.md.

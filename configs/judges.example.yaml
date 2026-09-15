@@ -1,12 +1,10 @@
-judge_mode: calibration
-judge_a: openai/gpt-5.6-terra
-judge_b: anthropic/claude-sonnet-5
-validator: openai/gpt-5.6-luna
-judge_prompt_version: 0.2.1
-calibration_report: null
+benchmark_version: 0.3.0
+judge: null  # Supply one explicit provider/model ID to enable provisional grading.
+judge_prompt_version: 0.3.0
 notes:
-  - Judge A and Judge B must use different provider families.
-  - Terra is the primary semantic judge; Luna is the independent evidence validator.
-  - Swap judge_a and validator if you want Luna to judge and Terra to validate.
-  - Calibration mode produces labels for meta-evaluation but never marks them publishable.
-  - Published mode additionally requires a passing locked gate report.
+  - One model grades four initial criteria together and adaptation in a separate call.
+  - The initial judge never sees the update or the second response.
+  - No fallback model, cascade, or automated retry of malformed judgments.
+  - Missing or ungrounded judgments remain ungraded, not zero.
+  - Model grades remain provisional; blinded human review is needed for validation.
+  - The v0.2 calibration gate does not apply to this protocol.

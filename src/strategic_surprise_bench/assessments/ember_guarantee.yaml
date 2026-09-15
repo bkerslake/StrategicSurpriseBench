@@ -1,0 +1,91 @@
+id: ember_guarantee
+title: Ember Guarantee
+domain: Diplomacy and nonproliferation
+version: 0.3.0
+provenance_case: ember_guarantee
+role: You are advising Lydia’s national security council.
+background: Lydia guarantees Varin’s security and participates in regional safeguards talks with Aras.
+  Varin’s government faces a confidence vote next week. Sorell trades with both countries. The council
+  is preparing instructions for tomorrow’s ministerial calls.
+initial_evidence:
+- Safeguards inspectors report that Aras has begun enriching a small stock to 20 percent at a declared
+  pilot facility and requested a technical consultation.
+- Aras’s president told a rally that no foreign power can stop the country mastering the nuclear cycle.
+  The speech preceded scheduled banking-relief negotiations.
+- Procurement records show valves compatible with the declared facility. Inspectors report no evidence
+  of weaponization work but have not visited every military site.
+- Varin’s defense minister and energy chair visited Sorell on consecutive days without their usual Lydian
+  liaison. Their offices describe the visits as commercial.
+initial_rubric:
+- dimension: adversarial
+  stage: 1
+  question: Does the assessment independently question a consequential claim or assumption using the record?
+  zero: Treats rhetoric as proof of a weapons decision or the visits as proof of an alliance break.
+  one: Notes bargaining or another explanation for the speech or visits.
+  two: Uses timing, institutional roles, or incentives to distinguish bargaining from a weapons decision,
+    or commercial visits from a possible security negotiation. Identifies a check that could discriminate
+    the explanations without asserting the hidden interpretation is true.
+- dimension: systems
+  stage: 1
+  question: Does it explain a consequential indirect effect through a supported causal mechanism?
+  zero: Focuses exclusively on Aras’s technical activity.
+  one: Notes that Varin or the alliance could be affected.
+  two: Explains how Lydia’s response to Aras could alter Varin’s confidence, domestic political options,
+    or choice of partners, and why this changes the calls or assurance needed. Does not require a confirmed
+    realignment.
+- dimension: uncertainty
+  stage: 1
+  question: Does its level of certainty fit the available evidence and distinguish what is known from
+    what remains unresolved?
+  zero: Equates enrichment, intent, and imminent weapons capability, or rules out unobserved activity
+    categorically.
+  one: Acknowledges inspection limits or uncertain intent.
+  two: Distinguishes observed enrichment from a decision to build weapons and weighs inspection/procurement
+    evidence against rhetoric, while retaining the stated access limitation. Numerical probabilities are
+    optional.
+- dimension: planning
+  stage: 1
+  question: Does it connect a decision objective to a necessary prerequisite and a practical next step?
+  zero: Proposes a final settlement or coercive action without an achievable next step.
+  one: Recommends dialogue or inspections generically.
+  two: Connects a stated objective to a prerequisite that the calls can address, such as verifying facility
+    activity before attribution or clarifying Varin’s commitments before offering assurance. Gives a concrete
+    request and explains what decision its answer enables.
+updates:
+- id: a
+  evidence:
+  - Aras accepts continued monitoring of the declared pilot and offers to cap its stock during banking
+    negotiations. Inspectors account for the declared material.
+  - An authenticated Varin cabinet agenda authorizes discussion with Sorell of port access and an emergency
+    defense consultation clause. The prime minister describes Lydian support as unreliable in the closed
+    session.
+  - Varin has not signed an agreement. Its coalition leaders request a Lydian assurance before the confidence
+    vote.
+  adaptation:
+    dimension: adaptation
+    stage: 2
+    question: Does the second assessment use the new evidence to revise or retain its judgments and recommendations
+      appropriately?
+    zero: Treats Aras as a confirmed weapons sprint or ignores the new alliance evidence.
+    one: Notices the shift toward Varin but proposes only generic monitoring.
+    two: Reduces the immediate inference of an Aras sprint, increases attention to Varin’s prospective
+      security arrangement, and proposes a timely assurance or clarification step before the vote without
+      treating the unsigned arrangement as final.
+- id: b
+  evidence:
+  - Aras accepts continued monitoring of the declared pilot and offers to cap its stock during banking
+    negotiations. Inspectors account for the declared material.
+  - Varin releases the visit agenda and signed fuel-purchase agreement. A Lydian liaison who attended
+    remotely confirms that it contains no access or defense provisions.
+  - Varin’s parliament votes to renew the existing Lydian exercise program, including opposition support.
+    No other agreement has been identified.
+  adaptation:
+    dimension: adaptation
+    stage: 2
+    question: Does the second assessment use the new evidence to revise or retain its judgments and recommendations
+      appropriately?
+    zero: Insists the visits prove a secret alliance break or treats the Aras speech as a confirmed sprint.
+    one: Acknowledges reassurance but leaves unsupported alarm in the recommendation.
+    two: Lowers concern about imminent realignment and a weapons sprint using the new records, maintains
+      proportionate consultation or verification, and avoids turning the absence of identified secret
+      agreements into absolute certainty.

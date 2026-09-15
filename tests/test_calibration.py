@@ -8,13 +8,13 @@ from strategic_surprise_bench.calibration import (
     evaluate_calibration,
     gate_allows_automated_scoring,
 )
-from strategic_surprise_bench.loader import load_all_cases
-from strategic_surprise_bench.reliability import evaluate_reliability
-from strategic_surprise_bench.versions import (
+from strategic_surprise_bench.legacy_versions import (
     BENCHMARK_VERSION,
     JUDGE_PROMPT_VERSION,
     RUBRIC_VERSION,
 )
+from strategic_surprise_bench.loader import load_all_cases
+from strategic_surprise_bench.reliability import evaluate_reliability
 
 
 def complete_synthetic_corpus() -> CalibrationCorpus:

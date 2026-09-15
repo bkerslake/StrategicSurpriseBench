@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "strategic-surprise-bench"
-version = "0.2.0"
-description = "A controlled-world benchmark for strategic warning, collection, forecasting, and policy analysis."
+version = "0.3.0"
+description = "A fictional-crisis benchmark for spontaneous strategic assessment and evidence-based adaptation."
 readme = "README.md"
 requires-python = ">=3.11"
 license = "Apache-2.0"
@@ -37,7 +37,7 @@ strategic_surprise_bench = "strategic_surprise_bench.inspect_task"
 where = ["src"]
 
 [tool.setuptools.package-data]
-strategic_surprise_bench = ["scenarios/*.yaml"]
+strategic_surprise_bench = ["scenarios/*.yaml", "assessments/*.yaml"]
 
 [tool.pytest.ini_options]
 addopts = "-q"

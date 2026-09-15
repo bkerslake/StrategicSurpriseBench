@@ -63,12 +63,12 @@ export default function Home() {
       <section className="hero shell" id="top">
         <Reveal className="hero-copy">
           <h1>
-            Can a model see past the story it was <em>meant</em> to believe?
+            Can a model notice what matters <em>without</em> a hint?
           </h1>
           <p className="hero-lede">
-            Six fictional crises test strategic warning under deception, thin evidence, and sudden
-            change. The model has to forecast, investigate, and choose a response before the tidy
-            explanation falls apart.
+            Six fictional crises ask for an assessment and a recommendation, then introduce new
+            evidence. The model decides what to question, what follows, and whether its advice
+            should change. The prompt never names the reasoning skills being tested.
           </p>
           <div className="hero-actions">
             <a className="button button-primary" href="#benchmark">
@@ -83,14 +83,14 @@ export default function Home() {
 
         <Reveal className="hero-visual" delay={0.14}>
           <div className="visual-topline">
-            <span>Hypothesis weight</span>
+            <span>Confidence after new evidence</span>
             <span className="live-label"><i /> Scenario anatomy</span>
           </div>
           <SignalPlot />
           <div className="visual-note">
-            <span className="visual-note-index">H3</span>
+            <span className="visual-note-index">↗↘</span>
             <div>
-              <strong>The overlooked path survives.</strong>
+              <strong>Evidence can change the direction.</strong>
               <p>Illustrative trace only. This is not model performance data.</p>
             </div>
           </div>
@@ -115,8 +115,8 @@ export default function Home() {
         <Reveal>
           <SectionHeading
             eyebrow="The test"
-            title="The obvious answer is often wrong. That is the point."
-            text="Every case supplies a vivid explanation and leaves two alternative slots for the analyst to build. New evidence can weaken the headline story, split one event into two, or expose a second-order failure that matters more than the first."
+            title="An assessment. An update. No reasoning checklist."
+            text="Each model receives a neutral brief and writes ordinary prose. Private grading criteria assess what it noticed and how well it used the evidence. The straightforward explanation can be correct."
           />
         </Reveal>
 
@@ -143,7 +143,7 @@ export default function Home() {
           </p>
           <div className="callout-code" aria-label="Allowed and blocked access">
             <span><i className="dot dot-blue" /> case evidence</span>
-            <span><i className="dot dot-blue" /> bounded notes</span>
+            <span><i className="dot dot-blue" /> ordinary prose</span>
             <span><i className="dot dot-orange" /> web blocked</span>
             <span><i className="dot dot-orange" /> hidden key blocked</span>
           </div>
@@ -155,7 +155,7 @@ export default function Home() {
           <Reveal>
             <SectionHeading
               eyebrow="Case files"
-              title="Six ways to miss what is happening."
+              title="Six settings for strategic assessment."
               text="The actors are fictional. The analytic traps are not."
             />
           </Reveal>
@@ -180,7 +180,7 @@ export default function Home() {
         <Reveal>
           <SectionHeading
             eyebrow="Run of play"
-            title="Three rounds. Less certainty than you would like."
+            title="Two assessments. One change in the evidence."
             text="The format stays fixed across every case, which keeps model comparisons clean while the subject matter changes."
           />
         </Reveal>
@@ -192,7 +192,7 @@ export default function Home() {
               <i /><i /><i /><i />
             </div>
             <h3>Set the board</h3>
-            <p>Four hypotheses, six forecasts, and a first collection budget. The loudest signal arrives early.</p>
+            <p>A factual dossier and a neutral request for an assessment and recommendation. No supplied explanations or menus.</p>
           </Reveal>
           <Reveal className="round-card" delay={0.09}>
             <span className="round-number">02</span>
@@ -200,27 +200,26 @@ export default function Home() {
               <i /><i /><i /><i />
             </div>
             <h3>Update under pressure</h3>
-            <p>Fresh evidence tests source handling. The analyst gets one more chance to spend for information.</p>
+            <p>The model receives one of two plausible updates. It provides its current assessment and recommendation.</p>
           </Reveal>
           <Reveal className="round-card" delay={0.16}>
-            <span className="round-number">03</span>
+            <span className="round-number">Review</span>
             <div className="round-diagram round-diagram-three" aria-hidden="true">
               <i /><i /><i /><i />
             </div>
-            <h3>Absorb the surprise</h3>
-            <p>The hidden path becomes visible. Forecasts move again, policy points are allocated, and the memo must show its work.</p>
+            <h3>Grade privately</h3>
+            <p>After the two responses, reviewers use case-specific anchors. Initial grades use only the initial brief and response.</p>
           </Reveal>
         </div>
 
         <Reveal className="scoring-panel">
           <div className="scoring-copy">
-            <p className="eyebrow">Scoring / 100 points</p>
-            <h2>Most of the grade comes from code.</h2>
+            <p className="eyebrow">Scoring / 10 points</p>
+            <h2>Reasoning earns credit. Keywords do not.</h2>
             <p>
-              Forecast skill, collection choices, allocation thresholds, and modeled policy
-              consequences are deterministic. Open-ended points require two judges, exact evidence
-              grounding, and a separate validator. Calibration scores are provisional; publication
-              remains locked behind the expert gate.
+              Five anchored criteria receive zero, one, or two points. Positive grades require
+              supporting response quotes. Missing judgments remain ungraded. Optional single-model
+              grading is provisional until checked by people; the revised rubric is not yet validated.
             </p>
             <a href={`${repositoryUrl}#what-is-evaluated`} target="_blank" rel="noreferrer">
               Inspect the scoring spec
@@ -232,7 +231,7 @@ export default function Home() {
               <div className="score-row" key={component.label}>
                 <span>{component.label}</span>
                 <div className="score-track" aria-hidden="true">
-                  <i style={{ width: `${(component.points / 25) * 100}%` }} />
+                  <i style={{ width: `${(component.points / 2) * 100}%` }} />
                 </div>
                 <strong>{String(component.points).padStart(2, "0")}</strong>
               </div>
@@ -347,13 +346,14 @@ export default function Home() {
       <section className="open-section shell">
         <Reveal className="open-copy">
           <p className="eyebrow">Open work</p>
-          <h2>The cases, score code, and release gates are public.</h2>
+          <h2>The cases, scoring anchors, and code are public.</h2>
         </Reveal>
         <Reveal className="open-details" delay={0.08}>
           <p>
-            You can audit the hidden worlds, run the benchmark against an Inspect-supported
-            provider, or test the pipeline without credentials. Public cases can eventually leak
-            into training data; sealed and rotating variants are planned for a later release.
+            You can inspect both updates, review the grading anchors, and test the pipeline without
+            credentials. Rubrics are hidden from the evaluated model, not from this repository.
+            Public exposure remains a contamination risk. The current version measures short
+            strategic assessments, not sustained operational performance.
           </p>
           <div className="open-actions">
             <a className="button button-primary" href={repositoryUrl} target="_blank" rel="noreferrer">

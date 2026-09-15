@@ -21,7 +21,7 @@ def main() -> int:
     with tempfile.TemporaryDirectory(prefix="strategic-surprise-smoke-") as log_dir:
         for model in models:
             logs = eval(
-                strategic_surprise(condition="plain", case_id="lattice_signal"),
+                strategic_surprise(case_id="lattice_signal", variant="a"),
                 model=model,
                 limit=1,
                 display="none",

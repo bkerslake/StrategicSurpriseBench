@@ -1,0 +1,93 @@
+id: red_harvest
+title: Red Harvest
+domain: Public health and security
+version: 0.3.0
+provenance_case: red_harvest
+role: You are advising Oranta’s regional coordination council.
+background: Lydon and Veska share a river border containing villages, wildlife markets, and a major freight
+  road. Lydon’s Ravel Institute studies local animal diseases. The council must agree on border access
+  and emergency purchasing arrangements tomorrow.
+initial_evidence:
+- Clinicians report twenty-three patients with a similar illness. Most of the earliest patients handled
+  animals near a recently reported wildlife die-off.
+- Veska cites an anonymous Ravel employee’s account of a laboratory escape and requests control of the
+  border cordon. The employee has not been interviewed by the council.
+- A surveillance consortium reports related illness in local wildlife before the recognized human cases.
+  The chronology of all human cases remains incomplete.
+- A newly registered distributor offers emergency treatment supplies at half the current tender price.
+  The procurement office has not completed its supplier checks.
+initial_rubric:
+- dimension: adversarial
+  stage: 1
+  question: Does the assessment independently question a consequential claim or assumption using the record?
+  zero: Treats the anonymous account as proven origin, or declares deliberate Veskan fabrication as fact.
+  one: Questions the origin claim or Veska’s requested authority.
+  two: Explains how Veska’s requested control creates an incentive relevant to evaluating its account,
+    or why the anonymous account needs independent corroboration against the exposure record. Proposes
+    a discriminating check without requiring a proven conspiracy.
+- dimension: systems
+  stage: 1
+  question: Does it explain a consequential indirect effect through a supported causal mechanism?
+  zero: Treats identifying the origin as sufficient to resolve the response.
+  one: Mentions access or supply quality as an additional issue.
+  two: Explains how border control can interrupt care or freight and worsen harm, or how unverified emergency
+    purchasing can propagate unsafe supplies across facilities. Links the pathway to a council decision
+    without claiming known counterfeit products.
+- dimension: uncertainty
+  stage: 1
+  question: Does its level of certainty fit the available evidence and distinguish what is known from
+    what remains unresolved?
+  zero: Asserts a proven laboratory origin, natural origin, or fictitious illness from the initial record.
+  one: Acknowledges uncertainty about origin or supplies.
+  two: Distinguishes the documented clinical cluster from unresolved origin, weighs the exposure chronology
+    against the uncorroborated account, and does not equate related wildlife illness with definitive exclusion
+    of all other pathways.
+- dimension: planning
+  stage: 1
+  question: Does it connect a decision objective to a necessary prerequisite and a practical next step?
+  zero: Waits for final origin attribution before all response, or approves unrestricted authority or
+    purchases without checks.
+  one: Suggests coordination or verification generically.
+  two: Connects continuity of care or safe supplies to a concrete prerequisite for tomorrow’s agreement,
+    such as independently mapped access needs, supplier verification, or monitored delivery arrangements.
+    Explains what approval the check enables.
+updates:
+- id: a
+  evidence:
+  - A joint clinical investigation confirms that early cases preceded the alleged laboratory incident
+    and shared the wildlife-market exposure. Some later transmission links remain unresolved.
+  - Observers document Veskan security checkpoints outside the agreed health perimeter. Two checkpoints
+    block freight to villages with no recorded cases; the council has received no public-health justification.
+  - An independent supply inspection finds falsified manufacturer documents for the new distributor’s
+    shipment. The shipment has not yet been distributed.
+  adaptation:
+    dimension: adaptation
+    stage: 2
+    question: Does the second assessment use the new evidence to revise or retain its judgments and recommendations
+      appropriately?
+    zero: Ignores the access and supply findings after favoring natural exposure, or claims a complete
+      origin resolution.
+    one: Recognizes the additional concerns but gives no changed decision.
+    two: Raises concern about unauthorized control and the documented supply problem while lowering support
+      for the specific laboratory account. Changes tomorrow’s access or procurement recommendation and
+      retains uncertainty about unresolved transmission.
+- id: b
+  evidence:
+  - A joint clinical investigation confirms that early cases preceded the alleged laboratory incident
+    and shared the wildlife-market exposure. Some later transmission links remain unresolved.
+  - Veska accepts an observer-supervised cordon matching the joint clinical map. Freight and clinical
+    access logs show compliance over the following week, including opposition-administered villages.
+  - Independent inspectors authenticate the distributor’s manufacturer documents and stock. The lower
+    price comes from a documented donor subsidy; product suitability remains subject to the usual clinical
+    review.
+  adaptation:
+    dimension: adaptation
+    stage: 2
+    question: Does the second assessment use the new evidence to revise or retain its judgments and recommendations
+      appropriately?
+    zero: Insists covert occupation or counterfeit stock is established, or treats authenticated supplies
+      as proof of clinical effectiveness.
+    one: Acknowledges reassurance but leaves unsupported political or procurement conclusions in place.
+    two: Reduces the specific exploitation and falsification concerns using observed compliance and authentication,
+      supports bounded cooperation, and preserves clinical review and unresolved transmission limits without
+      inventing a hidden campaign.

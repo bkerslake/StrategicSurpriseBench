@@ -13,7 +13,9 @@ from strategic_surprise_bench.inspect_task import (
     MAX_OUTPUT_TOKENS,
     MESSAGE_LIMIT,
     _rubric_evaluation_context,
-    strategic_surprise,
+)
+from strategic_surprise_bench.inspect_task import (
+    strategic_surprise_legacy as strategic_surprise,
 )
 from strategic_surprise_bench.loader import load_case
 from strategic_surprise_bench.mock import make_mock_session

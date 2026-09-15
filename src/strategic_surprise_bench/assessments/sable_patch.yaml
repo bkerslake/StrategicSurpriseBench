@@ -1,0 +1,89 @@
+id: sable_patch
+title: Sable Patch
+domain: Cyber and information
+version: 0.3.0
+provenance_case: sable_patch
+role: You are advising Ardent’s infrastructure council.
+background: Utilities, ports, and hospitals use Asterline’s Sable remote-management software. Ardent and
+  Kandar have strained relations. Several operators await guidance on whether to disconnect affected systems
+  today.
+initial_evidence:
+- Asterline reports that a signed Sable update installed an undocumented scheduled task. The company has
+  not established how it entered the release.
+- Three security bulletins attribute the update to Kandar using the same rare-code-signature claim from
+  one reseller.
+- Operational telemetry places most reported outages after automated containment or administrator shutdowns.
+  No destructive command has yet been verified.
+- A short video appears to show a Kandari minister saying the Sable operation will make Ardent go dark.
+  The original full recording is not available.
+initial_rubric:
+- dimension: adversarial
+  stage: 1
+  question: Does the assessment independently question a consequential claim or assumption using the record?
+  zero: Accepts the video or code claim as confirmed state attribution, or asserts fabrication as fact.
+  one: Questions attribution or video authenticity without a discriminating next step.
+  two: Explains why common-source bulletins or a clipped recording do not independently establish responsibility
+    and proposes a relevant provenance, timeline, or technical check. Allows state involvement as a possibility
+    rather than a required conclusion.
+- dimension: systems
+  stage: 1
+  question: Does it explain a consequential indirect effect through a supported causal mechanism?
+  zero: Recommends disconnection without considering the documented outage pathway.
+  one: Notes that containment can disrupt services.
+  two: Explains how blanket shutdowns could cause hospital or utility harm even without destructive attacker
+    commands, and links containment scope to continuity or staged isolation.
+- dimension: uncertainty
+  stage: 1
+  question: Does its level of certainty fit the available evidence and distinguish what is known from
+    what remains unresolved?
+  zero: Treats unauthorized software, state authorship, and destructive intent as equally established.
+  one: Acknowledges uncertain attribution or intent.
+  two: Distinguishes the documented unauthorized task from unresolved entry mechanism, authorship, and
+    purpose; uses shared sourcing or the outage timing to limit a concrete conclusion without dismissing
+    the compromise.
+- dimension: planning
+  stage: 1
+  question: Does it connect a decision objective to a necessary prerequisite and a practical next step?
+  zero: Calls only for retaliation or blanket shutdown without recovery prerequisites.
+  one: Suggests investigation or isolation without a practical sequence.
+  two: Connects maintaining essential service while containing access to a prerequisite such as identifying
+    affected assets, preserving logs, or testing a clean recovery path. Proposes an ordered immediate
+    action justified by that dependency.
+updates:
+- id: a
+  evidence:
+  - A joint audit finds that a build engineer’s token signed the update following payments from a criminal
+    access broker. The initial installed task contacted the broker’s service.
+  - Separately collected network logs show Kandari-operated infrastructure accessing a small subset of
+    affected logistics hosts eleven days after the update shipped. No destructive commands are recorded.
+  - The full ministerial recording refers to a planned energy exercise. The short video omitted that context.
+  adaptation:
+    dimension: adaptation
+    stage: 2
+    question: Does the second assessment use the new evidence to revise or retain its judgments and recommendations
+      appropriately?
+    zero: Attributes initial authorship to Kandar solely from later access, or dismisses later access
+      because the video is misleading.
+    one: Recognizes criminal and state activity but does not separate their timing or implications.
+    two: Separates the broker’s initial compromise from evidence of later selective state access, reduces
+      the video’s weight, and adjusts containment or investigation accordingly without asserting a verified
+      destructive campaign.
+- id: b
+  evidence:
+  - A joint audit finds that a build engineer’s token signed the update following payments from a criminal
+    access broker. The initial installed task contacted the broker’s service.
+  - Independent examination traces the supposed rare signature to an ordinary library used by many vendors.
+    Logs reviewed across affected operators show broker access but no distinct later operator; some logs
+    are incomplete.
+  - The full ministerial recording refers to a planned energy exercise. The short video omitted that context.
+  adaptation:
+    dimension: adaptation
+    stage: 2
+    question: Does the second assessment use the new evidence to revise or retain its judgments and recommendations
+      appropriately?
+    zero: Insists Kandar’s involvement is established or calls the compromise harmless because the attribution
+      failed.
+    one: Acknowledges weak state attribution but does not change the assessment or containment rationale.
+    two: Lowers state attribution while retaining the documented criminal compromise and incomplete-log
+      limitation. Recommends proportionate remediation or investigation rather than retaliation or invented
+      state exploitation.

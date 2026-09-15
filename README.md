@@ -1,231 +1,148 @@
 # Strategic Surprise Bench
 
-Most evaluations give a model a question and grade the answer. This one gives it a developing
-crisis. The model has to keep competing explanations alive, decide what to investigate, update six
-forecasts, and spend a fixed policy budget after the surprise arrives.
+Can a model notice what matters in a fictional crisis **without being told what reasoning to do**?
 
-The benchmark contains six fictional, closed-world cases. Each runs for three rounds. It tests
-alternative generation, forecasting, source handling, collection choice, warning, and policy
-response under deception and uncertainty.
+Version 0.3 replaces the guided hypothesis/forecast/allocation exercise with two short prose
+assessments. Six fictional crises each have two matched updates. One may strengthen an initial
+concern; the other may explain it away. The model receives one variant in a fresh conversation.
+It is never told that variants exist or which skills the private rubric measures.
 
-The repository also contains the public microsite. It is a Next.js app built for Vercel; the first
-benchmark charts will be added after the full pilot is complete.
+**Status:** implemented, with offline contract tests. No v0.3 model comparison or expert validation
+has been completed. Historical v0.2 scores do not measure this protocol.
 
-> **Current status:** the runner, score path, and synthetic adversarial checks work. That is not the
-> same thing as expert validation. Automated rubric points stay locked until the expert holdout in
-> `calibration/protocol.md` passes every release gate. Anything unresolved goes to human review.
+## What the model sees
 
-## Start here
+A neutral role and factual dossier, followed by:
 
-Set up the Python package and run its tests:
+> Given the information below, provide your assessment and recommend what they should do next.
+
+Then additional evidence, followed by:
+
+> You have received the following update. Provide your current assessment and recommendation.
+
+Each response is requested within 600 words. There are no hypothesis slots, leading forecast
+questions, investigation menus, reasoning checklists, numeric allocations, or JSON requirements.
+There are no target tools. The model can recommend an investigation but does not execute it.
+The update is fixed; it does not depend on the recommendation. It is additional evidence, not an
+omniscient reveal. The task is strategic analysis, not a simulation of operational execution.
+
+## What is evaluated
+
+The private-to-the-target rubric gives each dimension 0, 1, or 2 points:
+
+| Dimension | Evidence of skill |
+|---|---|
+| Adversarial thinking | Independently challenges a consequential claim or assumption using evidence and a discriminating check |
+| Systems thinking | Explains an indirect effect through a credible causal mechanism and its decision implication |
+| Uncertainty | Distinguishes observations from inferences and expresses confidence appropriate to the record |
+| Planning | Connects a decision objective to a prerequisite and a feasible next step |
+| Adaptation and discipline | Revises or retains an assessment and recommendation as the update warrants |
+
+The first four dimensions use **only the initial brief and initial response**. Adaptation uses the
+second response, the update, and the prior assessment. Initial graders cannot see the update.
+Each case has concrete 0/1/2 anchors; substantively equivalent answers qualify. Name-checking,
+unsupported conspiracy claims, and listing every possible risk do not earn full credit.
+Restraint can be correct. Correctly retaining a view can earn as much as revising it.
+
+Totals are out of 10 **only when all five dimensions are graded**. Missing judgments, judge errors,
+and failed quote checks remain null; they are not zero and are not renormalized. A genuine absence
+of a skill can receive a reviewed zero. Positive credit requires an exact quote from the assessed
+response. This checks attribution, not the semantic validity of the grade.
+
+This does **not** measure numerical forecast calibration, sustained patience, or long-horizon
+execution. Uncertainty, short planning dependencies, and restrained updating are narrower proxies.
+
+## Run it
 
 ```bash
 uv sync --extra dev --no-editable
 uv run strategic-surprise validate
+uv run strategic-surprise preview --case lattice_signal --stage 1
 uv run pytest
 ```
 
-Run the microsite locally:
-
-```bash
-npm install
-npm run dev
-```
-
-The site lives in `app/`, with shared copy and future result inputs in `lib/site-data.ts`. Vercel can
-deploy the repository from its root directory.
-
-## Run the benchmark
-
-These commands run every case three times through an Inspect-supported provider:
+Run all six cases and both variants (12 sessions, **24 target calls**):
 
 ```bash
 uv run inspect eval strategic_surprise_bench/strategic_surprise \
-  -T condition=plain --model openai/<model> --epochs 3
-uv run inspect eval strategic_surprise_bench/strategic_surprise \
-  -T condition=agent --model anthropic/<model> --epochs 3
-uv run inspect eval strategic_surprise_bench/strategic_surprise \
-  -T condition=agent --model fireworks/<model> --epochs 3
+  --model <provider/model> --epochs 1
 ```
 
-Add `-T case_id=lattice_signal` to run one case. Inspect reads provider credentials from your
-environment; credentials do not belong in this repository. Generation defaults to temperature 0.2
-with a fixed answer budget.
+Add `-T case_id=lattice_signal` for one paired case. `-T variant=a` or `b` runs one update per case
+(12 target calls for six cases), but both variants are needed to examine directional updating.
+Provider credentials are handled by Inspect. No model API calls occur in offline tests.
 
-Enable the non-publishable calibration judge cascade with one flag. The defaults are GPT-5.6 Terra
-as the primary semantic judge, Anthropic Claude Sonnet 5 as the required cross-family judge, and
-GPT-5.6 Luna as the grounded validator:
+By default, responses are captured **ungraded**, not assigned zero. For provisional automated
+scoring, explicitly choose one judge:
 
 ```bash
 uv run inspect eval strategic_surprise_bench/strategic_surprise \
-  -T condition=plain -T judge_mode=calibration \
-  --model openai/gpt-5.6-terra --epochs 3
+  --model <provider/target> -T judge=<provider/judge> --epochs 1
 ```
 
-Override any default with `-T judge_a=...`, `-T judge_b=...`, or `-T validator=...`. Luna and Terra
-can be swapped between the OpenAI judge and validator roles, but Judge A and Judge B must remain
-different provider families. If the Anthropic judge is blocked by a provider safety classifier,
-that judge call alone is regenerated by Luna with the same atomic rubric and strict response
-schema. Target-model refusals never fall back: they remain part of the benchmark result.
+There are two judge calls per session: four initial criteria together, then adaptation separately.
+No cascade, validator, repair loop, or fallback provider. The full paired screen is at most
+24 target calls plus 24 successful judge requests, excluding provider transport retries. Judge
+failures remain missing. Target truncation/filtering is recorded and skips automatic grading.
+Human review is needed before treating model grades as a validated measurement.
 
-No API key? Use the deterministic mock path:
+The default output cap is 4096 tokens per target call, configurable with `-T max_tokens=...`.
+Thinking/reasoning settings vary by provider: set and record them consistently for your comparison.
+Inspect records actual model configuration, usage, latency, and messages. The runner does not force
+a temperature that some models ignore. Check truncation before comparing scores.
+
+## Human review and offline scoring
+
+Export captured prose, create a blank grade sheet, and review each stage separately:
 
 ```bash
-uv run strategic-surprise mock --case lattice_signal --quality perfect --output mock.json
-uv run strategic-surprise score mock.json --output score.json
+uv run strategic-surprise extract logs/<run>.eval --output-dir outputs/review
+uv run strategic-surprise grade-template outputs/review/sample-001.json --output grades.json
+uv run strategic-surprise review outputs/review/sample-001.json --stage 1 --output initial-review.json
+# Lock the initial grades before opening the update packet.
+uv run strategic-surprise review outputs/review/sample-001.json --stage 2 --output update-review.json
+uv run strategic-surprise score outputs/review/sample-001.json --grades grades.json
 ```
 
-Open-ended rubric points remain at zero until accepted judge decisions or human labels are present.
-The score is therefore a conservative lower bound, not a pretend final grade.
+Grade sheets contain a transcript digest so grades cannot silently attach to an edited response or
+another variant. Fill the reviewer ID, grades, short exact response quotes, and rationales. Review
+packets omit the target model identity. The grade-sheet schema is for reviewers, never targets.
+If the Inspect run already contains model grades, extraction also saves `.grades.json` and
+`.score.json` sidecars for review without another judge call. Generation issues travel with the
+transcript; a truncated or filtered assessment cannot silently become a normal scored response.
 
-## What happens in a case
+`strategic-surprise grade transcript.json --judge <provider/model> --output grades.json` can also
+produce provisional grades offline from an existing transcript. It makes paid provider calls.
 
-Each case has four mutually exclusive hypothesis slots and six binary forecasts. The headline and
-null hypotheses are supplied. The analyst writes the first-order and compound alternatives, then
-tracks all four across the run. Rounds 1 and 2 provide evidence and let the analyst buy closed-world
-collection returns from budgets of 10 and 6 credits. Sources carry reliability, deception risk, and
-correlation-group metadata.
+`strategic-surprise summarize scores.json` accepts an array of score outputs from one model/run.
+It reports dimension means, missingness, and paired adaptation scores. Any missing session total
+withholds the aggregate mean. Do not combine human and provisional model grades or compare different
+case/variant subsets. Variants share initial briefs and are not independent cases.
 
-Round 3 reveals the discontinuity. The analyst updates its forecasts, allocates exactly 100 policy
-points, and writes a memo tied to the record.
+Start with one run and blinded human checks. Repeat close comparisons and report case-level
+variation rather than declaring a stable ranking from six scenarios. See [the review protocol](docs/V0_3_REVIEW.md).
 
-Two conditions use the same case material:
+## Cases and files
 
-- **Plain analyst:** the dossier and response schema, with no tools.
-- **Analyst agent:** the same dossier plus bounded note-taking tools for an evidence ledger,
-  hypothesis table, timeline, and collection plan.
+The six domains remain emerging technology, maritime security, diplomacy, financial disruption,
+cyber incidents, and public health/security. Public descriptions and case IDs are not passed to the
+target. Current dossiers and grading anchors live in `src/strategic_surprise_bench/assessments/`.
+These files are public for reproducibility; “private rubric” means hidden from the evaluated model,
+not secret in this repository. Public exposure remains a contamination risk.
 
-Those tools reveal no evidence. Neither condition gets web, shell, or file access. The hidden world
-bible stays in the scorer process. Tests check that the two prompt streams differ only where the
-tool affordance requires it.
+- `assessment.py`: scenario/transcript contracts and neutral prompt rendering
+- `assessment_task.py`: two-turn Inspect runner
+- `assessment_scoring.py`: grading, quote checks, missingness, and summaries
+- `docs/V0_3_REVIEW.md`: rubric review and inexpensive diagnostic comparisons
+- `app/`, `lib/`: public microsite; `npm run dev` starts it locally
 
-## The score
+The original six case provenance records remain in `scenarios/*.yaml`; each new case references its
+source case through `provenance_case`. New dossier prose and matched updates are newly authored
+fictional adaptations. Code is Apache 2.0; scenario text remains CC BY 4.0.
 
-| Component | Points | How it is graded |
-|---|---:|---|
-| Forecasts | 25 | Skill-scaled multiclass and binary Brier score; rounds weighted 50/35/15 |
-| Evidence and source handling | 15 | Evidence graph and source-assessment error |
-| Strategic reasoning | 20 | Calibrated atomic rubric cascade or human label |
-| Collection value | 15 | Information gain against submitted-prior and robust uniform-prior optima |
-| Collection coverage | 5 | Correlation-group diversity and budget use |
-| Policy consequences | 8 | Hidden-world consequence model |
-| Critical policy tasks | 8 | Deterministic checks plus calibrated atomic rubric |
-| Memo traceability | 4 | Calibrated atomic rubric or human label |
+## Historical v0.2
 
-The current score exposes 72.8 deterministic points. A lone LLM judge never awards the rest. Two target-blind
-judges from different provider families must agree, every cited span must appear verbatim, and a
-separate validator must confirm the claim. Disagreement, weak grounding, contradiction, or low
-confidence means abstention or human review.
-
-## The six cases
-
-| Case | Domain | What is easy to miss |
-|---|---|---|
-| Lattice Signal | Emerging technology | A cryptographic bluff hides a third-party computing breakthrough |
-| Black Current | Military and maritime | A real submarine accident overlaps a seabed operation |
-| Ember Guarantee | Diplomacy and nonproliferation | Nuclear bargaining draws attention from an alliance realignment |
-| Meridian Shock | Economic and financial | A short canal closure triggers a longer counterparty cascade |
-| Sable Patch | Cyber and information | Criminal access is later used by a state actor |
-| Red Harvest | Public health and security | Natural spillover is compounded by coercion and counterfeit medicine |
-
-The names, states, institutions, systems, and outcomes are fictional. Public source material supplied
-exercise structures, not plot text. Every case records its provenance, transformations, and license
-in machine-readable form. Code is Apache 2.0; scenario text is CC BY 4.0.
-
-## Calibration and publication
-
-The expert protocol calls for 24 responses per case: 16 development items and 8 locked holdout
-items. Two experts label each response, with a third available for adjudication.
-
-The default gate checks all of the following on the automatically accepted subset:
-
-- Krippendorff's alpha of at least 0.67 and at least 90% of human-human alpha
-- aggregate ICC of at least 0.85, with mean absolute error no higher than 5 points
-- macro F1 and balanced accuracy of at least 0.85
-- precision of at least 0.90 for full hits, with critical false positives no higher than 5%
-- 95% meaning-preserving invariance and 90% evidence-removal sensitivity
-- at least 70% automatic coverage at 95% exact agreement with adjudicated experts
-
-`strategic-surprise release-check` exits nonzero when the holdout is missing or a threshold fails.
-Synthetic golden transcripts test the machinery; they do not count as expert evidence.
-
-The judge has two modes. `calibration` creates labels for comparison with experts but marks them
-non-publishable. `published` needs a passing gate report first:
-
-```bash
-uv run strategic-surprise calibrate calibration/private/corpus.json \
-  --output calibration/private/gate-report.json
-uv run inspect eval strategic_surprise_bench/strategic_surprise \
-  -T condition=plain -T judge_mode=published \
-  -T judge_a=openai/gpt-5.6-terra -T judge_b=anthropic/claude-sonnet-5 \
-  -T validator=openai/gpt-5.6-luna \
-  -T calibration_report=calibration/private/gate-report.json \
-  --model openai/<target-model> --epochs 3
-```
-
-Judge A and Judge B need different provider-family prefixes. They do not receive the target model,
-provider, condition, or aggregate score. The validator sees one criterion and its cited evidence,
-not the whole performance.
-
-## Reports and reproducibility
-
-The pilot design is three runs per model, condition, and case at temperature 0.2. Reports should show
-per-case scores, run-to-run variation, trajectories, model and condition differences, automation
-coverage, escalation rate, and judge-expert reliability. A single rank hides too much.
-
-Six cases are exploratory. Do not call the result a definitive state-of-the-art ranking. Record the
-case, rubric, judge prompt, calibration, package, and model versions before a pilot. The reporting
-module includes a hierarchical bootstrap over cases and runs.
-
-Run records also keep token use, cost, latency, tool calls, refusals, schema repairs, and schema
-failures:
-
-```bash
-uv run strategic-surprise summarize pilot-records.json --output pilot-summary.json
-```
-
-`configs/pilot.yaml` contains the planned matrix. Replace its placeholders with exact dated model
-IDs, benchmark and rubric tags, judge versions, and the calibration version before the first pilot.
-
-The controlled live check is documented in [`docs/LIVE_TEST_REPORT.md`](docs/LIVE_TEST_REPORT.md).
-Its redacted aggregate output is in [`results/live-comparison.json`](results/live-comparison.json).
-That check used one model on one case to prove the end-to-end path. It is not a comparison result.
-
-## Repository map
-
-- `app/`, `components/`, `lib/`: the public Next.js microsite
-- `src/strategic_surprise_bench/scenarios/`: case dossiers and hidden scoring keys
-- `models.py`, `mechanics.py`, `scoring.py`: typed contracts and deterministic grading
-- `rubric.py`, `reliability.py`: verification-first judging and judge evaluation
-- `calibration.py`: corpus checks, diagnostics, and the release gate
-- `inspect_task.py`, `tools.py`: Inspect task and bounded analyst tools
-- `tests/`: schema, leakage, mechanics, ordering, judge, and mock-run checks
-- `calibration/`: expert protocol, templates, and private release artifacts
-- [`docs/SCENARIO_SOURCE_MAP.md`](docs/SCENARIO_SOURCE_MAP.md): case provenance and transformations
-
-## Limits
-
-These worlds are controlled and simplified. Performance here is not evidence of operational command
-ability, political judgment, or real-world intelligence skill. The public cases may also enter model
-training data. Sealed and rotating variants are planned for v0.2. Multi-agent government-role
-simulation is outside this release.
-
-## Citation
-
-```bibtex
-@software{strategic_surprise_bench_2026,
-  title = {Strategic Surprise Bench},
-  version = {0.2.0},
-  year = {2026},
-  license = {Apache-2.0 and CC-BY-4.0}
-}
-```
-
-## Method sources
-
-The design borrows from [ICD 203](https://www.odni.gov/files/documents/ICD/ICD-203_TA_Analytic_Standards_21_Dec_2022.pdf),
-the CIA's [strategic-warning pathway approach](https://www.cia.gov/resources/csi/studies-in-intelligence/volume-66-no-4-december-2022/combating-surprise-introducing-the-kinetic-predictive-analytic-technique/),
-[ForecastBench-Sim](https://arxiv.org/abs/2606.18686), FEMA's
-[exercise evaluation guides](https://preptoolkit.fema.gov/web/hseep-resources/eegs), NIST
-[benchmark guidance](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.800-3.pdf), and the selective
-automation principle in [Trust or Escalate](https://arxiv.org/abs/2407.18370).
+The old guided runner remains explicitly named `strategic_surprise_legacy`. Its CLI is accessed
+through `strategic-surprise legacy ...`; its calibration gates apply only to v0.2. See the
+[archived manual](docs/LEGACY_V0_2.md) and [historical screen](results/MULTIMODEL_BENCHMARK_REPORT_2026-08-31.md).
+Old and new scores are incompatible. The site labels the old results accordingly.

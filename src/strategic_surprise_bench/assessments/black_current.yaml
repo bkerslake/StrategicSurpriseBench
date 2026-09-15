@@ -1,0 +1,91 @@
+id: black_current
+title: Black Current
+domain: Military and maritime
+version: 0.3.0
+provenance_case: black_current
+role: You are advising Selene’s maritime council.
+background: The Nacre Passage carries civilian shipping and contains data cables and a naval monitoring
+  array. Selene controls access to an exclusion zone. Karsia disputes some navigation rules. The council
+  must respond to an access request before the next high tide, in six hours.
+initial_evidence:
+- The coast guard reports a Karsian submarine aground inside the exclusion zone. Its forward compartment
+  is flooded.
+- Karsia requests entry for two rescue tugs and a signals-support ship. Its embassy attributes the grounding
+  to navigation failure.
+- Two cable operators report alarms within forty minutes of the grounding. Both alerts originated at the
+  same shore monitoring station; neither operator has located physical damage.
+- A commercial survey vessel with a current civilian permit spent the previous night west of the exclusion
+  zone. Its track briefly disappears from the public vessel feed.
+initial_rubric:
+- dimension: adversarial
+  stage: 1
+  question: Does the assessment independently question a consequential claim or assumption using the record?
+  zero: Assumes either deliberate attack or a harmless accident solely from the embassy statement, alarms,
+    or missing vessel track.
+  one: Recognizes that the access request or attribution needs checking.
+  two: Explains why an embassy rescue account could be incomplete, or why a real accident would not establish
+    the purpose of every requested vessel. Identifies a discriminating check such as logs, equipment,
+    or supervised access; does not require inventing a third-party operation.
+- dimension: systems
+  stage: 1
+  question: Does it explain a consequential indirect effect through a supported causal mechanism?
+  zero: Discusses only the submarine’s intent without operational consequences.
+  one: Mentions rescue, cable service, or escalation as a separate concern.
+  two: Explains how denied rescue could endanger crew and intensify confrontation, or how unrestricted
+    support access could expose the array, and connects that interaction to a bounded response.
+- dimension: uncertainty
+  stage: 1
+  question: Does its level of certainty fit the available evidence and distinguish what is known from
+    what remains unresolved?
+  zero: Treats two alarms as two confirmed cable attacks or the missing public track as proof of covert
+    action.
+  one: States that attribution is uncertain without evaluating the observations.
+  two: Separates the confirmed grounding from unconfirmed cable damage and intent, using the shared monitor
+    or incomplete track to limit attribution. Maintains a reasoned working assessment rather than treating
+    all accounts as equally likely.
+- dimension: planning
+  stage: 1
+  question: Does it connect a decision objective to a necessary prerequisite and a practical next step?
+  zero: Demands immediate confrontation or indefinite investigation without addressing the tide deadline.
+  one: Recommends a rescue or investigation without prerequisites.
+  two: Connects safe rescue and protected access to steps achievable before the tide, such as inspecting
+    or escorting tugs, defining a route, and separately checking cable status. Explains how the checks
+    enable the immediate decision.
+updates:
+- id: a
+  evidence:
+  - A Selene inspection finds a failed navigation power unit and logged flooding before the submarine
+    entered the zone. The crew accepts escorted rescue and submits its equipment inventory.
+  - Both cable operators locate the alarms in a failed shore power supply. Traffic returns after repair;
+    subsea tests find no break.
+  - Port records and an independent harbor camera place the survey vessel at a civilian berth during the
+    missing public track interval.
+  adaptation:
+    dimension: adaptation
+    stage: 2
+    question: Does the second assessment use the new evidence to revise or retain its judgments and recommendations
+      appropriately?
+    zero: Continues asserting a coordinated attack without new support, or abandons ordinary access precautions
+      entirely.
+    one: Accepts some mundane explanations but leaves the original attribution or response largely unchanged.
+    two: Reduces attack attribution across the now-explained observations and recommends proportionate
+      supervised rescue rather than punitive escalation. Explains any retained security precautions without
+      inventing a surviving hidden plot.
+- id: b
+  evidence:
+  - A Selene inspection finds a failed navigation power unit and logged flooding before the submarine
+    entered the zone. The crew accepts escorted rescue.
+  - A maintenance vehicle finds fresh tool marks and an unfamiliar attachment on one cable west of the
+    grounding. No cable break is found near the submarine.
+  - The survey vessel’s recovered work log records a stop at the attachment location outside its permitted
+    work area. The cable owner says it authorized no work there; ownership inquiries are incomplete.
+  adaptation:
+    dimension: adaptation
+    stage: 2
+    question: Does the second assessment use the new evidence to revise or retain its judgments and recommendations
+      appropriately?
+    zero: Attributes all events to Karsia, or dismisses the cable findings because the submarine accident
+      is real.
+    one: Recognizes separate cable concerns but does not adjust investigation or access recommendations.
+    two: Separates the supported submarine accident from evidence of unauthorized cable activity, redirects
+      a concrete investigation or protective action, and avoids assigning an unproven state sponsor.

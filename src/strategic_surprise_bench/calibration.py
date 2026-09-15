@@ -10,14 +10,14 @@ from typing import Literal
 
 from pydantic import Field, model_validator
 
-from strategic_surprise_bench.loader import load_all_cases
-from strategic_surprise_bench.models import StrictModel
-from strategic_surprise_bench.reliability import ReliabilityReport, evaluate_reliability
-from strategic_surprise_bench.versions import (
+from strategic_surprise_bench.legacy_versions import (
     BENCHMARK_VERSION,
     JUDGE_PROMPT_VERSION,
     RUBRIC_VERSION,
 )
+from strategic_surprise_bench.loader import load_all_cases
+from strategic_surprise_bench.models import StrictModel
+from strategic_surprise_bench.reliability import ReliabilityReport, evaluate_reliability
 
 Label = Literal[0.0, 0.5, 1.0]
 

@@ -9,14 +9,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Strategic Surprise Bench",
     description:
-      "Can a model keep several explanations alive, buy the right evidence, and act before the obvious story falls apart?",
+      "Can a model notice what matters in a fictional crisis without being told what reasoning to do?",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Strategic Surprise Bench",
     description:
-      "Six closed-world cases for strategic warning, collection, forecasting, and policy choice.",
+      "Six fictional crises, neutral assessment prompts, and paired evidence updates.",
   },
 };
 
