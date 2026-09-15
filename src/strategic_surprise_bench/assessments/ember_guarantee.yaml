@@ -1,7 +1,7 @@
 id: ember_guarantee
 title: Ember Guarantee
 domain: Diplomacy and nonproliferation
-version: 0.3.0
+version: 0.3.1
 provenance_case: ember_guarantee
 role: You are advising Lydia’s national security council.
 background: Lydia guarantees Varin’s security and participates in regional safeguards talks with Aras.
@@ -21,36 +21,47 @@ initial_rubric:
   stage: 1
   question: Does the assessment independently question a consequential claim or assumption using the record?
   zero: Treats rhetoric as proof of a weapons decision or the visits as proof of an alliance break.
-  one: Notes bargaining or another explanation for the speech or visits.
-  two: Uses timing, institutional roles, or incentives to distinguish bargaining from a weapons decision,
-    or commercial visits from a possible security negotiation. Identifies a check that could discriminate
-    the explanations without asserting the hidden interpretation is true.
+  one: Notes bargaining or another explanation for the speech or the visits, without a way to tell
+    the explanations apart.
+  two: Uses the record’s timing or roles, such as the speech preceding banking-relief talks or a
+    defense minister making a commercial visit without the liaison, to state a working reading of at
+    least one puzzle; names a check the calls can make that would discriminate readings; and says
+    how the instruction changes with the result. Falls short when limited to asserting the hidden
+    reading as fact, listing readings without preference, or a check without a stated consequence.
 - dimension: systems
   stage: 1
   question: Does it explain a consequential indirect effect through a supported causal mechanism?
   zero: Focuses exclusively on Aras’s technical activity.
-  one: Notes that Varin or the alliance could be affected.
-  two: Explains how Lydia’s response to Aras could alter Varin’s confidence, domestic political options,
-    or choice of partners, and why this changes the calls or assurance needed. Does not require a confirmed
-    realignment.
+  one: Notes that Varin or the alliance could be affected by the Aras situation, without a mechanism
+    or a consequence for the calls.
+  two: Explains a specific chain from Lydia’s handling of Aras to Varin’s calculus, such as a
+    visibly weak response feeding the confidence vote or pushing Varin toward Sorell; and states
+    what assurance or sequencing in tomorrow’s calls that chain requires. Falls short when limited
+    to a general remark that allies watch each other, or a mechanism with no instruction attached.
 - dimension: uncertainty
   stage: 1
   question: Does its level of certainty fit the available evidence and distinguish what is known from
     what remains unresolved?
   zero: Equates enrichment, intent, and imminent weapons capability, or rules out unobserved activity
     categorically.
-  one: Acknowledges inspection limits or uncertain intent.
-  two: Distinguishes observed enrichment from a decision to build weapons and weighs inspection/procurement
-    evidence against rhetoric, while retaining the stated access limitation. Numerical probabilities are
-    optional.
+  one: Acknowledges inspection limits or uncertain intent without weighing the kinds of evidence
+    against each other.
+  two: Distinguishes observed 20 percent enrichment at a declared site from a weapons decision;
+    weighs the compatible valve procurement and the absence of weaponization evidence against the
+    rhetoric; retains the unvisited-military-sites limit; and states a working judgment on intent
+    that follows. Falls short when limited to treating enrichment as a sprint, or refusing any
+    judgment because sites are unvisited.
 - dimension: planning
   stage: 1
   question: Does it connect a decision objective to a necessary prerequisite and a practical next step?
   zero: Proposes a final settlement or coercive action without an achievable next step.
-  one: Recommends dialogue or inspections generically.
-  two: Connects a stated objective to a prerequisite that the calls can address, such as verifying facility
-    activity before attribution or clarifying Varin’s commitments before offering assurance. Gives a concrete
-    request and explains what decision its answer enables.
+  one: Recommends dialogue, inspections, or reassurance generically, or proposes a concrete request
+    with no stated use for its answer.
+  two: Names an objective and a prerequisite the calls can address, such as confirming the scope of
+    the technical consultation before attribution or clarifying Varin’s Sorell commitments before
+    offering an assurance; states the concrete request for each call; and says what decision the
+    answer enables before the confidence vote. Falls short when limited to a settlement proposal,
+    coercive steps, or requests with no follow-on decision.
 updates:
 - id: a
   evidence:
@@ -67,10 +78,13 @@ updates:
     question: Does the second assessment use the new evidence to revise or retain its judgments and recommendations
       appropriately?
     zero: Treats Aras as a confirmed weapons sprint or ignores the new alliance evidence.
-    one: Notices the shift toward Varin but proposes only generic monitoring.
-    two: Reduces the immediate inference of an Aras sprint, increases attention to Varin’s prospective
-      security arrangement, and proposes a timely assurance or clarification step before the vote without
-      treating the unsigned arrangement as final.
+    one: Notices the shift toward Varin but proposes only generic monitoring, or treats the unsigned
+      arrangement as final.
+    two: Lowers the Aras sprint inference by citing the monitoring acceptance and material
+      accounting; raises the Varin arrangement using the authenticated agenda and the prime
+      minister’s remark; and proposes a specific assurance or clarification step timed before the
+      confidence vote, while noting nothing is signed. Falls short when limited to unchanged
+      priorities, or closing with a call to monitor developments.
 - id: b
   evidence:
   - Aras accepts continued monitoring of the declared pilot and offers to cap its stock during banking
@@ -85,7 +99,10 @@ updates:
     question: Does the second assessment use the new evidence to revise or retain its judgments and recommendations
       appropriately?
     zero: Insists the visits prove a secret alliance break or treats the Aras speech as a confirmed sprint.
-    one: Acknowledges reassurance but leaves unsupported alarm in the recommendation.
-    two: Lowers concern about imminent realignment and a weapons sprint using the new records, maintains
-      proportionate consultation or verification, and avoids turning the absence of identified secret
-      agreements into absolute certainty.
+    one: Acknowledges reassurance but leaves unsupported alarm in the recommendation, or converts
+      the absence of found agreements into certainty.
+    two: Lowers both the realignment and sprint concerns by citing the signed fuel agreement, the
+      liaison confirmation, and the exercise renewal; scales the recommendation to proportionate
+      consultation and verification; and states what would reopen the concern, such as a further
+      unliaised contact. Falls short when limited to keeping the original alarm, or declaring the
+      matter closed.

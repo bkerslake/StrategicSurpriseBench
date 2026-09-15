@@ -1,9 +1,9 @@
 {
-  "benchmark": "0.3.0",
+  "benchmark": "0.3.1",
   "scenario_schema": "0.3.0",
-  "rubric": "0.3.0",
-  "judge_prompt": "0.3.0",
+  "rubric": "0.3.1",
+  "judge_prompt": "0.3.1",
   "calibration": null,
   "release_tag": null,
-  "note": "Neutral two-assessment protocol. v0.2 results and calibration do not validate v0.3. Model grades remain provisional pending human validation."
+  "note": "Neutral two-assessment protocol. v0.3.1 tightens the two-point anchors and judge instructions, normalizes judge quote punctuation, and retries failed judge calls; v0.3.0 model grades are not comparable. v0.2 results and calibration do not validate v0.3. Model grades remain provisional pending human validation."
 }

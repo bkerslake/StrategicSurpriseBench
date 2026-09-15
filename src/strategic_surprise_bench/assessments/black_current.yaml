@@ -1,7 +1,7 @@
 id: black_current
 title: Black Current
 domain: Military and maritime
-version: 0.3.0
+version: 0.3.1
 provenance_case: black_current
 role: You are advising Selene’s maritime council.
 background: The Nacre Passage carries civilian shipping and contains data cables and a naval monitoring
@@ -22,35 +22,49 @@ initial_rubric:
   question: Does the assessment independently question a consequential claim or assumption using the record?
   zero: Assumes either deliberate attack or a harmless accident solely from the embassy statement, alarms,
     or missing vessel track.
-  one: Recognizes that the access request or attribution needs checking.
-  two: Explains why an embassy rescue account could be incomplete, or why a real accident would not establish
-    the purpose of every requested vessel. Identifies a discriminating check such as logs, equipment,
-    or supervised access; does not require inventing a third-party operation.
+  one: Recognizes that the embassy account or the requested access needs checking, or notes that a
+    rescue could double as a collection opportunity, without a check that would tell the difference.
+  two: Explains specifically why the rescue account can be true and the request still problematic,
+    for example that a signals-support ship has no rescue function near a monitoring array; names a
+    check achievable within six hours, such as crew and equipment logs, manifests, or supervised
+    inspection, whose result determines which vessels are admitted; and states a working judgment.
+    Falls short when limited to a generic call to verify the request, alleging a coordinated
+    operation with the survey vessel without support, or a check whose result changes nothing.
 - dimension: systems
   stage: 1
   question: Does it explain a consequential indirect effect through a supported causal mechanism?
   zero: Discusses only the submarine’s intent without operational consequences.
-  one: Mentions rescue, cable service, or escalation as a separate concern.
-  two: Explains how denied rescue could endanger crew and intensify confrontation, or how unrestricted
-    support access could expose the array, and connects that interaction to a bounded response.
+  one: Mentions crew safety, cable service, or escalation as a separate concern without showing how
+    the council’s choice affects it.
+  two: Traces a specific interaction, for example that refusing rescue endangers the crew and gives
+    Karsia grounds to escalate while unrestricted support access puts the array and cables within
+    reach; and uses that interaction to bound the response, such as admitting tugs under escort
+    while holding the signals ship. Falls short when limited to listing risks on both sides without
+    deriving a bounded response.
 - dimension: uncertainty
   stage: 1
   question: Does its level of certainty fit the available evidence and distinguish what is known from
     what remains unresolved?
   zero: Treats two alarms as two confirmed cable attacks or the missing public track as proof of covert
     action.
-  one: States that attribution is uncertain without evaluating the observations.
-  two: Separates the confirmed grounding from unconfirmed cable damage and intent, using the shared monitor
-    or incomplete track to limit attribution. Maintains a reasoned working assessment rather than treating
-    all accounts as equally likely.
+  one: States that attribution is uncertain, or notes the shared monitoring station or the track
+    gap, without weighing what each observation can support.
+  two: Separates the confirmed grounding from unconfirmed cable damage and unknown intent; explains
+    that two alarms from one station are one observation and that a feed gap is not evidence of
+    covert activity; and states a working assessment that follows, rather than equal weight to all
+    accounts. Falls short when limited to hedging every item equally, or treating either the
+    accident or an attack as settled.
 - dimension: planning
   stage: 1
   question: Does it connect a decision objective to a necessary prerequisite and a practical next step?
   zero: Demands immediate confrontation or indefinite investigation without addressing the tide deadline.
-  one: Recommends a rescue or investigation without prerequisites.
-  two: Connects safe rescue and protected access to steps achievable before the tide, such as inspecting
-    or escorting tugs, defining a route, and separately checking cable status. Explains how the checks
-    enable the immediate decision.
+  one: Recommends a rescue, an investigation, or a delay without prerequisites, or without
+    accounting for the tide deadline.
+  two: Sequences steps that fit inside six hours, such as inspecting or escorting the tugs, fixing a
+    route away from the array, and tasking a separate cable check; states which step gates admitting
+    each vessel; and says what the council decides at the tide if a check is incomplete. Falls short
+    when limited to indefinite investigation, confrontation, or steps with no gating relation to the
+    access decision.
 updates:
 - id: a
   evidence:
@@ -67,10 +81,13 @@ updates:
       appropriately?
     zero: Continues asserting a coordinated attack without new support, or abandons ordinary access precautions
       entirely.
-    one: Accepts some mundane explanations but leaves the original attribution or response largely unchanged.
-    two: Reduces attack attribution across the now-explained observations and recommends proportionate
-      supervised rescue rather than punitive escalation. Explains any retained security precautions without
-      inventing a surviving hidden plot.
+    one: Accepts some mundane explanations but leaves the original attribution or response largely
+      unchanged, or drops all precautions.
+    two: Withdraws attack attribution for each now-explained observation, naming the navigation
+      unit, the shore power supply, and the harbor camera; recommends supervised rescue and a
+      proportionate stance toward Karsia; and justifies any retained precaution, such as an escort
+      or equipment check, as ordinary practice rather than a surviving plot. Falls short when
+      limited to a generic call to remain cautious without saying what changed.
 - id: b
   evidence:
   - A Selene inspection finds a failed navigation power unit and logged flooding before the submarine
@@ -86,6 +103,11 @@ updates:
       appropriately?
     zero: Attributes all events to Karsia, or dismisses the cable findings because the submarine accident
       is real.
-    one: Recognizes separate cable concerns but does not adjust investigation or access recommendations.
-    two: Separates the supported submarine accident from evidence of unauthorized cable activity, redirects
-      a concrete investigation or protective action, and avoids assigning an unproven state sponsor.
+    one: Recognizes separate cable concerns but does not adjust the investigation or access
+      recommendation, or attributes the cable activity to Karsia.
+    two: Keeps the submarine accident as established while raising a distinct concern from the tool
+      marks, the attachment, and the survey vessel’s out-of-area stop; redirects a specific action,
+      such as securing the attachment site, examining the device, or holding the survey vessel and
+      its permit; and withholds a state sponsor pending the ownership inquiry. Falls short when
+      limited to folding the cable evidence back into a Karsian plot, or dismissing it because the
+      grounding was real.

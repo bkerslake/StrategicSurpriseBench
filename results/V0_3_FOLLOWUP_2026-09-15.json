@@ -1,0 +1,3056 @@
+{
+  "benchmark_version": "0.3.0",
+  "models": [
+    {
+      "model": "openai/gpt-4o-2024-11-20",
+      "label": "GPT-4o",
+      "grading_pass": "original",
+      "accepted_grades": 55,
+      "expected_grades": 60,
+      "complete_sessions": 7,
+      "mean": null,
+      "bounds": [
+        7.166666666666667,
+        8.0
+      ],
+      "scores": [
+        {
+          "case_id": "black_current",
+          "variant": "a",
+          "total": 9,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 1,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 55.471,
+          "target_usage": {
+            "input_tokens": 1366,
+            "output_tokens": 1607,
+            "total_tokens": 2973,
+            "input_tokens_cache_write": null,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": 0,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "black_current",
+          "variant": "b",
+          "total": null,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 1,
+            "planning": 1,
+            "adaptation": null
+          },
+          "coverage": 0.8,
+          "missing": {
+            "adaptation": "Quoted evidence is not an exact span of the assessed response."
+          },
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 69.588,
+          "target_usage": {
+            "input_tokens": 1374,
+            "output_tokens": 1712,
+            "total_tokens": 3086,
+            "input_tokens_cache_write": null,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": 0,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "ember_guarantee",
+          "variant": "a",
+          "total": 7,
+          "dimensions": {
+            "adversarial": 1,
+            "systems": 1,
+            "uncertainty": 2,
+            "planning": 1,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 59.828,
+          "target_usage": {
+            "input_tokens": 554,
+            "output_tokens": 2055,
+            "total_tokens": 3633,
+            "input_tokens_cache_write": null,
+            "input_tokens_cache_read": 1024,
+            "reasoning_tokens": 0,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "ember_guarantee",
+          "variant": "b",
+          "total": 8,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 1,
+            "uncertainty": 2,
+            "planning": 1,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 72.27,
+          "target_usage": {
+            "input_tokens": 486,
+            "output_tokens": 2177,
+            "total_tokens": 3815,
+            "input_tokens_cache_write": null,
+            "input_tokens_cache_read": 1152,
+            "reasoning_tokens": 0,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "lattice_signal",
+          "variant": "a",
+          "total": 10,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 69.597,
+          "target_usage": {
+            "input_tokens": 558,
+            "output_tokens": 2003,
+            "total_tokens": 3585,
+            "input_tokens_cache_write": null,
+            "input_tokens_cache_read": 1024,
+            "reasoning_tokens": 0,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "lattice_signal",
+          "variant": "b",
+          "total": null,
+          "dimensions": {
+            "adversarial": 1,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": null
+          },
+          "coverage": 0.8,
+          "missing": {
+            "adaptation": "Judge failed (ValidationError); requires review."
+          },
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 52.46,
+          "target_usage": {
+            "input_tokens": 509,
+            "output_tokens": 1865,
+            "total_tokens": 3398,
+            "input_tokens_cache_write": null,
+            "input_tokens_cache_read": 1024,
+            "reasoning_tokens": 0,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "meridian_shock",
+          "variant": "a",
+          "total": 6,
+          "dimensions": {
+            "adversarial": 1,
+            "systems": 1,
+            "uncertainty": 1,
+            "planning": 1,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 44.78,
+          "target_usage": {
+            "input_tokens": 1417,
+            "output_tokens": 1782,
+            "total_tokens": 3199,
+            "input_tokens_cache_write": null,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": 0,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "meridian_shock",
+          "variant": "b",
+          "total": 6,
+          "dimensions": {
+            "adversarial": 1,
+            "systems": 1,
+            "uncertainty": 1,
+            "planning": 1,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 45.557,
+          "target_usage": {
+            "input_tokens": 1423,
+            "output_tokens": 1739,
+            "total_tokens": 3162,
+            "input_tokens_cache_write": null,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": 0,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "red_harvest",
+          "variant": "a",
+          "total": null,
+          "dimensions": {
+            "adversarial": 1,
+            "systems": 1,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": null
+          },
+          "coverage": 0.8,
+          "missing": {
+            "adaptation": "Quoted evidence is not an exact span of the assessed response."
+          },
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 54.003,
+          "target_usage": {
+            "input_tokens": 1343,
+            "output_tokens": 1589,
+            "total_tokens": 2932,
+            "input_tokens_cache_write": null,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": 0,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "red_harvest",
+          "variant": "b",
+          "total": null,
+          "dimensions": {
+            "adversarial": 1,
+            "systems": 1,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": null
+          },
+          "coverage": 0.8,
+          "missing": {
+            "adaptation": "Quoted evidence is not an exact span of the assessed response."
+          },
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 46.685,
+          "target_usage": {
+            "input_tokens": 1445,
+            "output_tokens": 1816,
+            "total_tokens": 3261,
+            "input_tokens_cache_write": null,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": 0,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "sable_patch",
+          "variant": "a",
+          "total": null,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": null,
+            "adaptation": 2
+          },
+          "coverage": 0.8,
+          "missing": {
+            "planning": "Quoted evidence is not an exact span of the assessed response."
+          },
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 50.321,
+          "target_usage": {
+            "input_tokens": 1294,
+            "output_tokens": 1684,
+            "total_tokens": 2978,
+            "input_tokens_cache_write": null,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": 0,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "sable_patch",
+          "variant": "b",
+          "total": 7,
+          "dimensions": {
+            "adversarial": 1,
+            "systems": 1,
+            "uncertainty": 2,
+            "planning": 1,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 52.203,
+          "target_usage": {
+            "input_tokens": 1292,
+            "output_tokens": 1628,
+            "total_tokens": 2920,
+            "input_tokens_cache_write": null,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": 0,
+            "total_cost": null
+          }
+        }
+      ]
+    },
+    {
+      "model": "openai/gpt-5.6-luna",
+      "label": "GPT-5.6 Luna",
+      "grading_pass": "original",
+      "accepted_grades": 51,
+      "expected_grades": 60,
+      "complete_sessions": 5,
+      "mean": null,
+      "bounds": [
+        8.333333333333334,
+        9.833333333333334
+      ],
+      "scores": [
+        {
+          "case_id": "black_current",
+          "variant": "a",
+          "total": null,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": null,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 0.8,
+          "missing": {
+            "uncertainty": "Quoted evidence is not an exact span of the assessed response."
+          },
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 42.736,
+          "target_usage": {
+            "input_tokens": 223,
+            "output_tokens": 1522,
+            "total_tokens": 2843,
+            "input_tokens_cache_write": 1098,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 299,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "black_current",
+          "variant": "b",
+          "total": null,
+          "dimensions": {
+            "adversarial": null,
+            "systems": null,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 0.6,
+          "missing": {
+            "adversarial": "Quoted evidence is not an exact span of the assessed response.",
+            "systems": "Quoted evidence is not an exact span of the assessed response."
+          },
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 58.2,
+          "target_usage": {
+            "input_tokens": 223,
+            "output_tokens": 1670,
+            "total_tokens": 3093,
+            "input_tokens_cache_write": 1200,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 425,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "ember_guarantee",
+          "variant": "a",
+          "total": null,
+          "dimensions": {
+            "adversarial": null,
+            "systems": 1,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 0.8,
+          "missing": {
+            "adversarial": "Quoted evidence is not an exact span of the assessed response."
+          },
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 43.887,
+          "target_usage": {
+            "input_tokens": 230,
+            "output_tokens": 1528,
+            "total_tokens": 2839,
+            "input_tokens_cache_write": 1081,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 149,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "ember_guarantee",
+          "variant": "b",
+          "total": 9,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 1,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 48.559,
+          "target_usage": {
+            "input_tokens": 230,
+            "output_tokens": 1609,
+            "total_tokens": 3038,
+            "input_tokens_cache_write": 1199,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 299,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "lattice_signal",
+          "variant": "a",
+          "total": null,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": null,
+            "planning": 2,
+            "adaptation": null
+          },
+          "coverage": 0.6,
+          "missing": {
+            "uncertainty": "Quoted evidence is not an exact span of the assessed response.",
+            "adaptation": "Quoted evidence is not an exact span of the assessed response."
+          },
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 49.525,
+          "target_usage": {
+            "input_tokens": 235,
+            "output_tokens": 1785,
+            "total_tokens": 3424,
+            "input_tokens_cache_write": 1404,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 531,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "lattice_signal",
+          "variant": "b",
+          "total": null,
+          "dimensions": {
+            "adversarial": null,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 0.8,
+          "missing": {
+            "adversarial": "Quoted evidence is not an exact span of the assessed response."
+          },
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 47.926,
+          "target_usage": {
+            "input_tokens": 235,
+            "output_tokens": 1713,
+            "total_tokens": 3113,
+            "input_tokens_cache_write": 1165,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 336,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "meridian_shock",
+          "variant": "a",
+          "total": 10,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 41.932,
+          "target_usage": {
+            "input_tokens": 217,
+            "output_tokens": 1563,
+            "total_tokens": 2818,
+            "input_tokens_cache_write": 1038,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 330,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "meridian_shock",
+          "variant": "b",
+          "total": 10,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 41.031,
+          "target_usage": {
+            "input_tokens": 217,
+            "output_tokens": 1396,
+            "total_tokens": 2664,
+            "input_tokens_cache_write": 1051,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 204,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "red_harvest",
+          "variant": "a",
+          "total": null,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": null
+          },
+          "coverage": 0.8,
+          "missing": {
+            "adaptation": "Quoted evidence is not an exact span of the assessed response."
+          },
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 42.936,
+          "target_usage": {
+            "input_tokens": 222,
+            "output_tokens": 1595,
+            "total_tokens": 3031,
+            "input_tokens_cache_write": 1214,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 324,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "red_harvest",
+          "variant": "b",
+          "total": 10,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 56.979,
+          "target_usage": {
+            "input_tokens": 222,
+            "output_tokens": 1649,
+            "total_tokens": 3159,
+            "input_tokens_cache_write": 1288,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 349,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "sable_patch",
+          "variant": "a",
+          "total": null,
+          "dimensions": {
+            "adversarial": null,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 0.8,
+          "missing": {
+            "adversarial": "Quoted evidence is not an exact span of the assessed response."
+          },
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 39.047,
+          "target_usage": {
+            "input_tokens": 1214,
+            "output_tokens": 1442,
+            "total_tokens": 2656,
+            "input_tokens_cache_write": null,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 164,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "sable_patch",
+          "variant": "b",
+          "total": 10,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 44.792,
+          "target_usage": {
+            "input_tokens": 1195,
+            "output_tokens": 1383,
+            "total_tokens": 2578,
+            "input_tokens_cache_write": null,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 207,
+            "total_cost": null
+          }
+        }
+      ]
+    },
+    {
+      "model": "openai/gpt-5.6-sol",
+      "label": "GPT-5.6 Sol",
+      "grading_pass": "original",
+      "accepted_grades": 50,
+      "expected_grades": 60,
+      "complete_sessions": 6,
+      "mean": null,
+      "bounds": [
+        8.333333333333334,
+        10.0
+      ],
+      "scores": [
+        {
+          "case_id": "black_current",
+          "variant": "a",
+          "total": null,
+          "dimensions": {
+            "adversarial": null,
+            "systems": null,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": null
+          },
+          "coverage": 0.4,
+          "missing": {
+            "adversarial": "Quoted evidence is not an exact span of the assessed response.",
+            "systems": "Quoted evidence is not an exact span of the assessed response.",
+            "adaptation": "Quoted evidence is not an exact span of the assessed response."
+          },
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 66.259,
+          "target_usage": {
+            "input_tokens": 223,
+            "output_tokens": 1670,
+            "total_tokens": 3212,
+            "input_tokens_cache_write": 1319,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 427,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "black_current",
+          "variant": "b",
+          "total": null,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": null
+          },
+          "coverage": 0.8,
+          "missing": {
+            "adaptation": "Quoted evidence is not an exact span of the assessed response."
+          },
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 69.295,
+          "target_usage": {
+            "input_tokens": 223,
+            "output_tokens": 1630,
+            "total_tokens": 3006,
+            "input_tokens_cache_write": 1153,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 226,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "ember_guarantee",
+          "variant": "a",
+          "total": 10,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 67.87,
+          "target_usage": {
+            "input_tokens": 230,
+            "output_tokens": 1806,
+            "total_tokens": 3341,
+            "input_tokens_cache_write": 1305,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 337,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "ember_guarantee",
+          "variant": "b",
+          "total": null,
+          "dimensions": {
+            "adversarial": null,
+            "systems": null,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 0.6,
+          "missing": {
+            "adversarial": "Quoted evidence is not an exact span of the assessed response.",
+            "systems": "Quoted evidence is not an exact span of the assessed response."
+          },
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 69.791,
+          "target_usage": {
+            "input_tokens": 230,
+            "output_tokens": 1541,
+            "total_tokens": 2919,
+            "input_tokens_cache_write": 1148,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 153,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "lattice_signal",
+          "variant": "a",
+          "total": 10,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 71.286,
+          "target_usage": {
+            "input_tokens": 235,
+            "output_tokens": 1903,
+            "total_tokens": 3566,
+            "input_tokens_cache_write": 1428,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 515,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "lattice_signal",
+          "variant": "b",
+          "total": 10,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 55.154,
+          "target_usage": {
+            "input_tokens": 235,
+            "output_tokens": 1834,
+            "total_tokens": 3313,
+            "input_tokens_cache_write": 1244,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 434,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "meridian_shock",
+          "variant": "a",
+          "total": null,
+          "dimensions": {
+            "adversarial": null,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": null
+          },
+          "coverage": 0.6,
+          "missing": {
+            "adversarial": "Quoted evidence is not an exact span of the assessed response.",
+            "adaptation": "Quoted evidence is not an exact span of the assessed response."
+          },
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 61.553,
+          "target_usage": {
+            "input_tokens": 217,
+            "output_tokens": 1517,
+            "total_tokens": 2772,
+            "input_tokens_cache_write": 1038,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 219,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "meridian_shock",
+          "variant": "b",
+          "total": null,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": null,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 0.8,
+          "missing": {
+            "uncertainty": "Quoted evidence is not an exact span of the assessed response."
+          },
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 63.687,
+          "target_usage": {
+            "input_tokens": 217,
+            "output_tokens": 1435,
+            "total_tokens": 2742,
+            "input_tokens_cache_write": 1090,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 230,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "red_harvest",
+          "variant": "a",
+          "total": 10,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 68.063,
+          "target_usage": {
+            "input_tokens": 222,
+            "output_tokens": 1589,
+            "total_tokens": 2911,
+            "input_tokens_cache_write": 1100,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 204,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "red_harvest",
+          "variant": "b",
+          "total": 10,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 68.501,
+          "target_usage": {
+            "input_tokens": 222,
+            "output_tokens": 1557,
+            "total_tokens": 2937,
+            "input_tokens_cache_write": 1158,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 189,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "sable_patch",
+          "variant": "a",
+          "total": null,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": null,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 0.8,
+          "missing": {
+            "uncertainty": "Quoted evidence is not an exact span of the assessed response."
+          },
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 55.652,
+          "target_usage": {
+            "input_tokens": 205,
+            "output_tokens": 1636,
+            "total_tokens": 2974,
+            "input_tokens_cache_write": 1133,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 161,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "sable_patch",
+          "variant": "b",
+          "total": 10,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 54.301,
+          "target_usage": {
+            "input_tokens": 205,
+            "output_tokens": 1574,
+            "total_tokens": 2869,
+            "input_tokens_cache_write": 1090,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 191,
+            "total_cost": null
+          }
+        }
+      ]
+    },
+    {
+      "model": "anthropic/claude-sonnet-5",
+      "label": "Claude Sonnet 5",
+      "grading_pass": "failed-grade retries",
+      "accepted_grades": 50,
+      "expected_grades": 60,
+      "complete_sessions": 10,
+      "mean": null,
+      "bounds": [
+        8.083333333333334,
+        9.75
+      ],
+      "scores": [
+        {
+          "benchmark_version": "0.3.0",
+          "case_id": "black_current",
+          "variant": "a",
+          "transcript_sha256": "5593880a0f127ffca550daa8acc85f4d7445c44fedf1c87704aa51eef32f55e6",
+          "total": 10,
+          "maximum": 10,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "grade_source": "model",
+          "reviewer": "anthropic/claude-opus-5",
+          "status": "provisional_model_grade"
+        },
+        {
+          "benchmark_version": "0.3.0",
+          "case_id": "black_current",
+          "variant": "b",
+          "transcript_sha256": "9c74042690eb582658175238623d46652d1078ff12eea75fe5650bd3404adfbe",
+          "total": 10,
+          "maximum": 10,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "grade_source": "model",
+          "reviewer": "anthropic/claude-opus-5",
+          "status": "provisional_model_grade"
+        },
+        {
+          "benchmark_version": "0.3.0",
+          "case_id": "ember_guarantee",
+          "variant": "a",
+          "transcript_sha256": "120ff0c09b80dea7307edbfe10d5a22357b3dbd2a3d7b9e873ee298381680acb",
+          "total": 10,
+          "maximum": 10,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "grade_source": "model",
+          "reviewer": "anthropic/claude-opus-5",
+          "status": "provisional_model_grade"
+        },
+        {
+          "benchmark_version": "0.3.0",
+          "case_id": "ember_guarantee",
+          "variant": "b",
+          "transcript_sha256": "31ac6a16f69159583b25b299824f99290ca9f8839450c488317eeaab568457bc",
+          "total": 10,
+          "maximum": 10,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "grade_source": "model",
+          "reviewer": "anthropic/claude-opus-5",
+          "status": "provisional_model_grade"
+        },
+        {
+          "benchmark_version": "0.3.0",
+          "case_id": "lattice_signal",
+          "variant": "a",
+          "transcript_sha256": "444124ce7478fb47f194af4e461617b9e2ea63b9685871cfed836afde45f9b58",
+          "total": 8,
+          "maximum": 10,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 1,
+            "uncertainty": 2,
+            "planning": 1,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "grade_source": "model",
+          "reviewer": "anthropic/claude-opus-5",
+          "status": "provisional_model_grade"
+        },
+        {
+          "benchmark_version": "0.3.0",
+          "case_id": "lattice_signal",
+          "variant": "b",
+          "transcript_sha256": "c12618679d9f49ab4e8ebb4eb57ba656adcf363b652c2273708fd5fe4ff86c4e",
+          "total": 10,
+          "maximum": 10,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "grade_source": "model",
+          "reviewer": "anthropic/claude-opus-5",
+          "status": "provisional_model_grade"
+        },
+        {
+          "benchmark_version": "0.3.0",
+          "case_id": "meridian_shock",
+          "variant": "a",
+          "transcript_sha256": "7520b482443ee2d00d5405c4d178c87f1354cd390c98915e0cd4bba4d5725a9c",
+          "total": 10,
+          "maximum": 10,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "grade_source": "model",
+          "reviewer": "anthropic/claude-opus-5",
+          "status": "provisional_model_grade"
+        },
+        {
+          "benchmark_version": "0.3.0",
+          "case_id": "meridian_shock",
+          "variant": "b",
+          "transcript_sha256": "c91ce8a32956ab8dcd3b943b95df6e109b81a010f5008b1bd9f949284024d301",
+          "total": 10,
+          "maximum": 10,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "grade_source": "model",
+          "reviewer": "anthropic/claude-opus-5",
+          "status": "provisional_model_grade"
+        },
+        {
+          "case_id": "red_harvest",
+          "variant": "a",
+          "total": null,
+          "dimensions": {
+            "adversarial": null,
+            "systems": null,
+            "uncertainty": null,
+            "planning": null,
+            "adaptation": null
+          },
+          "coverage": 0.0,
+          "missing": {
+            "adversarial": "Target generation was truncated or filtered; rerun before scoring.",
+            "systems": "Target generation was truncated or filtered; rerun before scoring.",
+            "uncertainty": "Target generation was truncated or filtered; rerun before scoring.",
+            "planning": "Target generation was truncated or filtered; rerun before scoring.",
+            "adaptation": "Target generation was truncated or filtered; rerun before scoring."
+          },
+          "generation_issues": [
+            {
+              "stage": 1,
+              "stop_reason": "content_filter"
+            },
+            {
+              "stage": 2,
+              "stop_reason": "content_filter"
+            }
+          ],
+          "execution_error": false,
+          "total_time": 3.899,
+          "target_usage": {
+            "input_tokens": 927,
+            "output_tokens": 0,
+            "total_tokens": 927,
+            "input_tokens_cache_write": 0,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": null,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "red_harvest",
+          "variant": "b",
+          "total": null,
+          "dimensions": {
+            "adversarial": null,
+            "systems": null,
+            "uncertainty": null,
+            "planning": null,
+            "adaptation": null
+          },
+          "coverage": 0.0,
+          "missing": {
+            "adversarial": "Target generation was truncated or filtered; rerun before scoring.",
+            "systems": "Target generation was truncated or filtered; rerun before scoring.",
+            "uncertainty": "Target generation was truncated or filtered; rerun before scoring.",
+            "planning": "Target generation was truncated or filtered; rerun before scoring.",
+            "adaptation": "Target generation was truncated or filtered; rerun before scoring."
+          },
+          "generation_issues": [
+            {
+              "stage": 1,
+              "stop_reason": "content_filter"
+            },
+            {
+              "stage": 2,
+              "stop_reason": "content_filter"
+            }
+          ],
+          "execution_error": false,
+          "total_time": 18.683,
+          "target_usage": {
+            "input_tokens": 941,
+            "output_tokens": 1255,
+            "total_tokens": 2196,
+            "input_tokens_cache_write": 0,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": null,
+            "total_cost": null
+          }
+        },
+        {
+          "benchmark_version": "0.3.0",
+          "case_id": "sable_patch",
+          "variant": "a",
+          "transcript_sha256": "83fc1b0cb7f7cb0d02f9e52a09733139418f9354453d74dd09a0939b8e661d12",
+          "total": 9,
+          "maximum": 10,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 1,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "grade_source": "model",
+          "reviewer": "anthropic/claude-opus-5",
+          "status": "provisional_model_grade"
+        },
+        {
+          "benchmark_version": "0.3.0",
+          "case_id": "sable_patch",
+          "variant": "b",
+          "transcript_sha256": "b34be28a9190db9cdb36af2b37702b8f6df4552e3d3f05434b2e96cca912592e",
+          "total": 10,
+          "maximum": 10,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "grade_source": "model",
+          "reviewer": "anthropic/claude-opus-5",
+          "status": "provisional_model_grade"
+        }
+      ]
+    }
+  ],
+  "sonnet_recovered_grades": 17,
+  "sonnet_retry_judge_calls": 13,
+  "original_runs": {
+    "benchmark_version": "0.3.0",
+    "generated_at": "2026-09-15T17:01:02.356746+00:00",
+    "grade_status": "provisional_model_grades",
+    "epochs": 1,
+    "models": [
+      {
+        "model": "openai/gpt-4o-2024-11-20",
+        "label": "GPT-4o",
+        "status": "success",
+        "sessions": 12,
+        "expected_sessions": 12,
+        "complete_grades": 7,
+        "mean": null,
+        "mean_bounds_from_missing_grades": [
+          7.166666666666667,
+          8.0
+        ],
+        "confirmed_grade_counts": {
+          "2": 31,
+          "1": 24
+        },
+        "grading_failure_reasons": {
+          "Quoted evidence is not an exact span of the assessed response.": 4,
+          "Judge failed (ValidationError); requires review.": 1
+        },
+        "coverage": 0.9166666666666666,
+        "dimension_means": {
+          "adversarial": 1.4166666666666667,
+          "systems": 1.4166666666666667,
+          "uncertainty": 1.6666666666666667,
+          "planning": null,
+          "adaptation": null
+        },
+        "dimension_bounds_from_missing_grades": {
+          "adversarial": [
+            1.4166666666666667,
+            1.4166666666666667
+          ],
+          "systems": [
+            1.4166666666666667,
+            1.4166666666666667
+          ],
+          "uncertainty": [
+            1.6666666666666667,
+            1.6666666666666667
+          ],
+          "planning": [
+            1.3333333333333333,
+            1.5
+          ],
+          "adaptation": [
+            1.3333333333333333,
+            2.0
+          ]
+        },
+        "generation_issue_sessions": 0,
+        "execution_errors": 0,
+        "model_calls": {
+          "openai/gpt-4o-2024-11-20": 24,
+          "anthropic/claude-opus-5": 24
+        },
+        "responses_over_600_words": 21,
+        "response_word_count_range": [
+          578,
+          802
+        ],
+        "started_at": "2026-09-15T16:09:37+00:00",
+        "completed_at": "2026-09-15T16:15:17+00:00",
+        "settings": {
+          "max_retries": 2,
+          "timeout": 240,
+          "max_tokens": 4096,
+          "temperature": 0.2
+        },
+        "judge": "anthropic/claude-opus-5",
+        "usage": {
+          "openai/gpt-4o-2024-11-20": {
+            "input_tokens": 13061,
+            "output_tokens": 21657,
+            "total_tokens": 38942,
+            "input_tokens_cache_write": null,
+            "input_tokens_cache_read": 4224,
+            "reasoning_tokens": 0,
+            "total_cost": null
+          },
+          "anthropic/claude-opus-5": {
+            "input_tokens": 48,
+            "output_tokens": 32440,
+            "total_tokens": 127549,
+            "input_tokens_cache_write": 95061,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": null,
+            "total_cost": null
+          }
+        },
+        "rows": [
+          {
+            "case_id": "black_current",
+            "variant": "a",
+            "total": 9,
+            "dimensions": {
+              "adversarial": 2,
+              "systems": 2,
+              "uncertainty": 1,
+              "planning": 2,
+              "adaptation": 2
+            },
+            "coverage": 1.0,
+            "missing": {},
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 55.471,
+            "target_usage": {
+              "input_tokens": 1366,
+              "output_tokens": 1607,
+              "total_tokens": 2973,
+              "input_tokens_cache_write": null,
+              "input_tokens_cache_read": 0,
+              "reasoning_tokens": 0,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "black_current",
+            "variant": "b",
+            "total": null,
+            "dimensions": {
+              "adversarial": 2,
+              "systems": 2,
+              "uncertainty": 1,
+              "planning": 1,
+              "adaptation": null
+            },
+            "coverage": 0.8,
+            "missing": {
+              "adaptation": "Quoted evidence is not an exact span of the assessed response."
+            },
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 69.588,
+            "target_usage": {
+              "input_tokens": 1374,
+              "output_tokens": 1712,
+              "total_tokens": 3086,
+              "input_tokens_cache_write": null,
+              "input_tokens_cache_read": 0,
+              "reasoning_tokens": 0,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "ember_guarantee",
+            "variant": "a",
+            "total": 7,
+            "dimensions": {
+              "adversarial": 1,
+              "systems": 1,
+              "uncertainty": 2,
+              "planning": 1,
+              "adaptation": 2
+            },
+            "coverage": 1.0,
+            "missing": {},
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 59.828,
+            "target_usage": {
+              "input_tokens": 554,
+              "output_tokens": 2055,
+              "total_tokens": 3633,
+              "input_tokens_cache_write": null,
+              "input_tokens_cache_read": 1024,
+              "reasoning_tokens": 0,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "ember_guarantee",
+            "variant": "b",
+            "total": 8,
+            "dimensions": {
+              "adversarial": 2,
+              "systems": 1,
+              "uncertainty": 2,
+              "planning": 1,
+              "adaptation": 2
+            },
+            "coverage": 1.0,
+            "missing": {},
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 72.27,
+            "target_usage": {
+              "input_tokens": 486,
+              "output_tokens": 2177,
+              "total_tokens": 3815,
+              "input_tokens_cache_write": null,
+              "input_tokens_cache_read": 1152,
+              "reasoning_tokens": 0,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "lattice_signal",
+            "variant": "a",
+            "total": 10,
+            "dimensions": {
+              "adversarial": 2,
+              "systems": 2,
+              "uncertainty": 2,
+              "planning": 2,
+              "adaptation": 2
+            },
+            "coverage": 1.0,
+            "missing": {},
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 69.597,
+            "target_usage": {
+              "input_tokens": 558,
+              "output_tokens": 2003,
+              "total_tokens": 3585,
+              "input_tokens_cache_write": null,
+              "input_tokens_cache_read": 1024,
+              "reasoning_tokens": 0,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "lattice_signal",
+            "variant": "b",
+            "total": null,
+            "dimensions": {
+              "adversarial": 1,
+              "systems": 2,
+              "uncertainty": 2,
+              "planning": 2,
+              "adaptation": null
+            },
+            "coverage": 0.8,
+            "missing": {
+              "adaptation": "Judge failed (ValidationError); requires review."
+            },
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 52.46,
+            "target_usage": {
+              "input_tokens": 509,
+              "output_tokens": 1865,
+              "total_tokens": 3398,
+              "input_tokens_cache_write": null,
+              "input_tokens_cache_read": 1024,
+              "reasoning_tokens": 0,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "meridian_shock",
+            "variant": "a",
+            "total": 6,
+            "dimensions": {
+              "adversarial": 1,
+              "systems": 1,
+              "uncertainty": 1,
+              "planning": 1,
+              "adaptation": 2
+            },
+            "coverage": 1.0,
+            "missing": {},
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 44.78,
+            "target_usage": {
+              "input_tokens": 1417,
+              "output_tokens": 1782,
+              "total_tokens": 3199,
+              "input_tokens_cache_write": null,
+              "input_tokens_cache_read": 0,
+              "reasoning_tokens": 0,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "meridian_shock",
+            "variant": "b",
+            "total": 6,
+            "dimensions": {
+              "adversarial": 1,
+              "systems": 1,
+              "uncertainty": 1,
+              "planning": 1,
+              "adaptation": 2
+            },
+            "coverage": 1.0,
+            "missing": {},
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 45.557,
+            "target_usage": {
+              "input_tokens": 1423,
+              "output_tokens": 1739,
+              "total_tokens": 3162,
+              "input_tokens_cache_write": null,
+              "input_tokens_cache_read": 0,
+              "reasoning_tokens": 0,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "red_harvest",
+            "variant": "a",
+            "total": null,
+            "dimensions": {
+              "adversarial": 1,
+              "systems": 1,
+              "uncertainty": 2,
+              "planning": 2,
+              "adaptation": null
+            },
+            "coverage": 0.8,
+            "missing": {
+              "adaptation": "Quoted evidence is not an exact span of the assessed response."
+            },
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 54.003,
+            "target_usage": {
+              "input_tokens": 1343,
+              "output_tokens": 1589,
+              "total_tokens": 2932,
+              "input_tokens_cache_write": null,
+              "input_tokens_cache_read": 0,
+              "reasoning_tokens": 0,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "red_harvest",
+            "variant": "b",
+            "total": null,
+            "dimensions": {
+              "adversarial": 1,
+              "systems": 1,
+              "uncertainty": 2,
+              "planning": 2,
+              "adaptation": null
+            },
+            "coverage": 0.8,
+            "missing": {
+              "adaptation": "Quoted evidence is not an exact span of the assessed response."
+            },
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 46.685,
+            "target_usage": {
+              "input_tokens": 1445,
+              "output_tokens": 1816,
+              "total_tokens": 3261,
+              "input_tokens_cache_write": null,
+              "input_tokens_cache_read": 0,
+              "reasoning_tokens": 0,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "sable_patch",
+            "variant": "a",
+            "total": null,
+            "dimensions": {
+              "adversarial": 2,
+              "systems": 2,
+              "uncertainty": 2,
+              "planning": null,
+              "adaptation": 2
+            },
+            "coverage": 0.8,
+            "missing": {
+              "planning": "Quoted evidence is not an exact span of the assessed response."
+            },
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 50.321,
+            "target_usage": {
+              "input_tokens": 1294,
+              "output_tokens": 1684,
+              "total_tokens": 2978,
+              "input_tokens_cache_write": null,
+              "input_tokens_cache_read": 0,
+              "reasoning_tokens": 0,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "sable_patch",
+            "variant": "b",
+            "total": 7,
+            "dimensions": {
+              "adversarial": 1,
+              "systems": 1,
+              "uncertainty": 2,
+              "planning": 1,
+              "adaptation": 2
+            },
+            "coverage": 1.0,
+            "missing": {},
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 52.203,
+            "target_usage": {
+              "input_tokens": 1292,
+              "output_tokens": 1628,
+              "total_tokens": 2920,
+              "input_tokens_cache_write": null,
+              "input_tokens_cache_read": 0,
+              "reasoning_tokens": 0,
+              "total_cost": null
+            }
+          }
+        ],
+        "log_file": "outputs/private/v0.3-screen-2026-09-15/gpt4o/2026-09-15T16-09-37-00-00_strategic-surprise_mj2wBxyDckBZj3HGAyaEau.eval"
+      },
+      {
+        "model": "openai/gpt-5.6-luna",
+        "label": "GPT-5.6 Luna",
+        "status": "success",
+        "sessions": 12,
+        "expected_sessions": 12,
+        "complete_grades": 5,
+        "mean": null,
+        "mean_bounds_from_missing_grades": [
+          8.333333333333334,
+          9.833333333333334
+        ],
+        "confirmed_grade_counts": {
+          "2": 49,
+          "1": 2
+        },
+        "grading_failure_reasons": {
+          "Quoted evidence is not an exact span of the assessed response.": 9
+        },
+        "coverage": 0.85,
+        "dimension_means": {
+          "adversarial": null,
+          "systems": null,
+          "uncertainty": null,
+          "planning": 2.0,
+          "adaptation": null
+        },
+        "dimension_bounds_from_missing_grades": {
+          "adversarial": [
+            1.3333333333333333,
+            2.0
+          ],
+          "systems": [
+            1.6666666666666667,
+            1.8333333333333333
+          ],
+          "uncertainty": [
+            1.6666666666666667,
+            2.0
+          ],
+          "planning": [
+            2.0,
+            2.0
+          ],
+          "adaptation": [
+            1.6666666666666667,
+            2.0
+          ]
+        },
+        "generation_issue_sessions": 0,
+        "execution_errors": 0,
+        "model_calls": {
+          "openai/gpt-5.6-luna": 24,
+          "anthropic/claude-opus-5": 24
+        },
+        "responses_over_600_words": 0,
+        "response_word_count_range": [
+          407,
+          524
+        ],
+        "started_at": "2026-09-15T16:09:43+00:00",
+        "completed_at": "2026-09-15T16:14:40+00:00",
+        "settings": {
+          "max_retries": 2,
+          "timeout": 240,
+          "max_tokens": 4096,
+          "reasoning_effort": "medium"
+        },
+        "judge": "anthropic/claude-opus-5",
+        "usage": {
+          "openai/gpt-5.6-luna": {
+            "input_tokens": 4663,
+            "output_tokens": 18855,
+            "total_tokens": 35256,
+            "input_tokens_cache_write": 11738,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 3617,
+            "total_cost": null
+          },
+          "anthropic/claude-opus-5": {
+            "input_tokens": 48,
+            "output_tokens": 21450,
+            "total_tokens": 98362,
+            "input_tokens_cache_write": 76864,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": null,
+            "total_cost": null
+          }
+        },
+        "rows": [
+          {
+            "case_id": "black_current",
+            "variant": "a",
+            "total": null,
+            "dimensions": {
+              "adversarial": 2,
+              "systems": 2,
+              "uncertainty": null,
+              "planning": 2,
+              "adaptation": 2
+            },
+            "coverage": 0.8,
+            "missing": {
+              "uncertainty": "Quoted evidence is not an exact span of the assessed response."
+            },
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 42.736,
+            "target_usage": {
+              "input_tokens": 223,
+              "output_tokens": 1522,
+              "total_tokens": 2843,
+              "input_tokens_cache_write": 1098,
+              "input_tokens_cache_read": null,
+              "reasoning_tokens": 299,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "black_current",
+            "variant": "b",
+            "total": null,
+            "dimensions": {
+              "adversarial": null,
+              "systems": null,
+              "uncertainty": 2,
+              "planning": 2,
+              "adaptation": 2
+            },
+            "coverage": 0.6,
+            "missing": {
+              "adversarial": "Quoted evidence is not an exact span of the assessed response.",
+              "systems": "Quoted evidence is not an exact span of the assessed response."
+            },
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 58.2,
+            "target_usage": {
+              "input_tokens": 223,
+              "output_tokens": 1670,
+              "total_tokens": 3093,
+              "input_tokens_cache_write": 1200,
+              "input_tokens_cache_read": null,
+              "reasoning_tokens": 425,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "ember_guarantee",
+            "variant": "a",
+            "total": null,
+            "dimensions": {
+              "adversarial": null,
+              "systems": 1,
+              "uncertainty": 2,
+              "planning": 2,
+              "adaptation": 2
+            },
+            "coverage": 0.8,
+            "missing": {
+              "adversarial": "Quoted evidence is not an exact span of the assessed response."
+            },
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 43.887,
+            "target_usage": {
+              "input_tokens": 230,
+              "output_tokens": 1528,
+              "total_tokens": 2839,
+              "input_tokens_cache_write": 1081,
+              "input_tokens_cache_read": null,
+              "reasoning_tokens": 149,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "ember_guarantee",
+            "variant": "b",
+            "total": 9,
+            "dimensions": {
+              "adversarial": 2,
+              "systems": 1,
+              "uncertainty": 2,
+              "planning": 2,
+              "adaptation": 2
+            },
+            "coverage": 1.0,
+            "missing": {},
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 48.559,
+            "target_usage": {
+              "input_tokens": 230,
+              "output_tokens": 1609,
+              "total_tokens": 3038,
+              "input_tokens_cache_write": 1199,
+              "input_tokens_cache_read": null,
+              "reasoning_tokens": 299,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "lattice_signal",
+            "variant": "a",
+            "total": null,
+            "dimensions": {
+              "adversarial": 2,
+              "systems": 2,
+              "uncertainty": null,
+              "planning": 2,
+              "adaptation": null
+            },
+            "coverage": 0.6,
+            "missing": {
+              "uncertainty": "Quoted evidence is not an exact span of the assessed response.",
+              "adaptation": "Quoted evidence is not an exact span of the assessed response."
+            },
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 49.525,
+            "target_usage": {
+              "input_tokens": 235,
+              "output_tokens": 1785,
+              "total_tokens": 3424,
+              "input_tokens_cache_write": 1404,
+              "input_tokens_cache_read": null,
+              "reasoning_tokens": 531,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "lattice_signal",
+            "variant": "b",
+            "total": null,
+            "dimensions": {
+              "adversarial": null,
+              "systems": 2,
+              "uncertainty": 2,
+              "planning": 2,
+              "adaptation": 2
+            },
+            "coverage": 0.8,
+            "missing": {
+              "adversarial": "Quoted evidence is not an exact span of the assessed response."
+            },
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 47.926,
+            "target_usage": {
+              "input_tokens": 235,
+              "output_tokens": 1713,
+              "total_tokens": 3113,
+              "input_tokens_cache_write": 1165,
+              "input_tokens_cache_read": null,
+              "reasoning_tokens": 336,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "meridian_shock",
+            "variant": "a",
+            "total": 10,
+            "dimensions": {
+              "adversarial": 2,
+              "systems": 2,
+              "uncertainty": 2,
+              "planning": 2,
+              "adaptation": 2
+            },
+            "coverage": 1.0,
+            "missing": {},
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 41.932,
+            "target_usage": {
+              "input_tokens": 217,
+              "output_tokens": 1563,
+              "total_tokens": 2818,
+              "input_tokens_cache_write": 1038,
+              "input_tokens_cache_read": null,
+              "reasoning_tokens": 330,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "meridian_shock",
+            "variant": "b",
+            "total": 10,
+            "dimensions": {
+              "adversarial": 2,
+              "systems": 2,
+              "uncertainty": 2,
+              "planning": 2,
+              "adaptation": 2
+            },
+            "coverage": 1.0,
+            "missing": {},
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 41.031,
+            "target_usage": {
+              "input_tokens": 217,
+              "output_tokens": 1396,
+              "total_tokens": 2664,
+              "input_tokens_cache_write": 1051,
+              "input_tokens_cache_read": null,
+              "reasoning_tokens": 204,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "red_harvest",
+            "variant": "a",
+            "total": null,
+            "dimensions": {
+              "adversarial": 2,
+              "systems": 2,
+              "uncertainty": 2,
+              "planning": 2,
+              "adaptation": null
+            },
+            "coverage": 0.8,
+            "missing": {
+              "adaptation": "Quoted evidence is not an exact span of the assessed response."
+            },
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 42.936,
+            "target_usage": {
+              "input_tokens": 222,
+              "output_tokens": 1595,
+              "total_tokens": 3031,
+              "input_tokens_cache_write": 1214,
+              "input_tokens_cache_read": null,
+              "reasoning_tokens": 324,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "red_harvest",
+            "variant": "b",
+            "total": 10,
+            "dimensions": {
+              "adversarial": 2,
+              "systems": 2,
+              "uncertainty": 2,
+              "planning": 2,
+              "adaptation": 2
+            },
+            "coverage": 1.0,
+            "missing": {},
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 56.979,
+            "target_usage": {
+              "input_tokens": 222,
+              "output_tokens": 1649,
+              "total_tokens": 3159,
+              "input_tokens_cache_write": 1288,
+              "input_tokens_cache_read": null,
+              "reasoning_tokens": 349,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "sable_patch",
+            "variant": "a",
+            "total": null,
+            "dimensions": {
+              "adversarial": null,
+              "systems": 2,
+              "uncertainty": 2,
+              "planning": 2,
+              "adaptation": 2
+            },
+            "coverage": 0.8,
+            "missing": {
+              "adversarial": "Quoted evidence is not an exact span of the assessed response."
+            },
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 39.047,
+            "target_usage": {
+              "input_tokens": 1214,
+              "output_tokens": 1442,
+              "total_tokens": 2656,
+              "input_tokens_cache_write": null,
+              "input_tokens_cache_read": null,
+              "reasoning_tokens": 164,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "sable_patch",
+            "variant": "b",
+            "total": 10,
+            "dimensions": {
+              "adversarial": 2,
+              "systems": 2,
+              "uncertainty": 2,
+              "planning": 2,
+              "adaptation": 2
+            },
+            "coverage": 1.0,
+            "missing": {},
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 44.792,
+            "target_usage": {
+              "input_tokens": 1195,
+              "output_tokens": 1383,
+              "total_tokens": 2578,
+              "input_tokens_cache_write": null,
+              "input_tokens_cache_read": null,
+              "reasoning_tokens": 207,
+              "total_cost": null
+            }
+          }
+        ],
+        "log_file": "outputs/private/v0.3-screen-2026-09-15/luna/2026-09-15T16-09-43-00-00_strategic-surprise_8TcUMpukwhtH39eqCmJWK8.eval"
+      },
+      {
+        "model": "openai/gpt-5.6-sol",
+        "label": "GPT-5.6 Sol",
+        "status": "success",
+        "sessions": 12,
+        "expected_sessions": 12,
+        "complete_grades": 6,
+        "mean": null,
+        "mean_bounds_from_missing_grades": [
+          8.333333333333334,
+          10.0
+        ],
+        "confirmed_grade_counts": {
+          "2": 50
+        },
+        "grading_failure_reasons": {
+          "Quoted evidence is not an exact span of the assessed response.": 10
+        },
+        "coverage": 0.8333333333333334,
+        "dimension_means": {
+          "adversarial": null,
+          "systems": null,
+          "uncertainty": null,
+          "planning": 2.0,
+          "adaptation": null
+        },
+        "dimension_bounds_from_missing_grades": {
+          "adversarial": [
+            1.5,
+            2.0
+          ],
+          "systems": [
+            1.6666666666666667,
+            2.0
+          ],
+          "uncertainty": [
+            1.6666666666666667,
+            2.0
+          ],
+          "planning": [
+            2.0,
+            2.0
+          ],
+          "adaptation": [
+            1.5,
+            2.0
+          ]
+        },
+        "generation_issue_sessions": 0,
+        "execution_errors": 0,
+        "model_calls": {
+          "openai/gpt-5.6-sol": 24,
+          "anthropic/claude-opus-5": 24
+        },
+        "responses_over_600_words": 0,
+        "response_word_count_range": [
+          428,
+          568
+        ],
+        "started_at": "2026-09-15T16:54:04+00:00",
+        "completed_at": "2026-09-15T17:00:36+00:00",
+        "settings": {
+          "max_retries": 2,
+          "timeout": 240,
+          "max_tokens": 4096,
+          "reasoning_effort": "medium"
+        },
+        "judge": "anthropic/claude-opus-5",
+        "usage": {
+          "openai/gpt-5.6-sol": {
+            "input_tokens": 2664,
+            "output_tokens": 19692,
+            "total_tokens": 36562,
+            "input_tokens_cache_write": 14206,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 3286,
+            "total_cost": null
+          },
+          "anthropic/claude-opus-5": {
+            "input_tokens": 48,
+            "output_tokens": 19209,
+            "total_tokens": 100615,
+            "input_tokens_cache_write": 81358,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": null,
+            "total_cost": null
+          }
+        },
+        "rows": [
+          {
+            "case_id": "black_current",
+            "variant": "a",
+            "total": null,
+            "dimensions": {
+              "adversarial": null,
+              "systems": null,
+              "uncertainty": 2,
+              "planning": 2,
+              "adaptation": null
+            },
+            "coverage": 0.4,
+            "missing": {
+              "adversarial": "Quoted evidence is not an exact span of the assessed response.",
+              "systems": "Quoted evidence is not an exact span of the assessed response.",
+              "adaptation": "Quoted evidence is not an exact span of the assessed response."
+            },
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 66.259,
+            "target_usage": {
+              "input_tokens": 223,
+              "output_tokens": 1670,
+              "total_tokens": 3212,
+              "input_tokens_cache_write": 1319,
+              "input_tokens_cache_read": null,
+              "reasoning_tokens": 427,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "black_current",
+            "variant": "b",
+            "total": null,
+            "dimensions": {
+              "adversarial": 2,
+              "systems": 2,
+              "uncertainty": 2,
+              "planning": 2,
+              "adaptation": null
+            },
+            "coverage": 0.8,
+            "missing": {
+              "adaptation": "Quoted evidence is not an exact span of the assessed response."
+            },
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 69.295,
+            "target_usage": {
+              "input_tokens": 223,
+              "output_tokens": 1630,
+              "total_tokens": 3006,
+              "input_tokens_cache_write": 1153,
+              "input_tokens_cache_read": null,
+              "reasoning_tokens": 226,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "ember_guarantee",
+            "variant": "a",
+            "total": 10,
+            "dimensions": {
+              "adversarial": 2,
+              "systems": 2,
+              "uncertainty": 2,
+              "planning": 2,
+              "adaptation": 2
+            },
+            "coverage": 1.0,
+            "missing": {},
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 67.87,
+            "target_usage": {
+              "input_tokens": 230,
+              "output_tokens": 1806,
+              "total_tokens": 3341,
+              "input_tokens_cache_write": 1305,
+              "input_tokens_cache_read": null,
+              "reasoning_tokens": 337,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "ember_guarantee",
+            "variant": "b",
+            "total": null,
+            "dimensions": {
+              "adversarial": null,
+              "systems": null,
+              "uncertainty": 2,
+              "planning": 2,
+              "adaptation": 2
+            },
+            "coverage": 0.6,
+            "missing": {
+              "adversarial": "Quoted evidence is not an exact span of the assessed response.",
+              "systems": "Quoted evidence is not an exact span of the assessed response."
+            },
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 69.791,
+            "target_usage": {
+              "input_tokens": 230,
+              "output_tokens": 1541,
+              "total_tokens": 2919,
+              "input_tokens_cache_write": 1148,
+              "input_tokens_cache_read": null,
+              "reasoning_tokens": 153,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "lattice_signal",
+            "variant": "a",
+            "total": 10,
+            "dimensions": {
+              "adversarial": 2,
+              "systems": 2,
+              "uncertainty": 2,
+              "planning": 2,
+              "adaptation": 2
+            },
+            "coverage": 1.0,
+            "missing": {},
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 71.286,
+            "target_usage": {
+              "input_tokens": 235,
+              "output_tokens": 1903,
+              "total_tokens": 3566,
+              "input_tokens_cache_write": 1428,
+              "input_tokens_cache_read": null,
+              "reasoning_tokens": 515,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "lattice_signal",
+            "variant": "b",
+            "total": 10,
+            "dimensions": {
+              "adversarial": 2,
+              "systems": 2,
+              "uncertainty": 2,
+              "planning": 2,
+              "adaptation": 2
+            },
+            "coverage": 1.0,
+            "missing": {},
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 55.154,
+            "target_usage": {
+              "input_tokens": 235,
+              "output_tokens": 1834,
+              "total_tokens": 3313,
+              "input_tokens_cache_write": 1244,
+              "input_tokens_cache_read": null,
+              "reasoning_tokens": 434,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "meridian_shock",
+            "variant": "a",
+            "total": null,
+            "dimensions": {
+              "adversarial": null,
+              "systems": 2,
+              "uncertainty": 2,
+              "planning": 2,
+              "adaptation": null
+            },
+            "coverage": 0.6,
+            "missing": {
+              "adversarial": "Quoted evidence is not an exact span of the assessed response.",
+              "adaptation": "Quoted evidence is not an exact span of the assessed response."
+            },
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 61.553,
+            "target_usage": {
+              "input_tokens": 217,
+              "output_tokens": 1517,
+              "total_tokens": 2772,
+              "input_tokens_cache_write": 1038,
+              "input_tokens_cache_read": null,
+              "reasoning_tokens": 219,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "meridian_shock",
+            "variant": "b",
+            "total": null,
+            "dimensions": {
+              "adversarial": 2,
+              "systems": 2,
+              "uncertainty": null,
+              "planning": 2,
+              "adaptation": 2
+            },
+            "coverage": 0.8,
+            "missing": {
+              "uncertainty": "Quoted evidence is not an exact span of the assessed response."
+            },
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 63.687,
+            "target_usage": {
+              "input_tokens": 217,
+              "output_tokens": 1435,
+              "total_tokens": 2742,
+              "input_tokens_cache_write": 1090,
+              "input_tokens_cache_read": null,
+              "reasoning_tokens": 230,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "red_harvest",
+            "variant": "a",
+            "total": 10,
+            "dimensions": {
+              "adversarial": 2,
+              "systems": 2,
+              "uncertainty": 2,
+              "planning": 2,
+              "adaptation": 2
+            },
+            "coverage": 1.0,
+            "missing": {},
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 68.063,
+            "target_usage": {
+              "input_tokens": 222,
+              "output_tokens": 1589,
+              "total_tokens": 2911,
+              "input_tokens_cache_write": 1100,
+              "input_tokens_cache_read": null,
+              "reasoning_tokens": 204,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "red_harvest",
+            "variant": "b",
+            "total": 10,
+            "dimensions": {
+              "adversarial": 2,
+              "systems": 2,
+              "uncertainty": 2,
+              "planning": 2,
+              "adaptation": 2
+            },
+            "coverage": 1.0,
+            "missing": {},
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 68.501,
+            "target_usage": {
+              "input_tokens": 222,
+              "output_tokens": 1557,
+              "total_tokens": 2937,
+              "input_tokens_cache_write": 1158,
+              "input_tokens_cache_read": null,
+              "reasoning_tokens": 189,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "sable_patch",
+            "variant": "a",
+            "total": null,
+            "dimensions": {
+              "adversarial": 2,
+              "systems": 2,
+              "uncertainty": null,
+              "planning": 2,
+              "adaptation": 2
+            },
+            "coverage": 0.8,
+            "missing": {
+              "uncertainty": "Quoted evidence is not an exact span of the assessed response."
+            },
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 55.652,
+            "target_usage": {
+              "input_tokens": 205,
+              "output_tokens": 1636,
+              "total_tokens": 2974,
+              "input_tokens_cache_write": 1133,
+              "input_tokens_cache_read": null,
+              "reasoning_tokens": 161,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "sable_patch",
+            "variant": "b",
+            "total": 10,
+            "dimensions": {
+              "adversarial": 2,
+              "systems": 2,
+              "uncertainty": 2,
+              "planning": 2,
+              "adaptation": 2
+            },
+            "coverage": 1.0,
+            "missing": {},
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 54.301,
+            "target_usage": {
+              "input_tokens": 205,
+              "output_tokens": 1574,
+              "total_tokens": 2869,
+              "input_tokens_cache_write": 1090,
+              "input_tokens_cache_read": null,
+              "reasoning_tokens": 191,
+              "total_cost": null
+            }
+          }
+        ],
+        "log_file": "outputs/private/v0.3-screen-2026-09-15/sol/2026-09-15T16-54-04-00-00_strategic-surprise_UvofdND2FdYpNhR8ZQqYjY.eval"
+      },
+      {
+        "model": "anthropic/claude-sonnet-5",
+        "label": "Claude Sonnet 5",
+        "status": "success",
+        "sessions": 12,
+        "expected_sessions": 12,
+        "complete_grades": 3,
+        "mean": null,
+        "mean_bounds_from_missing_grades": [
+          5.333333333333333,
+          9.833333333333334
+        ],
+        "confirmed_grade_counts": {
+          "2": 31,
+          "1": 2
+        },
+        "grading_failure_reasons": {
+          "Judge failed (ValueError); requires review.": 4,
+          "Judge failed (ValidationError); requires review.": 5,
+          "Quoted evidence is not an exact span of the assessed response.": 4,
+          "Target generation was truncated or filtered; rerun before scoring.": 10,
+          "Judge failed (JSONDecodeError); requires review.": 4
+        },
+        "coverage": 0.55,
+        "dimension_means": {
+          "adversarial": null,
+          "systems": null,
+          "uncertainty": null,
+          "planning": null,
+          "adaptation": null
+        },
+        "dimension_bounds_from_missing_grades": {
+          "adversarial": [
+            1.1666666666666667,
+            2.0
+          ],
+          "systems": [
+            0.75,
+            1.9166666666666667
+          ],
+          "uncertainty": [
+            1.1666666666666667,
+            2.0
+          ],
+          "planning": [
+            0.75,
+            1.9166666666666667
+          ],
+          "adaptation": [
+            1.5,
+            2.0
+          ]
+        },
+        "generation_issue_sessions": 2,
+        "execution_errors": 0,
+        "model_calls": {
+          "anthropic/claude-sonnet-5": 24,
+          "anthropic/claude-opus-5": 20
+        },
+        "responses_over_600_words": 13,
+        "response_word_count_range": [
+          0,
+          674
+        ],
+        "started_at": "2026-09-15T16:09:48+00:00",
+        "completed_at": "2026-09-15T16:15:39+00:00",
+        "settings": {
+          "max_retries": 2,
+          "timeout": 240,
+          "max_tokens": 4096,
+          "effort": "medium"
+        },
+        "judge": "anthropic/claude-opus-5",
+        "usage": {
+          "anthropic/claude-sonnet-5": {
+            "input_tokens": 5436,
+            "output_tokens": 30573,
+            "total_tokens": 55107,
+            "input_tokens_cache_write": 19098,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": null,
+            "total_cost": null
+          },
+          "anthropic/claude-opus-5": {
+            "input_tokens": 40,
+            "output_tokens": 20877,
+            "total_tokens": 92288,
+            "input_tokens_cache_write": 71371,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": null,
+            "total_cost": null
+          }
+        },
+        "rows": [
+          {
+            "case_id": "black_current",
+            "variant": "a",
+            "total": null,
+            "dimensions": {
+              "adversarial": null,
+              "systems": null,
+              "uncertainty": null,
+              "planning": null,
+              "adaptation": 2
+            },
+            "coverage": 0.2,
+            "missing": {
+              "adversarial": "Judge failed (ValueError); requires review.",
+              "systems": "Judge failed (ValueError); requires review.",
+              "uncertainty": "Judge failed (ValueError); requires review.",
+              "planning": "Judge failed (ValueError); requires review."
+            },
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 67.573,
+            "target_usage": {
+              "input_tokens": 361,
+              "output_tokens": 2723,
+              "total_tokens": 4978,
+              "input_tokens_cache_write": 1894,
+              "input_tokens_cache_read": 0,
+              "reasoning_tokens": null,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "black_current",
+            "variant": "b",
+            "total": null,
+            "dimensions": {
+              "adversarial": null,
+              "systems": null,
+              "uncertainty": null,
+              "planning": null,
+              "adaptation": 2
+            },
+            "coverage": 0.2,
+            "missing": {
+              "adversarial": "Judge failed (ValidationError); requires review.",
+              "systems": "Judge failed (ValidationError); requires review.",
+              "uncertainty": "Judge failed (ValidationError); requires review.",
+              "planning": "Judge failed (ValidationError); requires review."
+            },
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 69.257,
+            "target_usage": {
+              "input_tokens": 361,
+              "output_tokens": 3638,
+              "total_tokens": 5927,
+              "input_tokens_cache_write": 1928,
+              "input_tokens_cache_read": 0,
+              "reasoning_tokens": null,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "ember_guarantee",
+            "variant": "a",
+            "total": 10,
+            "dimensions": {
+              "adversarial": 2,
+              "systems": 2,
+              "uncertainty": 2,
+              "planning": 2,
+              "adaptation": 2
+            },
+            "coverage": 1.0,
+            "missing": {},
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 61.282,
+            "target_usage": {
+              "input_tokens": 374,
+              "output_tokens": 3021,
+              "total_tokens": 5446,
+              "input_tokens_cache_write": 2051,
+              "input_tokens_cache_read": 0,
+              "reasoning_tokens": null,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "ember_guarantee",
+            "variant": "b",
+            "total": null,
+            "dimensions": {
+              "adversarial": 2,
+              "systems": null,
+              "uncertainty": 2,
+              "planning": 2,
+              "adaptation": 2
+            },
+            "coverage": 0.8,
+            "missing": {
+              "systems": "Quoted evidence is not an exact span of the assessed response."
+            },
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 65.64,
+            "target_usage": {
+              "input_tokens": 374,
+              "output_tokens": 2506,
+              "total_tokens": 4709,
+              "input_tokens_cache_write": 1829,
+              "input_tokens_cache_read": 0,
+              "reasoning_tokens": null,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "lattice_signal",
+            "variant": "a",
+            "total": 8,
+            "dimensions": {
+              "adversarial": 2,
+              "systems": 1,
+              "uncertainty": 2,
+              "planning": 1,
+              "adaptation": 2
+            },
+            "coverage": 1.0,
+            "missing": {},
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 87.888,
+            "target_usage": {
+              "input_tokens": 367,
+              "output_tokens": 2838,
+              "total_tokens": 5193,
+              "input_tokens_cache_write": 1988,
+              "input_tokens_cache_read": 0,
+              "reasoning_tokens": null,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "lattice_signal",
+            "variant": "b",
+            "total": null,
+            "dimensions": {
+              "adversarial": 2,
+              "systems": null,
+              "uncertainty": 2,
+              "planning": 2,
+              "adaptation": 2
+            },
+            "coverage": 0.8,
+            "missing": {
+              "systems": "Quoted evidence is not an exact span of the assessed response."
+            },
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 72.726,
+            "target_usage": {
+              "input_tokens": 367,
+              "output_tokens": 3685,
+              "total_tokens": 6059,
+              "input_tokens_cache_write": 2007,
+              "input_tokens_cache_read": 0,
+              "reasoning_tokens": null,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "meridian_shock",
+            "variant": "a",
+            "total": 10,
+            "dimensions": {
+              "adversarial": 2,
+              "systems": 2,
+              "uncertainty": 2,
+              "planning": 2,
+              "adaptation": 2
+            },
+            "coverage": 1.0,
+            "missing": {},
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 59.885,
+            "target_usage": {
+              "input_tokens": 364,
+              "output_tokens": 2818,
+              "total_tokens": 5088,
+              "input_tokens_cache_write": 1906,
+              "input_tokens_cache_read": 0,
+              "reasoning_tokens": null,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "meridian_shock",
+            "variant": "b",
+            "total": null,
+            "dimensions": {
+              "adversarial": 2,
+              "systems": 2,
+              "uncertainty": 2,
+              "planning": null,
+              "adaptation": 2
+            },
+            "coverage": 0.8,
+            "missing": {
+              "planning": "Quoted evidence is not an exact span of the assessed response."
+            },
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 61.63,
+            "target_usage": {
+              "input_tokens": 364,
+              "output_tokens": 2484,
+              "total_tokens": 4639,
+              "input_tokens_cache_write": 1791,
+              "input_tokens_cache_read": 0,
+              "reasoning_tokens": null,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "red_harvest",
+            "variant": "a",
+            "total": null,
+            "dimensions": {
+              "adversarial": null,
+              "systems": null,
+              "uncertainty": null,
+              "planning": null,
+              "adaptation": null
+            },
+            "coverage": 0.0,
+            "missing": {
+              "adversarial": "Target generation was truncated or filtered; rerun before scoring.",
+              "systems": "Target generation was truncated or filtered; rerun before scoring.",
+              "uncertainty": "Target generation was truncated or filtered; rerun before scoring.",
+              "planning": "Target generation was truncated or filtered; rerun before scoring.",
+              "adaptation": "Target generation was truncated or filtered; rerun before scoring."
+            },
+            "generation_issues": [
+              {
+                "stage": 1,
+                "stop_reason": "content_filter"
+              },
+              {
+                "stage": 2,
+                "stop_reason": "content_filter"
+              }
+            ],
+            "execution_error": false,
+            "total_time": 3.899,
+            "target_usage": {
+              "input_tokens": 927,
+              "output_tokens": 0,
+              "total_tokens": 927,
+              "input_tokens_cache_write": 0,
+              "input_tokens_cache_read": 0,
+              "reasoning_tokens": null,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "red_harvest",
+            "variant": "b",
+            "total": null,
+            "dimensions": {
+              "adversarial": null,
+              "systems": null,
+              "uncertainty": null,
+              "planning": null,
+              "adaptation": null
+            },
+            "coverage": 0.0,
+            "missing": {
+              "adversarial": "Target generation was truncated or filtered; rerun before scoring.",
+              "systems": "Target generation was truncated or filtered; rerun before scoring.",
+              "uncertainty": "Target generation was truncated or filtered; rerun before scoring.",
+              "planning": "Target generation was truncated or filtered; rerun before scoring.",
+              "adaptation": "Target generation was truncated or filtered; rerun before scoring."
+            },
+            "generation_issues": [
+              {
+                "stage": 1,
+                "stop_reason": "content_filter"
+              },
+              {
+                "stage": 2,
+                "stop_reason": "content_filter"
+              }
+            ],
+            "execution_error": false,
+            "total_time": 18.683,
+            "target_usage": {
+              "input_tokens": 941,
+              "output_tokens": 1255,
+              "total_tokens": 2196,
+              "input_tokens_cache_write": 0,
+              "input_tokens_cache_read": 0,
+              "reasoning_tokens": null,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "sable_patch",
+            "variant": "a",
+            "total": null,
+            "dimensions": {
+              "adversarial": 2,
+              "systems": 2,
+              "uncertainty": 2,
+              "planning": null,
+              "adaptation": 2
+            },
+            "coverage": 0.8,
+            "missing": {
+              "planning": "Quoted evidence is not an exact span of the assessed response."
+            },
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 71.969,
+            "target_usage": {
+              "input_tokens": 318,
+              "output_tokens": 2901,
+              "total_tokens": 5095,
+              "input_tokens_cache_write": 1876,
+              "input_tokens_cache_read": 0,
+              "reasoning_tokens": null,
+              "total_cost": null
+            }
+          },
+          {
+            "case_id": "sable_patch",
+            "variant": "b",
+            "total": null,
+            "dimensions": {
+              "adversarial": null,
+              "systems": null,
+              "uncertainty": null,
+              "planning": null,
+              "adaptation": null
+            },
+            "coverage": 0.0,
+            "missing": {
+              "adversarial": "Judge failed (JSONDecodeError); requires review.",
+              "systems": "Judge failed (JSONDecodeError); requires review.",
+              "uncertainty": "Judge failed (JSONDecodeError); requires review.",
+              "planning": "Judge failed (JSONDecodeError); requires review.",
+              "adaptation": "Judge failed (ValidationError); requires review."
+            },
+            "generation_issues": [],
+            "execution_error": false,
+            "total_time": 57.257,
+            "target_usage": {
+              "input_tokens": 318,
+              "output_tokens": 2704,
+              "total_tokens": 4850,
+              "input_tokens_cache_write": 1828,
+              "input_tokens_cache_read": 0,
+              "reasoning_tokens": null,
+              "total_cost": null
+            }
+          }
+        ],
+        "log_file": "outputs/private/v0.3-screen-2026-09-15/sonnet/2026-09-15T16-09-48-00-00_strategic-surprise_Sm76gXNea4xaFx98KoqfSa.eval"
+      }
+    ],
+    "note": "Six scenario families with two updates each. Variants are not independent cases. Incomplete results have no mean. No expert validation or stable ranking is claimed."
+  }
+}

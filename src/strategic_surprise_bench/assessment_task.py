@@ -24,7 +24,11 @@ from strategic_surprise_bench.assessment import (
     load_assessment_case,
     render_assessment,
 )
-from strategic_surprise_bench.assessment_scoring import judge_assessment, score_assessment
+from strategic_surprise_bench.assessment_scoring import (
+    DEFAULT_JUDGE_ATTEMPTS,
+    judge_assessment,
+    score_assessment,
+)
 
 
 @score_reducer
@@ -41,12 +45,18 @@ def preserve_missing() -> ScoreReducer:
 
 @metric
 def complete_assessment_mean() -> Metric:
-    """Never turn an ungraded sample into zero or silently average only graded samples."""
+    """Never turn an ungraded sample into zero. The unqualified mean needs every sample graded;
+    the mean over graded samples is reported under an explicit name with its sample count."""
 
     def compute(scores: list[SampleScore]) -> dict[str, float]:
         values = [item.score.value for item in scores]
         numeric = [value for value in values if isinstance(value, (int, float))]
-        result = {"graded_fraction": len(numeric) / len(values) if values else 0.0}
+        result = {
+            "graded_fraction": len(numeric) / len(values) if values else 0.0,
+            "graded_samples": float(len(numeric)),
+        }
+        if numeric:
+            result["mean_of_graded_samples_out_of_10"] = sum(numeric) / len(numeric)
         if values and len(numeric) == len(values):
             result["mean_out_of_10"] = sum(numeric) / len(numeric)
         return result
@@ -88,14 +98,14 @@ def assessment_session() -> Solver:
 
 
 @scorer(metrics=[complete_assessment_mean()])
-def assessment_scorer(judge: str | None = None):
+def assessment_scorer(judge: str | None = None, judge_attempts: int = DEFAULT_JUDGE_ATTEMPTS):
     async def score(state: TaskState, target: object) -> Score:
         del target
         transcript = AssessmentTranscript.model_validate(state.metadata["assessment_transcript"])
         sheet = None
         # Truncated/filtered target calls are execution issues, not confirmed analytical failures.
         if judge and not state.metadata.get("generation_issues"):
-            sheet = await judge_assessment(transcript, judge)
+            sheet = await judge_assessment(transcript, judge, attempts=judge_attempts)
         result = score_assessment(transcript, sheet)
         return Score(
             value=result["total"] if result["total"] is not None else "U",
@@ -122,12 +132,15 @@ def strategic_surprise(
     variant: str = "both",
     judge: str | None = None,
     max_tokens: int = 4096,
+    judge_attempts: int = DEFAULT_JUDGE_ATTEMPTS,
 ) -> Task:
     """v0.3: spontaneous strategic assessment, with optional provisional single-model grading."""
     if variant not in {"a", "b", "both"}:
         raise ValueError("variant must be a, b, or both")
     if max_tokens < 1:
         raise ValueError("max_tokens must be positive")
+    if judge_attempts < 1:
+        raise ValueError("judge_attempts must be positive")
     cases = [
         load_assessment_case(item) for item in ([case_id] if case_id else list_assessment_cases())
     ]
@@ -145,7 +158,7 @@ def strategic_surprise(
         dataset=dataset,
         setup=system_message(SYSTEM),
         solver=assessment_session(),
-        scorer=assessment_scorer(judge),
+        scorer=assessment_scorer(judge, judge_attempts),
         config=GenerateConfig(max_tokens=max_tokens),
         epochs=Epochs(1, reducer=preserve_missing()),
         message_limit=6,
@@ -154,6 +167,7 @@ def strategic_surprise(
             "benchmark_version": VERSION,
             "protocol": "unprompted_assessment",
             "judge": judge,
+            "judge_attempts_per_stage": judge_attempts if judge else None,
             "grading": "provisional" if judge else "human_pending",
             "variants": list(variants),
             "target_calls_per_sample": 2,

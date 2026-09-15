@@ -1,10 +1,13 @@
-benchmark_version: 0.3.0
-judge: null  # Supply one explicit provider/model ID to enable provisional grading.
-judge_prompt_version: 0.3.0
+benchmark_version: 0.3.1
+judge: anthropic/claude-opus-5
+judge_prompt_version: 0.3.1
+attempts_per_stage: 3
 notes:
-  - One model grades four initial criteria together and adaptation in a separate call.
-  - The initial judge never sees the update or the second response.
-  - No fallback model, cascade, or automated retry of malformed judgments.
-  - Missing or ungrounded judgments remain ungraded, not zero.
-  - Model grades remain provisional; blinded human review is needed for validation.
-  - The v0.2 calibration gate does not apply to this protocol.
+- One model grades four initial criteria together and adaptation in a separate call.
+- The initial judge never sees the update or the second response.
+- No fallback model or cascade. A malformed, truncated, or ungrounded stage is retried with the
+  identical packet up to attempts_per_stage times; only still-missing dimensions are filled.
+- Judge quotes are matched after punctuation and whitespace normalization; paraphrase stays ungrounded.
+- Missing or ungrounded judgments remain ungraded, not zero.
+- Model grades remain provisional; blinded human review is needed for validation.
+- The v0.2 calibration gate does not apply to this protocol.

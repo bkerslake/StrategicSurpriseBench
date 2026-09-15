@@ -10,6 +10,7 @@ from pathlib import Path
 
 from strategic_surprise_bench.assessment import (
     SYSTEM,
+    VERSION,
     AssessmentCase,
     AssessmentTranscript,
     GradeSheet,
@@ -18,6 +19,7 @@ from strategic_surprise_bench.assessment import (
     render_assessment,
 )
 from strategic_surprise_bench.assessment_scoring import (
+    DEFAULT_JUDGE_ATTEMPTS,
     grade_template,
     judge_assessment,
     review_packet,
@@ -56,6 +58,12 @@ def build_parser() -> argparse.ArgumentParser:
             sub.add_argument("--stage", type=int, choices=[1, 2], required=True)
         if name == "grade":
             sub.add_argument("--judge", required=True)
+            sub.add_argument(
+                "--attempts",
+                type=int,
+                default=DEFAULT_JUDGE_ATTEMPTS,
+                help="Maximum judge calls per stage; 1 disables retries",
+            )
         if name == "score":
             sub.add_argument("--grades")
     export = commands.add_parser("extract", help="Export v0.3 transcripts from an Inspect log")
@@ -90,7 +98,7 @@ def _run(args: argparse.Namespace):
             "passed": bool(cases),
             "cases": len(cases),
             "variants": sum(len(case.updates) for case in cases),
-            "version": "0.3.0",
+            "version": VERSION,
         }
     if args.command == "preview":
         return {
@@ -104,7 +112,9 @@ def _run(args: argparse.Namespace):
         if args.command == "grade-template":
             return grade_template(transcript).model_dump()
         if args.command == "grade":
-            return asyncio.run(judge_assessment(transcript, args.judge)).model_dump()
+            return asyncio.run(
+                judge_assessment(transcript, args.judge, attempts=args.attempts)
+            ).model_dump()
         sheet = GradeSheet.model_validate(_read(args.grades)) if args.grades else None
         return score_assessment(transcript, sheet)
     if args.command == "extract":

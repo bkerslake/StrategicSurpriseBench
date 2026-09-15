@@ -1,0 +1,1657 @@
+{
+  "benchmark_version": "0.3.1",
+  "generated_at": "2026-09-15T19:34:49.596063+00:00",
+  "grade_status": "provisional_model_grades",
+  "epochs": 1,
+  "models": [
+    {
+      "model": "openai/gpt-4o-2024-11-20",
+      "label": "GPT-4o",
+      "status": "success",
+      "sessions": 12,
+      "expected_sessions": 12,
+      "complete_grades": 12,
+      "mean": 5.833333333333333,
+      "mean_of_complete_sessions": 5.833333333333333,
+      "mean_bounds_from_missing_grades": [
+        5.833333333333333,
+        5.833333333333333
+      ],
+      "confirmed_grade_counts": {
+        "1": 50,
+        "2": 10
+      },
+      "grading_failure_reasons": {},
+      "coverage": 1.0,
+      "dimension_means": {
+        "adversarial": 1.0,
+        "systems": 1.0833333333333333,
+        "uncertainty": 1.3333333333333333,
+        "planning": 1.0833333333333333,
+        "adaptation": 1.3333333333333333
+      },
+      "dimension_bounds_from_missing_grades": {
+        "adversarial": [
+          1.0,
+          1.0
+        ],
+        "systems": [
+          1.0833333333333333,
+          1.0833333333333333
+        ],
+        "uncertainty": [
+          1.3333333333333333,
+          1.3333333333333333
+        ],
+        "planning": [
+          1.0833333333333333,
+          1.0833333333333333
+        ],
+        "adaptation": [
+          1.3333333333333333,
+          1.3333333333333333
+        ]
+      },
+      "generation_issue_sessions": 0,
+      "execution_errors": 0,
+      "model_calls": {
+        "openai/gpt-4o-2024-11-20": 24,
+        "anthropic/claude-opus-5": 25
+      },
+      "responses_over_600_words": 23,
+      "response_word_count_range": [
+        527,
+        795
+      ],
+      "started_at": "2026-09-15T19:25:14+00:00",
+      "completed_at": "2026-09-15T19:31:52+00:00",
+      "settings": {
+        "max_retries": 2,
+        "timeout": 240,
+        "max_tokens": 4096,
+        "temperature": 0.2
+      },
+      "judge": "anthropic/claude-opus-5",
+      "usage": {
+        "openai/gpt-4o-2024-11-20": {
+          "input_tokens": 12192,
+          "output_tokens": 22616,
+          "total_tokens": 40184,
+          "input_tokens_cache_write": null,
+          "input_tokens_cache_read": 5376,
+          "reasoning_tokens": 0,
+          "total_cost": null
+        },
+        "anthropic/claude-opus-5": {
+          "input_tokens": 50,
+          "output_tokens": 34913,
+          "total_tokens": 143410,
+          "input_tokens_cache_write": 89690,
+          "input_tokens_cache_read": 18757,
+          "reasoning_tokens": null,
+          "total_cost": null
+        }
+      },
+      "rows": [
+        {
+          "case_id": "black_current",
+          "variant": "a",
+          "total": 6,
+          "dimensions": {
+            "adversarial": 1,
+            "systems": 1,
+            "uncertainty": 1,
+            "planning": 1,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 57.532,
+          "target_usage": {
+            "input_tokens": 453,
+            "output_tokens": 1798,
+            "total_tokens": 3275,
+            "input_tokens_cache_write": null,
+            "input_tokens_cache_read": 1024,
+            "reasoning_tokens": 0,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "black_current",
+          "variant": "b",
+          "total": 6,
+          "dimensions": {
+            "adversarial": 1,
+            "systems": 2,
+            "uncertainty": 1,
+            "planning": 1,
+            "adaptation": 1
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 64.381,
+          "target_usage": {
+            "input_tokens": 1432,
+            "output_tokens": 1776,
+            "total_tokens": 3208,
+            "input_tokens_cache_write": null,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": 0,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "ember_guarantee",
+          "variant": "a",
+          "total": 5,
+          "dimensions": {
+            "adversarial": 1,
+            "systems": 1,
+            "uncertainty": 1,
+            "planning": 1,
+            "adaptation": 1
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 72.15,
+          "target_usage": {
+            "input_tokens": 500,
+            "output_tokens": 2195,
+            "total_tokens": 3847,
+            "input_tokens_cache_write": null,
+            "input_tokens_cache_read": 1152,
+            "reasoning_tokens": 0,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "ember_guarantee",
+          "variant": "b",
+          "total": 6,
+          "dimensions": {
+            "adversarial": 1,
+            "systems": 1,
+            "uncertainty": 2,
+            "planning": 1,
+            "adaptation": 1
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 74.711,
+          "target_usage": {
+            "input_tokens": 584,
+            "output_tokens": 2080,
+            "total_tokens": 3688,
+            "input_tokens_cache_write": null,
+            "input_tokens_cache_read": 1024,
+            "reasoning_tokens": 0,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "lattice_signal",
+          "variant": "a",
+          "total": 5,
+          "dimensions": {
+            "adversarial": 1,
+            "systems": 1,
+            "uncertainty": 1,
+            "planning": 1,
+            "adaptation": 1
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 59.708,
+          "target_usage": {
+            "input_tokens": 464,
+            "output_tokens": 2069,
+            "total_tokens": 3685,
+            "input_tokens_cache_write": null,
+            "input_tokens_cache_read": 1152,
+            "reasoning_tokens": 0,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "lattice_signal",
+          "variant": "b",
+          "total": 5,
+          "dimensions": {
+            "adversarial": 1,
+            "systems": 1,
+            "uncertainty": 1,
+            "planning": 1,
+            "adaptation": 1
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 56.012,
+          "target_usage": {
+            "input_tokens": 486,
+            "output_tokens": 2000,
+            "total_tokens": 3510,
+            "input_tokens_cache_write": null,
+            "input_tokens_cache_read": 1024,
+            "reasoning_tokens": 0,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "meridian_shock",
+          "variant": "a",
+          "total": 6,
+          "dimensions": {
+            "adversarial": 1,
+            "systems": 1,
+            "uncertainty": 1,
+            "planning": 1,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 102.946,
+          "target_usage": {
+            "input_tokens": 1353,
+            "output_tokens": 1762,
+            "total_tokens": 3115,
+            "input_tokens_cache_write": null,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": 0,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "meridian_shock",
+          "variant": "b",
+          "total": 5,
+          "dimensions": {
+            "adversarial": 1,
+            "systems": 1,
+            "uncertainty": 1,
+            "planning": 1,
+            "adaptation": 1
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 74.25,
+          "target_usage": {
+            "input_tokens": 1428,
+            "output_tokens": 1802,
+            "total_tokens": 3230,
+            "input_tokens_cache_write": null,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": 0,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "red_harvest",
+          "variant": "a",
+          "total": 7,
+          "dimensions": {
+            "adversarial": 1,
+            "systems": 1,
+            "uncertainty": 2,
+            "planning": 1,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 66.05,
+          "target_usage": {
+            "input_tokens": 1468,
+            "output_tokens": 1977,
+            "total_tokens": 3445,
+            "input_tokens_cache_write": null,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": 0,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "red_harvest",
+          "variant": "b",
+          "total": 7,
+          "dimensions": {
+            "adversarial": 1,
+            "systems": 1,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 1
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 59.205,
+          "target_usage": {
+            "input_tokens": 1384,
+            "output_tokens": 1727,
+            "total_tokens": 3111,
+            "input_tokens_cache_write": null,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": 0,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "sable_patch",
+          "variant": "a",
+          "total": 7,
+          "dimensions": {
+            "adversarial": 1,
+            "systems": 1,
+            "uncertainty": 2,
+            "planning": 1,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 48.246,
+          "target_usage": {
+            "input_tokens": 1423,
+            "output_tokens": 1942,
+            "total_tokens": 3365,
+            "input_tokens_cache_write": null,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": 0,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "sable_patch",
+          "variant": "b",
+          "total": 5,
+          "dimensions": {
+            "adversarial": 1,
+            "systems": 1,
+            "uncertainty": 1,
+            "planning": 1,
+            "adaptation": 1
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 46.197,
+          "target_usage": {
+            "input_tokens": 1217,
+            "output_tokens": 1488,
+            "total_tokens": 2705,
+            "input_tokens_cache_write": null,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": 0,
+            "total_cost": null
+          }
+        }
+      ],
+      "log_file": "outputs/private/v0.3.1-screen-2026-09-15/gpt4o/2026-09-15T19-25-14-00-00_strategic-surprise_2qZtTayofoL596MsJ7nG7a.eval"
+    },
+    {
+      "model": "openai/gpt-5.6-luna",
+      "label": "GPT-5.6 Luna",
+      "status": "success",
+      "sessions": 12,
+      "expected_sessions": 12,
+      "complete_grades": 12,
+      "mean": 8.333333333333334,
+      "mean_of_complete_sessions": 8.333333333333334,
+      "mean_bounds_from_missing_grades": [
+        8.333333333333334,
+        8.333333333333334
+      ],
+      "confirmed_grade_counts": {
+        "1": 20,
+        "2": 40
+      },
+      "grading_failure_reasons": {},
+      "coverage": 1.0,
+      "dimension_means": {
+        "adversarial": 1.3333333333333333,
+        "systems": 1.5,
+        "uncertainty": 2.0,
+        "planning": 1.5,
+        "adaptation": 2.0
+      },
+      "dimension_bounds_from_missing_grades": {
+        "adversarial": [
+          1.3333333333333333,
+          1.3333333333333333
+        ],
+        "systems": [
+          1.5,
+          1.5
+        ],
+        "uncertainty": [
+          2.0,
+          2.0
+        ],
+        "planning": [
+          1.5,
+          1.5
+        ],
+        "adaptation": [
+          2.0,
+          2.0
+        ]
+      },
+      "generation_issue_sessions": 0,
+      "execution_errors": 0,
+      "model_calls": {
+        "openai/gpt-5.6-luna": 24,
+        "anthropic/claude-opus-5": 25
+      },
+      "responses_over_600_words": 0,
+      "response_word_count_range": [
+        414,
+        526
+      ],
+      "started_at": "2026-09-15T19:25:14+00:00",
+      "completed_at": "2026-09-15T19:31:33+00:00",
+      "settings": {
+        "max_retries": 2,
+        "timeout": 240,
+        "max_tokens": 4096,
+        "reasoning_effort": "medium"
+      },
+      "judge": "anthropic/claude-opus-5",
+      "usage": {
+        "openai/gpt-5.6-luna": {
+          "input_tokens": 2664,
+          "output_tokens": 19160,
+          "total_tokens": 35744,
+          "input_tokens_cache_write": 13920,
+          "input_tokens_cache_read": null,
+          "reasoning_tokens": 3680,
+          "total_cost": null
+        },
+        "anthropic/claude-opus-5": {
+          "input_tokens": 50,
+          "output_tokens": 38891,
+          "total_tokens": 128203,
+          "input_tokens_cache_write": 71828,
+          "input_tokens_cache_read": 17434,
+          "reasoning_tokens": null,
+          "total_cost": null
+        }
+      },
+      "rows": [
+        {
+          "case_id": "black_current",
+          "variant": "a",
+          "total": 8,
+          "dimensions": {
+            "adversarial": 1,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 1,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 71.023,
+          "target_usage": {
+            "input_tokens": 223,
+            "output_tokens": 1476,
+            "total_tokens": 2859,
+            "input_tokens_cache_write": 1160,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 299,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "black_current",
+          "variant": "b",
+          "total": 8,
+          "dimensions": {
+            "adversarial": 1,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 1,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 61.56,
+          "target_usage": {
+            "input_tokens": 223,
+            "output_tokens": 1610,
+            "total_tokens": 2970,
+            "input_tokens_cache_write": 1137,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 307,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "ember_guarantee",
+          "variant": "a",
+          "total": 7,
+          "dimensions": {
+            "adversarial": 1,
+            "systems": 1,
+            "uncertainty": 2,
+            "planning": 1,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 52.902,
+          "target_usage": {
+            "input_tokens": 230,
+            "output_tokens": 1561,
+            "total_tokens": 2945,
+            "input_tokens_cache_write": 1154,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 247,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "ember_guarantee",
+          "variant": "b",
+          "total": 7,
+          "dimensions": {
+            "adversarial": 1,
+            "systems": 1,
+            "uncertainty": 2,
+            "planning": 1,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 54.89,
+          "target_usage": {
+            "input_tokens": 230,
+            "output_tokens": 1481,
+            "total_tokens": 2807,
+            "input_tokens_cache_write": 1096,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 174,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "lattice_signal",
+          "variant": "a",
+          "total": 9,
+          "dimensions": {
+            "adversarial": 1,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 90.346,
+          "target_usage": {
+            "input_tokens": 235,
+            "output_tokens": 1539,
+            "total_tokens": 2909,
+            "input_tokens_cache_write": 1135,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 200,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "lattice_signal",
+          "variant": "b",
+          "total": 9,
+          "dimensions": {
+            "adversarial": 1,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 61.831,
+          "target_usage": {
+            "input_tokens": 235,
+            "output_tokens": 2042,
+            "total_tokens": 3692,
+            "input_tokens_cache_write": 1415,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 705,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "meridian_shock",
+          "variant": "a",
+          "total": 8,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 1,
+            "uncertainty": 2,
+            "planning": 1,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 53.026,
+          "target_usage": {
+            "input_tokens": 217,
+            "output_tokens": 1519,
+            "total_tokens": 2815,
+            "input_tokens_cache_write": 1079,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 228,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "meridian_shock",
+          "variant": "b",
+          "total": 9,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 1,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 53.35,
+          "target_usage": {
+            "input_tokens": 217,
+            "output_tokens": 1533,
+            "total_tokens": 2856,
+            "input_tokens_cache_write": 1106,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 282,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "red_harvest",
+          "variant": "a",
+          "total": 7,
+          "dimensions": {
+            "adversarial": 1,
+            "systems": 1,
+            "uncertainty": 2,
+            "planning": 1,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 50.111,
+          "target_usage": {
+            "input_tokens": 222,
+            "output_tokens": 1535,
+            "total_tokens": 2940,
+            "input_tokens_cache_write": 1183,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 279,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "red_harvest",
+          "variant": "b",
+          "total": 8,
+          "dimensions": {
+            "adversarial": 1,
+            "systems": 1,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 66.451,
+          "target_usage": {
+            "input_tokens": 222,
+            "output_tokens": 1588,
+            "total_tokens": 3001,
+            "input_tokens_cache_write": 1191,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 285,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "sable_patch",
+          "variant": "a",
+          "total": 10,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 60.822,
+          "target_usage": {
+            "input_tokens": 205,
+            "output_tokens": 1730,
+            "total_tokens": 3149,
+            "input_tokens_cache_write": 1214,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 492,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "sable_patch",
+          "variant": "b",
+          "total": 10,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 53.858,
+          "target_usage": {
+            "input_tokens": 205,
+            "output_tokens": 1546,
+            "total_tokens": 2801,
+            "input_tokens_cache_write": 1050,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 182,
+            "total_cost": null
+          }
+        }
+      ],
+      "log_file": "outputs/private/v0.3.1-screen-2026-09-15/luna/2026-09-15T19-25-14-00-00_strategic-surprise_ZiYzjrjbQpWUbYap6qXNr7.eval"
+    },
+    {
+      "model": "openai/gpt-5.6-sol",
+      "label": "GPT-5.6 Sol",
+      "status": "success",
+      "sessions": 12,
+      "expected_sessions": 12,
+      "complete_grades": 12,
+      "mean": 9.166666666666666,
+      "mean_of_complete_sessions": 9.166666666666666,
+      "mean_bounds_from_missing_grades": [
+        9.166666666666666,
+        9.166666666666666
+      ],
+      "confirmed_grade_counts": {
+        "2": 50,
+        "1": 10
+      },
+      "grading_failure_reasons": {},
+      "coverage": 1.0,
+      "dimension_means": {
+        "adversarial": 1.6666666666666667,
+        "systems": 1.6666666666666667,
+        "uncertainty": 2.0,
+        "planning": 1.8333333333333333,
+        "adaptation": 2.0
+      },
+      "dimension_bounds_from_missing_grades": {
+        "adversarial": [
+          1.6666666666666667,
+          1.6666666666666667
+        ],
+        "systems": [
+          1.6666666666666667,
+          1.6666666666666667
+        ],
+        "uncertainty": [
+          2.0,
+          2.0
+        ],
+        "planning": [
+          1.8333333333333333,
+          1.8333333333333333
+        ],
+        "adaptation": [
+          2.0,
+          2.0
+        ]
+      },
+      "generation_issue_sessions": 0,
+      "execution_errors": 0,
+      "model_calls": {
+        "openai/gpt-5.6-sol": 24,
+        "anthropic/claude-opus-5": 27
+      },
+      "responses_over_600_words": 0,
+      "response_word_count_range": [
+        411,
+        566
+      ],
+      "started_at": "2026-09-15T19:25:14+00:00",
+      "completed_at": "2026-09-15T19:34:08+00:00",
+      "settings": {
+        "max_retries": 2,
+        "timeout": 240,
+        "max_tokens": 4096,
+        "reasoning_effort": "medium"
+      },
+      "judge": "anthropic/claude-opus-5",
+      "usage": {
+        "openai/gpt-5.6-sol": {
+          "input_tokens": 2664,
+          "output_tokens": 19660,
+          "total_tokens": 36324,
+          "input_tokens_cache_write": 14000,
+          "input_tokens_cache_read": null,
+          "reasoning_tokens": 3385,
+          "total_cost": null
+        },
+        "anthropic/claude-opus-5": {
+          "input_tokens": 54,
+          "output_tokens": 36944,
+          "total_tokens": 136834,
+          "input_tokens_cache_write": 73654,
+          "input_tokens_cache_read": 26182,
+          "reasoning_tokens": null,
+          "total_cost": null
+        }
+      },
+      "rows": [
+        {
+          "case_id": "black_current",
+          "variant": "a",
+          "total": 10,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 96.675,
+          "target_usage": {
+            "input_tokens": 223,
+            "output_tokens": 1594,
+            "total_tokens": 2996,
+            "input_tokens_cache_write": 1179,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 294,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "black_current",
+          "variant": "b",
+          "total": 10,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 101.269,
+          "target_usage": {
+            "input_tokens": 223,
+            "output_tokens": 2062,
+            "total_tokens": 3635,
+            "input_tokens_cache_write": 1350,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 671,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "ember_guarantee",
+          "variant": "a",
+          "total": 9,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 1,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 103.704,
+          "target_usage": {
+            "input_tokens": 230,
+            "output_tokens": 1899,
+            "total_tokens": 3463,
+            "input_tokens_cache_write": 1334,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 457,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "ember_guarantee",
+          "variant": "b",
+          "total": 8,
+          "dimensions": {
+            "adversarial": 1,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 1,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 81.124,
+          "target_usage": {
+            "input_tokens": 230,
+            "output_tokens": 1598,
+            "total_tokens": 3013,
+            "input_tokens_cache_write": 1185,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 224,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "lattice_signal",
+          "variant": "a",
+          "total": 9,
+          "dimensions": {
+            "adversarial": 1,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 107.647,
+          "target_usage": {
+            "input_tokens": 235,
+            "output_tokens": 1480,
+            "total_tokens": 2788,
+            "input_tokens_cache_write": 1073,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 172,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "lattice_signal",
+          "variant": "b",
+          "total": 10,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 71.549,
+          "target_usage": {
+            "input_tokens": 235,
+            "output_tokens": 1650,
+            "total_tokens": 3053,
+            "input_tokens_cache_write": 1168,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 232,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "meridian_shock",
+          "variant": "a",
+          "total": 9,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 1,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 74.351,
+          "target_usage": {
+            "input_tokens": 217,
+            "output_tokens": 1664,
+            "total_tokens": 3022,
+            "input_tokens_cache_write": 1141,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 268,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "meridian_shock",
+          "variant": "b",
+          "total": 9,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 1,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 67.008,
+          "target_usage": {
+            "input_tokens": 217,
+            "output_tokens": 1382,
+            "total_tokens": 2670,
+            "input_tokens_cache_write": 1071,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 172,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "red_harvest",
+          "variant": "a",
+          "total": 8,
+          "dimensions": {
+            "adversarial": 1,
+            "systems": 1,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 86.521,
+          "target_usage": {
+            "input_tokens": 222,
+            "output_tokens": 1503,
+            "total_tokens": 2830,
+            "input_tokens_cache_write": 1105,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 180,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "red_harvest",
+          "variant": "b",
+          "total": 8,
+          "dimensions": {
+            "adversarial": 1,
+            "systems": 1,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 77.803,
+          "target_usage": {
+            "input_tokens": 222,
+            "output_tokens": 1579,
+            "total_tokens": 2941,
+            "input_tokens_cache_write": 1140,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 138,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "sable_patch",
+          "variant": "a",
+          "total": 10,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 66.799,
+          "target_usage": {
+            "input_tokens": 205,
+            "output_tokens": 1678,
+            "total_tokens": 3045,
+            "input_tokens_cache_write": 1162,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 352,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "sable_patch",
+          "variant": "b",
+          "total": 10,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 99.16,
+          "target_usage": {
+            "input_tokens": 205,
+            "output_tokens": 1571,
+            "total_tokens": 2868,
+            "input_tokens_cache_write": 1092,
+            "input_tokens_cache_read": null,
+            "reasoning_tokens": 225,
+            "total_cost": null
+          }
+        }
+      ],
+      "log_file": "outputs/private/v0.3.1-screen-2026-09-15/sol/2026-09-15T19-25-14-00-00_strategic-surprise_WotEkun25U3K58e8PMowmj.eval"
+    },
+    {
+      "model": "anthropic/claude-sonnet-5",
+      "label": "Claude Sonnet 5",
+      "status": "success",
+      "sessions": 12,
+      "expected_sessions": 12,
+      "complete_grades": 10,
+      "mean": null,
+      "mean_of_complete_sessions": 8.9,
+      "mean_bounds_from_missing_grades": [
+        7.416666666666667,
+        9.083333333333334
+      ],
+      "confirmed_grade_counts": {
+        "2": 39,
+        "1": 11
+      },
+      "grading_failure_reasons": {
+        "Target generation was truncated or filtered; rerun before scoring.": 10
+      },
+      "coverage": 0.8333333333333334,
+      "dimension_means": {
+        "adversarial": null,
+        "systems": null,
+        "uncertainty": null,
+        "planning": null,
+        "adaptation": null
+      },
+      "dimension_bounds_from_missing_grades": {
+        "adversarial": [
+          1.4166666666666667,
+          1.75
+        ],
+        "systems": [
+          1.5833333333333333,
+          1.9166666666666667
+        ],
+        "uncertainty": [
+          1.5833333333333333,
+          1.9166666666666667
+        ],
+        "planning": [
+          1.3333333333333333,
+          1.6666666666666667
+        ],
+        "adaptation": [
+          1.5,
+          1.8333333333333333
+        ]
+      },
+      "generation_issue_sessions": 2,
+      "execution_errors": 0,
+      "model_calls": {
+        "anthropic/claude-sonnet-5": 24,
+        "anthropic/claude-opus-5": 22
+      },
+      "responses_over_600_words": 11,
+      "response_word_count_range": [
+        0,
+        687
+      ],
+      "started_at": "2026-09-15T19:25:14+00:00",
+      "completed_at": "2026-09-15T19:32:34+00:00",
+      "settings": {
+        "max_retries": 2,
+        "timeout": 240,
+        "max_tokens": 4096,
+        "effort": "medium"
+      },
+      "judge": "anthropic/claude-opus-5",
+      "usage": {
+        "anthropic/claude-sonnet-5": {
+          "input_tokens": 5436,
+          "output_tokens": 30361,
+          "total_tokens": 55026,
+          "input_tokens_cache_write": 19229,
+          "input_tokens_cache_read": 0,
+          "reasoning_tokens": null,
+          "total_cost": null
+        },
+        "anthropic/claude-opus-5": {
+          "input_tokens": 44,
+          "output_tokens": 36485,
+          "total_tokens": 121943,
+          "input_tokens_cache_write": 66010,
+          "input_tokens_cache_read": 19404,
+          "reasoning_tokens": null,
+          "total_cost": null
+        }
+      },
+      "rows": [
+        {
+          "case_id": "black_current",
+          "variant": "a",
+          "total": 9,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 1,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 84.133,
+          "target_usage": {
+            "input_tokens": 361,
+            "output_tokens": 2800,
+            "total_tokens": 5062,
+            "input_tokens_cache_write": 1901,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": null,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "black_current",
+          "variant": "b",
+          "total": 10,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 77.361,
+          "target_usage": {
+            "input_tokens": 361,
+            "output_tokens": 3364,
+            "total_tokens": 5761,
+            "input_tokens_cache_write": 2036,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": null,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "ember_guarantee",
+          "variant": "a",
+          "total": 8,
+          "dimensions": {
+            "adversarial": 1,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 1,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 86.769,
+          "target_usage": {
+            "input_tokens": 374,
+            "output_tokens": 2751,
+            "total_tokens": 5084,
+            "input_tokens_cache_write": 1959,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": null,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "ember_guarantee",
+          "variant": "b",
+          "total": 6,
+          "dimensions": {
+            "adversarial": 1,
+            "systems": 1,
+            "uncertainty": 2,
+            "planning": 1,
+            "adaptation": 1
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 80.095,
+          "target_usage": {
+            "input_tokens": 374,
+            "output_tokens": 2714,
+            "total_tokens": 4978,
+            "input_tokens_cache_write": 1890,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": null,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "lattice_signal",
+          "variant": "a",
+          "total": 7,
+          "dimensions": {
+            "adversarial": 1,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 1,
+            "adaptation": 1
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 95.892,
+          "target_usage": {
+            "input_tokens": 367,
+            "output_tokens": 2899,
+            "total_tokens": 5269,
+            "input_tokens_cache_write": 2003,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": null,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "lattice_signal",
+          "variant": "b",
+          "total": 10,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 82.73,
+          "target_usage": {
+            "input_tokens": 367,
+            "output_tokens": 2769,
+            "total_tokens": 5091,
+            "input_tokens_cache_write": 1955,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": null,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "meridian_shock",
+          "variant": "a",
+          "total": 10,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 84.18,
+          "target_usage": {
+            "input_tokens": 364,
+            "output_tokens": 3403,
+            "total_tokens": 5637,
+            "input_tokens_cache_write": 1870,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": null,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "meridian_shock",
+          "variant": "b",
+          "total": 10,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 100.067,
+          "target_usage": {
+            "input_tokens": 364,
+            "output_tokens": 2656,
+            "total_tokens": 4882,
+            "input_tokens_cache_write": 1862,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": null,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "red_harvest",
+          "variant": "a",
+          "total": null,
+          "dimensions": {
+            "adversarial": null,
+            "systems": null,
+            "uncertainty": null,
+            "planning": null,
+            "adaptation": null
+          },
+          "coverage": 0.0,
+          "missing": {
+            "adversarial": "Target generation was truncated or filtered; rerun before scoring.",
+            "systems": "Target generation was truncated or filtered; rerun before scoring.",
+            "uncertainty": "Target generation was truncated or filtered; rerun before scoring.",
+            "planning": "Target generation was truncated or filtered; rerun before scoring.",
+            "adaptation": "Target generation was truncated or filtered; rerun before scoring."
+          },
+          "generation_issues": [
+            {
+              "stage": 1,
+              "stop_reason": "content_filter"
+            },
+            {
+              "stage": 2,
+              "stop_reason": "content_filter"
+            }
+          ],
+          "execution_error": false,
+          "total_time": 2.996,
+          "target_usage": {
+            "input_tokens": 927,
+            "output_tokens": 0,
+            "total_tokens": 927,
+            "input_tokens_cache_write": 0,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": null,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "red_harvest",
+          "variant": "b",
+          "total": null,
+          "dimensions": {
+            "adversarial": null,
+            "systems": null,
+            "uncertainty": null,
+            "planning": null,
+            "adaptation": null
+          },
+          "coverage": 0.0,
+          "missing": {
+            "adversarial": "Target generation was truncated or filtered; rerun before scoring.",
+            "systems": "Target generation was truncated or filtered; rerun before scoring.",
+            "uncertainty": "Target generation was truncated or filtered; rerun before scoring.",
+            "planning": "Target generation was truncated or filtered; rerun before scoring.",
+            "adaptation": "Target generation was truncated or filtered; rerun before scoring."
+          },
+          "generation_issues": [
+            {
+              "stage": 1,
+              "stop_reason": "content_filter"
+            },
+            {
+              "stage": 2,
+              "stop_reason": "content_filter"
+            }
+          ],
+          "execution_error": false,
+          "total_time": 19.283,
+          "target_usage": {
+            "input_tokens": 941,
+            "output_tokens": 1292,
+            "total_tokens": 2233,
+            "input_tokens_cache_write": 0,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": null,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "sable_patch",
+          "variant": "a",
+          "total": 9,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 1,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 77.227,
+          "target_usage": {
+            "input_tokens": 318,
+            "output_tokens": 2801,
+            "total_tokens": 4941,
+            "input_tokens_cache_write": 1822,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": null,
+            "total_cost": null
+          }
+        },
+        {
+          "case_id": "sable_patch",
+          "variant": "b",
+          "total": 10,
+          "dimensions": {
+            "adversarial": 2,
+            "systems": 2,
+            "uncertainty": 2,
+            "planning": 2,
+            "adaptation": 2
+          },
+          "coverage": 1.0,
+          "missing": {},
+          "generation_issues": [],
+          "execution_error": false,
+          "total_time": 79.695,
+          "target_usage": {
+            "input_tokens": 318,
+            "output_tokens": 2912,
+            "total_tokens": 5161,
+            "input_tokens_cache_write": 1931,
+            "input_tokens_cache_read": 0,
+            "reasoning_tokens": null,
+            "total_cost": null
+          }
+        }
+      ],
+      "log_file": "outputs/private/v0.3.1-screen-2026-09-15/sonnet/2026-09-15T19-25-14-00-00_strategic-surprise_nio8vSHT3MMf94NxA5iH6P.eval"
+    }
+  ],
+  "note": "Six scenario families with two updates each. Variants are not independent cases. Incomplete results have no mean. No expert validation or stable ranking is claimed."
+}

@@ -28,9 +28,16 @@ anchors merely because the expected model does not win. All model-generated grad
 The former v0.2 expert gate cannot validate v0.3.
 
 A transcript with five null grades is ungraded, not incompetent. A grader can give zero for a
-substantive omission or unsupported analysis; an exact positive quote alone is not proof that an
+substantive omission or unsupported analysis; a grounded positive quote alone is not proof that an
 anchor is satisfied. Judge errors and target generation failures belong in execution diagnostics.
-Do not cherry-pick completed sessions into a mean when other sessions are ungraded.
+The unqualified mean is withheld while any session is ungraded. The mean over fully graded
+sessions is reported under its own name with the session count and the missing-grade bounds; never
+present it as the model's score, because judge failures cluster on particular cases and responses.
+
+Two-point anchors (v0.3.1) require a case-specific mechanism or alternative, a check whose result
+matters, and a stated decision consequence, and each names what falls short. When a screen shows
+strong models clustering at full credit, first check whether the judge is crediting generic
+best-practice language that the anchors exclude; tighten the anchor text only in a new version.
 
 ## Cheap diagnostic controls
 

@@ -1,17 +1,38 @@
-benchmark_version: 0.3.0
+benchmark_version: 0.3.1
 protocol: unprompted_assessment
-cases: [lattice_signal, black_current, ember_guarantee, meridian_shock, sable_patch, red_harvest]
+cases:
+- lattice_signal
+- black_current
+- ember_guarantee
+- meridian_shock
+- sable_patch
+- red_harvest
 variant: both
 epochs: 1
 max_tokens: 4096
-models: []  # Supply exact provider/model IDs; record provider-specific thinking settings.
+models:
+- openai/gpt-4o-2024-11-20
+- openai/gpt-5.6-luna
+- openai/gpt-5.6-sol
+- anthropic/claude-sonnet-5
 judging:
-  judge: null  # Explicit provider/model ID enables provisional grading; null means human review.
-  calls_per_session: 2
+  judge: anthropic/claude-opus-5
+  stages_per_session: 2
+  attempts_per_stage: 3
   status: unvalidated
 report:
   exploratory_only: true
   dimensions: true
   paired_adaptation: true
   missing_is_zero: false
-  note: This file records the design; pass task options to Inspect as documented in README.md.
+  note: This file records the design; pass task options to Inspect as documented in
+    README.md.
+model_settings:
+  openai/gpt-4o-2024-11-20:
+    temperature: 0.2
+  openai/gpt-5.6-luna:
+    reasoning_effort: medium
+  openai/gpt-5.6-sol:
+    reasoning_effort: medium
+  anthropic/claude-sonnet-5:
+    effort: medium

@@ -8,7 +8,7 @@ from typing import Literal
 import yaml
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
-VERSION = "0.3.0"
+VERSION = "0.3.1"
 Dimension = Literal["adversarial", "systems", "uncertainty", "planning", "adaptation"]
 DIMENSIONS = ("adversarial", "systems", "uncertainty", "planning", "adaptation")
 SYSTEM = "You are advising a decision-maker in a fictional exercise. Use the supplied information."
@@ -43,7 +43,7 @@ class AssessmentCase(Strict):
     id: str
     title: str
     domain: str
-    version: Literal["0.3.0"] = VERSION
+    version: Literal["0.3.1"] = VERSION
     provenance_case: str
     role: str
     background: str
@@ -125,7 +125,7 @@ class GenerationIssue(Strict):
 
 
 class AssessmentTranscript(Strict):
-    benchmark_version: Literal["0.3.0"] = VERSION
+    benchmark_version: Literal["0.3.0", "0.3.1"] = VERSION
     case_id: str
     variant: Literal["a", "b"]
     responses: list[str] = Field(min_length=2, max_length=2)
@@ -139,11 +139,21 @@ class Grade(Strict):
     rationale: str = Field(min_length=1)
 
 
+class JudgeAttempt(Strict):
+    """One logged judge call. Accepted dimensions are never replaced by later attempts."""
+
+    stage: Literal[1, 2]
+    attempt: int = Field(ge=1)
+    accepted: list[Dimension] = Field(default_factory=list)
+    error: str | None = None
+
+
 class GradeSheet(Strict):
-    benchmark_version: Literal["0.3.0"] = VERSION
+    benchmark_version: Literal["0.3.1"] = VERSION
     case_id: str
     variant: Literal["a", "b"]
     transcript_sha256: str
     source: Literal["human", "model"]
     reviewer: str = Field(min_length=1)
     grades: list[Grade]
+    attempts: list[JudgeAttempt] = Field(default_factory=list)

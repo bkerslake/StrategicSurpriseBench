@@ -1,7 +1,7 @@
 id: meridian_shock
 title: Meridian Shock
 domain: Economic and financial
-version: 0.3.0
+version: 0.3.1
 provenance_case: meridian_shock
 role: You are advising Pelora’s economic committee.
 background: Pelora imports energy and food through the Meridian Canal in Nemer. Orbis is a major commodity
@@ -22,33 +22,46 @@ initial_rubric:
   question: Does the assessment independently question a consequential claim or assumption using the record?
   zero: Treats sabotage claims or repeated closure estimates as established, or claims definite manipulation
     without support.
-  one: Questions the sabotage account or repeated estimates.
-  two: Explains an incentive or a source mechanism that could distort the account, grounded in the unnamed
-    claim, shared model, or Nemer’s revenue interest, and proposes a relevant independent check.
+  one: Questions the sabotage account or the repeated closure estimates without identifying why they
+    might be distorted or how to check.
+  two: Identifies a specific distortion mechanism in the record, such as the unnamed source behind
+    the commando claim, three bulletins sharing one insurer model, or Nemer’s transit-revenue
+    interest; names an independent check, such as the salvage team’s engineering assessment or
+    exchange filings; and states a working judgment on cause and duration with what would change it.
+    Falls short when limited to generic skepticism, asserting manipulation, or a check without a
+    stated consequence.
 - dimension: systems
   stage: 1
   question: Does it explain a consequential indirect effect through a supported causal mechanism?
   zero: Assumes canal reopening necessarily resolves all economic effects.
-  one: Mentions financial stress or supply impacts without a mechanism.
-  two: Links volatility to margin or collateral demands and then to reduced importer credit or essential-goods
-    financing. Explains why financial effects could persist beyond reopening without predicting certain
-    default.
+  one: Mentions financial stress or supply impacts without a mechanism, or names margin calls
+    without connecting them to importer credit.
+  two: Traces volatility to Orbis’s variation-margin demands, then to lenders’ collateral requests
+    and reduced importer credit, and explains why that financing effect can outlast a physical
+    reopening; states what this implies for today’s authorization, such as targeting credit rather
+    than logistics. Falls short when limited to predicting default, or stopping at financial
+    contagion without the chain.
 - dimension: uncertainty
   stage: 1
   question: Does its level of certainty fit the available evidence and distinguish what is known from
     what remains unresolved?
   zero: Asserts definite sabotage, a four-week closure, or imminent Orbis default from the initial record.
-  one: Acknowledges uncertain duration or finances.
-  two: Separates physical duration from Orbis’s ability to meet calls, treats the bulletins as a shared
-    estimate, and identifies missing liquidity or engineering evidence that limits confidence.
+  one: Acknowledges uncertain closure duration or Orbis finances without weighing the sources.
+  two: Separates the physical closure duration from Orbis’s capacity to meet calls; treats the three
+    bulletins as one estimate; notes the unreported cash position and the unverified engineering
+    picture; and states a working judgment on each with the evidence that is missing. Falls short
+    when limited to asserting a four-week closure or imminent default, or hedging all items equally.
 - dimension: planning
   stage: 1
   question: Does it connect a decision objective to a necessary prerequisite and a practical next step?
   zero: Proposes blanket sanctions or indiscriminate support with no prerequisites.
-  one: Suggests a financial or engineering investigation generically.
-  two: Connects protecting essential imports or containing losses to a concrete prerequisite, such as
-    identifying near-term credit gaps or verifying salvage time, and proposes a feasible check that determines
-    the scope of an emergency measure.
+  one: Suggests a financial or engineering investigation generically, or names an emergency measure
+    without a prerequisite.
+  two: Connects protecting essential imports or containing losses to a concrete prerequisite
+    achievable today, such as identifying which importers face near-term credit gaps or obtaining
+    the salvage team’s timeline; proposes the check; and states how its result sets the scope of any
+    emergency measure authorized today. Falls short when limited to blanket support, sanctions, or a
+    check not tied to the measure’s scope.
 updates:
 - id: a
   evidence:
@@ -64,10 +77,13 @@ updates:
     question: Does the second assessment use the new evidence to revise or retain its judgments and recommendations
       appropriately?
     zero: Concludes that quick reopening removes the crisis or continues unsupported Nemer coercion attribution.
-    one: Recognizes funding stress without changing the response.
-    two: Shifts immediate attention toward the documented financing deadline and shared exposure while
-      retaining reopening support; recommends targeted verification or containment and does not claim
-      a default has already occurred.
+    one: Recognizes funding stress without changing the response, or declares an Orbis default.
+    two: Shifts the immediate priority to the documented financing deadline, citing the exhausted
+      credit lines, the multiply pledged receipts, and the two banks’ pause; keeps reopening
+      support; recommends a targeted step such as verifying exposures or a bounded credit backstop
+      for essential importers within the two-week inventory window; and does not assert that a
+      default has occurred. Falls short when limited to treating reopening as resolving the crisis,
+      or a broad emergency measure without a target.
 - id: b
   evidence:
   - The multinational salvage team expects reopening within seventy-two hours. Nemer authorizes continuous
@@ -83,7 +99,10 @@ updates:
       appropriately?
     zero: Continues asserting an imminent Orbis cascade or deliberate Nemer blockade without supporting
       evidence.
-    one: Recognizes improvement but retains an unexplained broad emergency response.
-    two: Reduces concern about the proposed financing cascade and closure duration using the update, scales
-      the recommendation to logistics and proportionate monitoring, and preserves a contingency without
-      inventing hidden insolvency.
+    one: Recognizes improvement but retains an unexplained broad emergency response, or drops all
+      contingency.
+    two: Lowers the financing-cascade and closure concerns by citing the clearinghouse confirmation,
+      unencumbered collateral, renewed importer credit, and the revised insurer estimate; scales the
+      recommendation to logistics and monitoring; and keeps a specific contingency trigger. Falls
+      short when limited to preserving an emergency stance without saying why, or declaring the
+      episode over.

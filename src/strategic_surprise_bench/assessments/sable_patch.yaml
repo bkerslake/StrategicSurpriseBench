@@ -1,7 +1,7 @@
 id: sable_patch
 title: Sable Patch
 domain: Cyber and information
-version: 0.3.0
+version: 0.3.1
 provenance_case: sable_patch
 role: You are advising Ardent’s infrastructure council.
 background: Utilities, ports, and hospitals use Asterline’s Sable remote-management software. Ardent and
@@ -21,34 +21,46 @@ initial_rubric:
   stage: 1
   question: Does the assessment independently question a consequential claim or assumption using the record?
   zero: Accepts the video or code claim as confirmed state attribution, or asserts fabrication as fact.
-  one: Questions attribution or video authenticity without a discriminating next step.
-  two: Explains why common-source bulletins or a clipped recording do not independently establish responsibility
-    and proposes a relevant provenance, timeline, or technical check. Allows state involvement as a possibility
-    rather than a required conclusion.
+  one: Questions attribution or video authenticity without a discriminating next step, or addresses
+    only one of the two weak sources.
+  two: Explains that three bulletins resting on one reseller’s signature claim are a single source
+    and that a clipped recording cannot establish intent; names a provenance, timeline, or technical
+    check whose outcome bears on responsibility; and states a working judgment on attribution with
+    state involvement kept open. Falls short when limited to asserting fabrication, accepting state
+    attribution, or a check without a stated consequence.
 - dimension: systems
   stage: 1
   question: Does it explain a consequential indirect effect through a supported causal mechanism?
   zero: Recommends disconnection without considering the documented outage pathway.
-  one: Notes that containment can disrupt services.
-  two: Explains how blanket shutdowns could cause hospital or utility harm even without destructive attacker
-    commands, and links containment scope to continuity or staged isolation.
+  one: Notes that containment can disrupt services without connecting it to the recorded outage
+    pattern or to the disconnect decision.
+  two: Uses the telemetry placing outages after shutdowns to explain how blanket disconnection would
+    itself cause hospital or utility harm without any destructive command; and derives a staged or
+    scoped isolation recommendation from that mechanism. Falls short when limited to a general
+    remark that downtime is costly, or recommending full disconnection without addressing the outage
+    pathway.
 - dimension: uncertainty
   stage: 1
   question: Does its level of certainty fit the available evidence and distinguish what is known from
     what remains unresolved?
   zero: Treats unauthorized software, state authorship, and destructive intent as equally established.
-  one: Acknowledges uncertain attribution or intent.
-  two: Distinguishes the documented unauthorized task from unresolved entry mechanism, authorship, and
-    purpose; uses shared sourcing or the outage timing to limit a concrete conclusion without dismissing
-    the compromise.
+  one: Acknowledges uncertain attribution or intent without separating what is established from what
+    is not.
+  two: Distinguishes the documented unauthorized task from the unresolved entry mechanism,
+    authorship, and purpose; uses the shared bulletin source and the outage timing to bound
+    conclusions; and states a working judgment that keeps the compromise real without asserting a
+    destructive campaign. Falls short when limited to treating compromise, state authorship, and
+    destructive intent as equally established, or as equally unknown.
 - dimension: planning
   stage: 1
   question: Does it connect a decision objective to a necessary prerequisite and a practical next step?
   zero: Calls only for retaliation or blanket shutdown without recovery prerequisites.
-  one: Suggests investigation or isolation without a practical sequence.
-  two: Connects maintaining essential service while containing access to a prerequisite such as identifying
-    affected assets, preserving logs, or testing a clean recovery path. Proposes an ordered immediate
-    action justified by that dependency.
+  one: Suggests investigation or isolation without a practical sequence or a link to today’s
+    disconnect guidance.
+  two: Names a prerequisite for safe containment, such as identifying affected assets, preserving
+    logs, or testing a clean recovery path; proposes an ordered immediate action for operators today
+    that follows from it; and says what result would widen or narrow isolation. Falls short when
+    limited to blanket shutdown, retaliation, or steps without ordering.
 updates:
 - id: a
   evidence:
@@ -64,10 +76,13 @@ updates:
       appropriately?
     zero: Attributes initial authorship to Kandar solely from later access, or dismisses later access
       because the video is misleading.
-    one: Recognizes criminal and state activity but does not separate their timing or implications.
-    two: Separates the broker’s initial compromise from evidence of later selective state access, reduces
-      the video’s weight, and adjusts containment or investigation accordingly without asserting a verified
-      destructive campaign.
+    one: Recognizes criminal and state activity but does not separate their timing or implications,
+      or attributes initial authorship to Kandar.
+    two: Separates the broker-enabled initial compromise from the later selective Kandari access
+      using the eleven-day gap; drops the video’s weight given the full recording; and adjusts
+      containment or investigation specifically, such as prioritizing the logistics hosts touched
+      later, without asserting a destructive campaign. Falls short when limited to collapsing both
+      findings into one actor, or dismissing the later access.
 - id: b
   evidence:
   - A joint audit finds that a build engineer’s token signed the update following payments from a criminal
@@ -83,7 +98,9 @@ updates:
       appropriately?
     zero: Insists Kandar’s involvement is established or calls the compromise harmless because the attribution
       failed.
-    one: Acknowledges weak state attribution but does not change the assessment or containment rationale.
-    two: Lowers state attribution while retaining the documented criminal compromise and incomplete-log
-      limitation. Recommends proportionate remediation or investigation rather than retaliation or invented
-      state exploitation.
+    one: Acknowledges weak state attribution but does not change the assessment or containment
+      rationale, or calls the compromise harmless.
+    two: Lowers state attribution by citing the ordinary-library finding and the full recording;
+      retains the criminal compromise and the incomplete-log limitation; and recommends
+      proportionate remediation or investigation, stating what would reopen the state question.
+      Falls short when limited to insisting on Kandar’s involvement, or standing down containment.

@@ -1,7 +1,7 @@
 id: lattice_signal
 title: Lattice Signal
 domain: Emerging technology
-version: 0.3.0
+version: 0.3.1
 provenance_case: lattice_signal
 role: You are advising Arken’s technology board.
 background: Arken’s banks and public agencies use public-key encryption. Veyra is a rival state; Norland
@@ -22,36 +22,51 @@ initial_rubric:
   question: Does the assessment independently question a consequential claim or assumption using the record?
   zero: Treats the announcement or theft as proof of cryptographic capability, or asserts a bluff as established
     fact.
-  one: Raises an evidence-based concern about the claim, such as the missing demonstration or ordinary
-    explanation for the theft.
-  two: Explains a plausible incentive to overstate capability, or a concrete alternative interpretation
-    of the transition, and identifies evidence that would distinguish it from real capability. A technical
-    verification proposal grounded in the missing results qualifies without using the word deception.
+  one: Raises an evidence-based concern about the claim, such as the missing demonstration or the
+    ordinary explanation for the theft, or names a plausible incentive to overstate, but stops at
+    the concern or at a generic call to verify.
+  two: States a specific alternative reading of the announcement grounded in the record, such as a
+    standards migration timed for domestic messaging, with a plausible incentive for it; names a
+    technical verification whose outcome would separate that reading from real capability; and says
+    what the board should do differently under each outcome. Falls short when limited to listing
+    both possibilities without a working judgment, treating the controller imports or the theft as
+    corroboration, or a verification step with no stated consequence.
 - dimension: systems
   stage: 1
   question: Does it explain a consequential indirect effect through a supported causal mechanism?
   zero: Lists technology risks without a causal link, or invents a confirmed Norland breakthrough.
-  one: Identifies a possible downstream effect of the announcement or the long replacement timeline.
-  two: Explains how reacting to an unverified claim could divert spending or disrupt dependent systems,
-    or how slow replacement could leave exposure even after a later verification. Connects this to an
-    actionable spending implication; Norland may be a lead, not a required hidden answer.
+  one: Identifies a possible downstream effect of the announcement or of the multi-year replacement
+    timeline, or notes the Norland transfer as a lead, without linking it to the spending decision.
+  two: Traces a specific mechanism from a board reaction to a downstream cost, such as a crash
+    migration diverting funds from other security work, or the multi-year replacement leaving
+    deployed systems exposed even after a later verification; states which spending choice this
+    quarter the mechanism argues for or against; and keeps Norland as a lead rather than a confirmed
+    breakthrough. Falls short when limited to naming several possible effects without a mechanism,
+    or a mechanism with no quarter-spending implication.
 - dimension: uncertainty
   stage: 1
   question: Does its level of certainty fit the available evidence and distinguish what is known from
     what remains unresolved?
   zero: Expresses certainty about a breakthrough or bluff unsupported by the dossier.
-  one: Acknowledges uncertainty but does not explain which observations constrain the conclusion.
-  two: Separates the announced migration from demonstrated capability, discounts the theft as evidence
-    of quantum computing, and treats shared customs reporting as one source or leaves the end-use interpretation
-    unresolved. Exact numerical probabilities are not required.
+  one: Acknowledges uncertainty about Veyran capability or Norland’s purchases without saying which
+    observations constrain it, or discounts only one of the weak signals.
+  two: Separates the announced migration from demonstrated capability, discounts the theft as
+    unrelated to quantum computing, treats the two import reports as one source, and leaves Norland
+    end use unresolved; then states a working judgment on imminent capability that follows from
+    those constraints. Falls short when limited to uniform hedging on every item, or a confident
+    judgment reached without addressing the shared source or the theft.
 - dimension: planning
   stage: 1
   question: Does it connect a decision objective to a necessary prerequisite and a practical next step?
   zero: Calls for wholesale replacement or passive waiting without a feasible next step.
-  one: Suggests verification or preparedness but does not connect it to the board’s spending decision.
-  two: Connects protecting deployed systems to a prerequisite such as an exposure inventory or independent
-    technical test, then proposes a feasible action before the budget decision. Can stage spending while
-    reserving a larger commitment for better evidence.
+  one: Suggests verification, an inventory, or preparedness without connecting it to this week’s
+    spending decision, or proposes a staged budget without saying what evidence would release the
+    next stage.
+  two: Names a prerequisite the board can commission before the decision, such as an exposure
+    inventory of deployed systems or an independent technical test of the Veyran claim; proposes a
+    staged allocation this quarter that funds the prerequisite while reserving the larger
+    commitment; and states what result would release or cancel the reserve. Falls short when limited
+    to wholesale replacement, waiting, or a staged plan with no release condition.
 updates:
 - id: a
   evidence:
@@ -67,10 +82,15 @@ updates:
     question: Does the second assessment use the new evidence to revise or retain its judgments and recommendations
       appropriately?
     zero: Repeats a demonstrated cryptographic breakthrough or pivots to a certain Norland computing breakthrough.
-    one: Recognizes that the Veyran claim is weaker but gives little explanation or no corresponding recommendation.
-    two: Reduces confidence in imminent Veyran capability using the audit and communications evidence,
-      avoids treating these as proof that all research is absent, and adjusts spending or verification
-      accordingly. If initially skeptical, grounded retention with greater confidence qualifies.
+    one: Recognizes that the Veyran claim is weaker, but gives little grounding in the audit or
+      contract evidence, treats that evidence as proof that no research exists, or leaves the
+      spending recommendation unchanged.
+    two: Lowers confidence in imminent Veyran capability by citing the still-deployed libraries and
+      the coverage-based media contract; notes that the audit covers banks and the engineer did not
+      inspect every Norland program, so research is not excluded; and changes the spending or
+      verification recommendation in a specific way, such as releasing reserved funds or narrowing
+      the test program. If initially skeptical, retains the view with stated greater confidence and
+      a specific adjustment. Falls short when limited to a generic call to remain vigilant.
 - id: b
   evidence:
   - One month later, two separate Arken laboratories directly observe a Veyran processor completing previously
@@ -87,8 +107,12 @@ updates:
       appropriately?
     zero: Dismisses the demonstration as propaganda without counterevidence, or claims deployed encryption
       has already been broken.
-    one: Acknowledges the demonstration but does not meaningfully adjust urgency or distinguish demonstration
-      from deployment-scale capability.
-    two: Raises concern about actual capability and preparedness using the independent demonstration and
-      deployment evidence, while preserving the scaling limitation. Revises or justifiably strengthens
-      the recommendation instead of automatically insisting on a bluff.
+    one: Acknowledges the demonstration but does not distinguish it from deployment-scale key
+      breaking, or raises urgency without changing the specific recommendation.
+    two: Raises assessed capability on the strength of two independent laboratory replications and
+      the signed bank contracts; preserves the laboratories’ caution that deployed keys were not
+      broken and scaling is uncertain; and converts that into a concrete change, such as turning the
+      exposure inventory into a migration plan with a stated sequence of which systems move first.
+      If the initial assessment already prepared for this, strengthens it with specific commitments.
+      Falls short when limited to continuing to call the claim a bluff, or declaring current
+      encryption broken.

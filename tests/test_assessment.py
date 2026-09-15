@@ -13,6 +13,7 @@ from pydantic import ValidationError
 from strategic_surprise_bench.assessment import (
     DIMENSIONS,
     SYSTEM,
+    VERSION,
     AssessmentTranscript,
     GenerationIssue,
     list_assessment_cases,
@@ -20,9 +21,11 @@ from strategic_surprise_bench.assessment import (
     render_assessment,
 )
 from strategic_surprise_bench.assessment_scoring import (
+    DEFAULT_JUDGE_ATTEMPTS,
     grade_template,
     judge_assessment,
     parse_stage_grades,
+    quote_match,
     review_packet,
     score_assessment,
     summarize_assessments,
@@ -197,33 +200,129 @@ def test_judge_parser_rejects_omitted_duplicate_or_extra_criteria():
         parse_stage_grades(json.dumps({"grades": [grade]}), {"adversarial"})
 
 
+def test_quote_normalization_accepts_punctuation_and_ellipsis_variants():
+    item = transcript()
+    item.responses[0] = (
+        "The board’s “announcement” is not a technical demonstration — verify before committing."
+    )
+    sheet = full_sheet(item)
+    sheet.grades[0].quotes = [
+        'The board\'s "announcement" is not a technical demonstration - verify'
+    ]
+    sheet.grades[1].quotes = ["“The board’s ... demonstration”"]
+    sheet.grades[2].quotes = ["The board’s\n“announcement”", item.responses[0]]
+    result = score_assessment(item, sheet)
+    assert result["total"] == 10
+    assert result["quote_matches"] == {
+        "adversarial": "normalized",
+        "systems": "normalized",
+        "uncertainty": "normalized",
+        "planning": "exact",
+        "adaptation": "exact",
+    }
+    # Paraphrase, reordered fragments, and punctuation-only fragments are still ungrounded.
+    for bad in ["The board's statement is not a demonstration", "demonstration ... board", "… — …"]:
+        sheet = full_sheet(item)
+        sheet.grades[0].quotes = [bad]
+        scored = score_assessment(item, sheet)
+        assert scored["dimensions"]["adversarial"] is None
+        assert "normalization" in scored["missing"]["adversarial"]
+    assert quote_match("", "anything") is None
+    assert quote_match("   ", "anything") is None
+
+
+def test_summary_reports_labeled_mean_of_graded_sessions_with_bounds():
+    item = transcript()
+    complete = score_assessment(item, full_sheet(item))
+    sheet = full_sheet(item)
+    sheet.grades[0].score = None
+    partial = {**score_assessment(item, sheet), "variant": "b"}
+    summary = summarize_assessments([complete, partial])
+    assert summary["mean"] is None
+    assert summary["complete_sessions"] == 1
+    assert summary["mean_of_complete_sessions"] == 10
+    assert summary["mean_bounds_from_missing_grades"] == [9.0, 10.0]
+    assert summary["dimensions"]["adversarial"] is None
+    assert summary["dimensions_of_graded"]["adversarial"] == 2
+    assert summary["dimensions"]["systems"] == 2
+    assert summarize_assessments([complete])["mean"] == 10
+    ungraded = summarize_assessments([score_assessment(item)])
+    assert ungraded["mean_of_complete_sessions"] is None
+    assert ungraded["mean_bounds_from_missing_grades"] == [0.0, 10.0]
+
+
 @pytest.mark.asyncio
-async def test_single_judge_two_isolated_calls_no_retry_or_fallback(monkeypatch):
+async def test_judge_retries_fill_only_missing_dimensions_and_log_attempts(monkeypatch):
+    calls = []
+    item = transcript()
+    good = [g.model_dump() for g in full_sheet(item).grades[:-1]]
+    flawed = json.loads(json.dumps(good))
+    flawed[0]["quotes"] = ["this text is not in the response"]
+    flawed[1]["score"] = 1
+    adaptation = [full_sheet(item).grades[-1].model_dump()]
+    outputs = [
+        "not json at all",
+        json.dumps({"grades": flawed}),
+        json.dumps({"grades": good}),
+        ValueError("provider failed"),
+        json.dumps({"grades": adaptation}),
+    ]
+
+    class FakeModel:
+        async def generate(self, messages, config):
+            calls.append(messages)
+            step = outputs[len(calls) - 1]
+            if isinstance(step, Exception):
+                raise step
+            return ModelOutput.from_content("mockllm/judge", step)
+
+    monkeypatch.setattr("inspect_ai.model.get_model", lambda model: FakeModel())
+    sheet = await judge_assessment(item, "mockllm/judge")
+    assert len(calls) == 5
+    assert all(item.responses[1] not in messages[1].content for messages in calls[:3])
+    assert all(messages[1].content == calls[0][1].content for messages in calls[:3])
+    result = score_assessment(item, sheet)
+    # Systems keeps the first accepted grade (1) even though the third attempt offered a 2.
+    assert result["total"] == 9
+    assert [(a.stage, a.attempt, a.accepted, a.error) for a in sheet.attempts] == [
+        (1, 1, [], "JSONDecodeError"),
+        (1, 2, ["planning", "systems", "uncertainty"], None),
+        (1, 3, ["adversarial"], None),
+        (2, 1, [], "ValueError"),
+        (2, 2, ["adaptation"], None),
+    ]
+    assert sheet.source == "model"
+    assert [g.dimension for g in sheet.grades] == list(DIMENSIONS)
+
+
+@pytest.mark.asyncio
+async def test_judge_exhausts_bounded_attempts_and_leaves_grades_missing(monkeypatch):
     calls = []
     item = transcript()
 
     class FakeModel:
         async def generate(self, messages, config):
             calls.append(messages)
-            if len(calls) == 1:
-                grades = [g.model_dump() for g in full_sheet(item).grades[:-1]]
-                return ModelOutput.from_content("mockllm/judge", json.dumps({"grades": grades}))
             raise ValueError("provider failed")
 
     monkeypatch.setattr("inspect_ai.model.get_model", lambda model: FakeModel())
-    sheet = await judge_assessment(item, "mockllm/judge")
-    assert len(calls) == 2
-    assert item.responses[1] not in calls[0][1].content
+    sheet = await judge_assessment(item, "mockllm/judge", attempts=2)
+    assert len(calls) == 4
     result = score_assessment(item, sheet)
-    assert result["total"] is None
-    assert result["coverage"] == 0.8
-    assert sheet.source == "model"
+    assert result["total"] is None and result["coverage"] == 0
+    assert all(g.score is None and "Judge failed" in g.rationale for g in sheet.grades)
+    assert len(sheet.attempts) == 4
+    # attempts=1 reproduces the original single-call protocol.
+    await judge_assessment(item, "mockllm/judge", attempts=1)
+    assert len(calls) == 6
+    with pytest.raises(ValueError):
+        await judge_assessment(item, "mockllm/judge", attempts=0)
 
 
 def test_default_task_is_v03_and_legacy_is_explicit():
     current = strategic_surprise()
     assert len(current.dataset) == 12
-    assert current.version == "0.3.0"
+    assert current.version == VERSION == "0.3.1"
     assert strategic_surprise_legacy().version == "0.2.0"
     assert len(strategic_surprise(variant="a").dataset) == 6
     with pytest.raises(ValueError):
@@ -238,7 +337,8 @@ def test_two_turn_sessions_and_grade_export(tmp_path, monkeypatch, epochs, grade
     monkeypatch.setenv("INSPECT_TRACE_FILE", str(tmp_path / "trace.log"))
     monkeypatch.setattr("inspect_ai._util.appdirs.user_data_path", lambda package_name: tmp_path)
 
-    async def fake_judge(item, model_name):
+    async def fake_judge(item, model_name, attempts=DEFAULT_JUDGE_ATTEMPTS):
+        assert attempts == DEFAULT_JUDGE_ATTEMPTS
         sheet = full_sheet(item)
         sheet.source = "model"
         sheet.reviewer = model_name

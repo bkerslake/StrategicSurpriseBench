@@ -76,7 +76,7 @@ export const resultsState = {
   statusLabel: "Historical v0.2",
   eyebrow: "Archive / v0.2 guided protocol",
   title: "Historical results from the earlier benchmark.",
-  body: "These results used the old guided workflow and do not measure v0.3 spontaneous assessment. The redesigned benchmark has no model comparison yet. The historical scores remain provisional and are not comparable with the new 10-point scale.",
+  body: "These results used the old guided workflow and do not measure v0.3 spontaneous assessment. A first v0.3 screen is now documented in the repository. The historical scores remain provisional and are not comparable with the new 10-point scale.",
   facts: [
     { value: "24/24", label: "model-case scores" },
     { value: "01", label: "run per cell" },
