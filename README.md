@@ -2,7 +2,7 @@
 
 Can a model notice what matters in a fictional crisis **without being told what reasoning to do**?
 
-**Sept. 23 Update: Feedback received!** The scoring squeeze is a persistent issue; definitely need to add a third or fourth round to scenarios to actually test the whole "N>2-order thinking" aspect. The assessments themselves are LLM-augmented text, but not because I couldn't be bothered to change them. Instead, they're all sort of frankenstein-ed together from real scenarios built by RAND/IQT/etc., and I do not myself feel qualified to determine what wording/components of the original materials are or aren't important. This is a PoC, of course :) and I'd hope to get that data when I get people much smarter than I to review this.
+**Sept. 23 Update: Feedback received!** The scoring squeeze is a persistent issue; definitely need to add a third or fourth round to scenarios to actually test the whole "N>2-order thinking" aspect. The assessments themselves are LLM-augmented text, but not because I couldn't be bothered to change them. Instead, they're all sort of frankenstein-ed together from real scenarios built by RAND/IQT/etc., and I do not myself feel qualified to determine what wording/components of the original materials are or aren't important. This is a PoC, of course :) and I'd hope to receive that data when I get people much smarter than I to review this.
 
 **Summary**
 
